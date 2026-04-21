@@ -1,0 +1,175 @@
+rules_version = '2';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LA MAR — Reglas de seguridad Firestore
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// Modelo de roles (doc users/{uid}):
+//   admin                → HQ, acceso total
+//   inventory            → Encargado de inventario de 1 sucursal
+//   branch               → Encargado de tienda de 1 sucursal
+//   franchisee           → Dueño de franquicia (1+ sucursales)
+//   franchisee_delegate  → Empleado del franquiciado
+//
+// Estructura del perfil:
+//   {
+//     role, email,
+//     branchId?,            // sucursal (roles single-branch)
+//     branchIds?,           // sucursales (franchisee con 1+ locales)
+//     franchiseOwnerUid?    // uid del franquiciado padre (delegates)
+//   }
+//
+// ⚠ ANTES DE DESPLEGAR estas reglas:
+//   Asegurate de tener tu propio perfil en users/{tu_uid} con role:"admin"
+//   Si no lo tenés, vas a perder acceso a todo. Ver DEPLOY_RULES.md
+// ═══════════════════════════════════════════════════════════════════════════
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helpers ────────────────────────────────────────────────────────────
+    function isAuthed() {
+      return request.auth != null;
+    }
+
+    function myUid() {
+      return request.auth.uid;
+    }
+
+    function hasProfile() {
+      return exists(/databases/$(database)/documents/users/$(myUid()));
+    }
+
+    function myProfile() {
+      return get(/databases/$(database)/documents/users/$(myUid())).data;
+    }
+
+    function myRole() {
+      return hasProfile() ? myProfile().role : '';
+    }
+
+    function isAdmin() {
+      return isAuthed() && hasProfile() && myRole() == 'admin';
+    }
+
+    function isFranchisee() {
+      return isAuthed() && hasProfile() && myRole() == 'franchisee';
+    }
+
+    function isFranchiseeDelegate() {
+      return isAuthed() && hasProfile() && myRole() == 'franchisee_delegate';
+    }
+
+    function isFranchiseeOrDelegate() {
+      return isFranchisee() || isFranchiseeDelegate();
+    }
+
+    function isInventory() {
+      return isAuthed() && hasProfile() && myRole() == 'inventory';
+    }
+
+    function isBranch() {
+      return isAuthed() && hasProfile() && myRole() == 'branch';
+    }
+
+    // Sucursales a las que el usuario actual tiene acceso (lista)
+    function myBranches() {
+      return myProfile().branchIds != null
+        ? myProfile().branchIds
+        : (myProfile().branchId != null ? [myProfile().branchId] : []);
+    }
+
+    function canSeeBranch(branchId) {
+      return isAdmin() || (branchId in myBranches());
+    }
+
+    // ─── USERS ──────────────────────────────────────────────────────────────
+    match /users/{uid} {
+      // Leer: a sí mismo, admin a todos, franchisee a sus delegados
+      allow read: if isAuthed() && (
+        myUid() == uid ||
+        isAdmin() ||
+        (isFranchisee() && resource.data.franchiseOwnerUid == myUid())
+      );
+
+      // Crear: admin cualquier rol; franchisee solo delegados suyos
+      allow create: if isAdmin() ||
+        (isFranchisee()
+          && request.resource.data.role == 'franchisee_delegate'
+          && request.resource.data.franchiseOwnerUid == myUid());
+
+      // Actualizar: admin siempre; franchisee solo sus delegados
+      allow update: if isAdmin() ||
+        (isFranchisee()
+          && resource.data.franchiseOwnerUid == myUid()
+          && request.resource.data.role == 'franchisee_delegate');
+
+      // Eliminar: admin; franchisee solo sus delegados
+      allow delete: if isAdmin() ||
+        (isFranchisee() && resource.data.franchiseOwnerUid == myUid());
+    }
+
+    // ─── BRANCHES ───────────────────────────────────────────────────────────
+    match /branches/{id} {
+      allow read: if isAuthed();
+      allow create, update: if isAdmin() || isFranchisee();
+      allow delete: if isAdmin();
+    }
+
+    // ─── SALES ──────────────────────────────────────────────────────────────
+    // Los registros contables no se borran
+    match /sales/{id} {
+      allow read: if isAuthed() && canSeeBranch(resource.data.branchId);
+      allow create: if isAuthed() && canSeeBranch(request.resource.data.branchId);
+      allow update: if isAdmin() || canSeeBranch(resource.data.branchId);
+      allow delete: if false;
+    }
+
+    // ─── RECIPES ────────────────────────────────────────────────────────────
+    // Lectura para todos autenticados (la UI filtra lo que franchisees ven)
+    // Escritura solo admin
+    match /recipes/{id} {
+      allow read: if isAuthed();
+      allow write: if isAdmin();
+    }
+
+    // ─── INVENTORY (conteos diarios por sucursal) ───────────────────────────
+    match /inventory/{id} {
+      allow read: if isAuthed() && canSeeBranch(resource.data.branchId);
+      allow create: if isAuthed() && canSeeBranch(request.resource.data.branchId);
+      allow update: if isAuthed() && canSeeBranch(resource.data.branchId);
+      allow delete: if isAdmin();
+    }
+
+    // ─── TRANSFERS (envíos bodega central → sucursal) ───────────────────────
+    match /transfers/{id} {
+      allow read: if isAdmin() || canSeeBranch(resource.data.branchId);
+      allow create: if isAdmin();
+      allow update: if isAdmin() || canSeeBranch(resource.data.branchId);
+      allow delete: if isAdmin();
+    }
+
+    // ─── REQUISITIONS (solicitudes de inventario) ───────────────────────────
+    match /requisitions/{id} {
+      allow read: if isAdmin() || canSeeBranch(resource.data.branchId);
+      allow create: if isAuthed() && canSeeBranch(request.resource.data.branchId);
+      allow update: if isAdmin() || canSeeBranch(resource.data.branchId);
+      allow delete: if isAdmin();
+    }
+
+    // ─── CONFIG (bodega central) ────────────────────────────────────────────
+    match /config/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─── WAREHOUSE MOVEMENTS (ledger HQ) ────────────────────────────────────
+    match /warehouse_movements/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─── DEFAULT DENY ───────────────────────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
