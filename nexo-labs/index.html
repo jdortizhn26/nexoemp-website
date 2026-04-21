@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nexo Labs — Sistemas operativos para tu negocio</title>
+<meta name="description" content="Sistema POS y control operacional para restaurantes y comercios. Control total de ventas, inventarios y reportes desde L 1,500/mes."/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ─────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 100;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .brand {
+    font-weight: 900;
+    font-size: 18px;
+    color: #0369a1;
+    letter-spacing: -0.5px;
+  }
+  nav .brand span { color: #1f2937; font-weight: 800; }
+  nav .links { display: flex; gap: 24px; }
+  nav .links a {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  nav .links a:hover { color: #0369a1; }
+  nav .cta {
+    background: #0369a1;
+    color: #fff !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+  }
+  @media (max-width: 640px) {
+    nav .links a:not(.cta) { display: none; }
+  }
+
+  /* ── HERO ────────────────────── */
+  .hero {
+    padding: 80px 24px 100px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #fff 60%);
+    text-align: center;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900;
+    color: #0c1828;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #0369a1, #0284c7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p {
+    font-size: 18px;
+    color: #4b5563;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+  .hero .buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: #0369a1;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: #075985;
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: #fff;
+    color: #0369a1;
+    border: 2px solid #0369a1;
+  }
+
+  /* ── SECTION ────────────────── */
+  section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  section h2 {
+    font-size: clamp(26px, 4vw, 38px);
+    color: #0c1828;
+    text-align: center;
+    margin-bottom: 14px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  section .subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── FEATURES GRID ───────────── */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature {
+    background: #fff;
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s;
+  }
+  .feature:hover {
+    border-color: #0369a1;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(3, 105, 161, 0.08);
+  }
+  .feature .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .feature h3 {
+    font-size: 16px;
+    color: #0c1828;
+    margin-bottom: 6px;
+    font-weight: 800;
+  }
+  .feature p {
+    color: #6b7280;
+    font-size: 14px;
+  }
+
+  /* ── PRICING ─────────────────── */
+  .pricing-bg {
+    background: #f9fafb;
+    padding: 80px 24px;
+  }
+  .pricing {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .plan {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 2px solid #e5e7eb;
+    position: relative;
+  }
+  .plan.featured {
+    border-color: #0369a1;
+    box-shadow: 0 20px 50px rgba(3, 105, 161, 0.15);
+    transform: scale(1.03);
+  }
+  .plan.featured::before {
+    content: "Más popular";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0369a1;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .plan .name {
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .plan .price {
+    font-size: 42px;
+    font-weight: 900;
+    color: #0c1828;
+    letter-spacing: -1px;
+  }
+  .plan .price .mo {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+  }
+  .plan .setup {
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .plan .setup strong { color: #0369a1; }
+  .plan ul {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .plan li {
+    padding: 6px 0;
+    color: #374151;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .plan li::before {
+    content: "✓";
+    color: #10b981;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .plan li.muted { color: #9ca3af; }
+  .plan li.muted::before { content: "—"; color: #d1d5db; }
+
+  /* ── DEMO ────────────────────── */
+  .demo {
+    text-align: center;
+    background: linear-gradient(135deg, #0369a1, #0284c7);
+    color: #fff;
+    padding: 60px 24px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+  }
+  .demo h2 { color: #fff; }
+  .demo p { color: rgba(255,255,255,0.9); margin: 14px 0 24px; }
+  .demo .btn-primary {
+    background: #fff;
+    color: #0369a1;
+  }
+
+  /* ── FAQ ─────────────────────── */
+  .faq { max-width: 800px; }
+  .faq-item {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    color: #0c1828;
+    cursor: pointer;
+    font-size: 16px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::after {
+    content: "+";
+    color: #0369a1;
+    font-size: 24px;
+    font-weight: 300;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p {
+    margin-top: 12px;
+    color: #4b5563;
+    font-size: 15px;
+  }
+
+  /* ── FOOTER ──────────────────── */
+  footer {
+    background: #0c1828;
+    color: #9ca3af;
+    padding: 50px 24px 30px;
+    text-align: center;
+  }
+  footer .brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  footer .brand span { color: #0ea5e9; }
+  footer p { font-size: 14px; margin: 6px 0; }
+  footer a { color: #38bdf8; text-decoration: none; }
+  footer .copy {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #1f2937;
+    font-size: 12px;
+    color: #6b7280;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Nexo<span>Labs</span></div>
+  <div class="links">
+    <a href="#features">Funcionalidades</a>
+    <a href="#pricing">Precios</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto" class="cta">Contactar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none;">
+  <div class="tag">⚓ Sistema POS en la nube</div>
+  <h1>El control total de tu restaurante <span>en una sola plataforma</span></h1>
+  <p>
+    Ventas, inventarios, costos, reportes y dashboards en tiempo real.
+    Diseñado para PyMEs hondureñas que quieren crecer sin complicaciones.
+  </p>
+  <div class="buttons">
+    <a href="#contacto" class="btn btn-primary">Solicitar demo gratis</a>
+    <a href="#pricing" class="btn btn-secondary">Ver precios</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <h2>Todo lo que tu restaurante necesita</h2>
+  <p class="subtitle">Un solo sistema para operar, medir y crecer. Sin instalaciones, sin servidores.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="icon">🧾</div>
+      <h3>Ingreso de Ventas</h3>
+      <p>Registro diario con productos, gastos y depósitos bancarios.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📊</div>
+      <h3>Dashboard Tiempo Real</h3>
+      <p>KPIs, metas mensuales, top productos y comparativos semanales.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📦</div>
+      <h3>Control de Inventario</h3>
+      <p>Stock por sucursal, alertas de mínimos, movimientos trazables.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🍽️</div>
+      <h3>Recetas & Costos</h3>
+      <p>Costo real por producto. Saber qué te deja más margen.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏭</div>
+      <h3>Bodega Central</h3>
+      <p>Transferencias entre sucursales y requisiciones.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏦</div>
+      <h3>Bancos & Depósitos</h3>
+      <p>Control de cuentas y conciliación de efectivo.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📈</div>
+      <h3>Reportes Imprimibles</h3>
+      <p>Cierre diario, mensual y por sucursal. Listos para imprimir.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">👥</div>
+      <h3>Usuarios con Roles</h3>
+      <p>Admin, encargados, franquiciados. Cada uno ve lo que le corresponde.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏪</div>
+      <h3>Multi-sucursal</h3>
+      <p>Gestión centralizada de todos tus locales.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📺</div>
+      <h3>Modo TV</h3>
+      <p>Pantalla de control para cocina o administración.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">☁️</div>
+      <h3>100% en la Nube</h3>
+      <p>Desde cualquier dispositivo. Siempre disponible, siempre respaldado.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🎨</div>
+      <h3>Marca Personalizada</h3>
+      <p>Con tu logo, colores y menú. Se siente tuyo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-bg">
+  <h2 style="text-align:center; color:#0c1828; font-size:clamp(26px,4vw,38px); font-weight:900; margin-bottom:14px;">Precios simples, sin sorpresas</h2>
+  <p class="subtitle" style="text-align:center; color:#6b7280; margin-bottom:50px;">
+    Paga lo justo por lo que usas. Cancelá cuando quieras después de los 3 meses iniciales.
+  </p>
+
+  <div class="pricing">
+    <!-- PLAN 1 -->
+    <div class="plan">
+      <div class="name">1 Sucursal</div>
+      <div class="price">L 1,500<span class="mo">/mes</span></div>
+      <div class="setup">+ Setup único: <strong>L 10,000</strong></div>
+      <ul>
+        <li>Sistema completo</li>
+        <li>Hosting en la nube</li>
+        <li>Respaldos automáticos</li>
+        <li>Soporte vía WhatsApp</li>
+        <li>1 modificación al mes</li>
+        <li>Hasta 5 usuarios</li>
+      </ul>
+      <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Empezar</a>
+    </div>
+
+    <!-- PLAN 2 - FEATURED -->
+    <div class="plan featured">
+      <div class="name">Multi-sucursal</div>
+      <div class="price">L 2,000+<span class="mo">/mes</span></div>
+      <div class="setup">Sucursal principal + <strong>L 500</strong> por sucursal extra</div>
+      <ul>
+        <li>Todo lo del plan anterior</li>
+        <li>Multi-sucursal ilimitado</li>
+        <li>Bodega central</li>
+        <li>Transferencias entre locales</li>
+        <li>Requisiciones y aprobaciones</li>
+        <li>Roles de franquiciado</li>
+        <li>Usuarios ilimitados</li>
+      </ul>
+      <a href="#contacto" class="btn btn-primary" style="width:100%; text-align:center;">Contactar</a>
+    </div>
+
+    <!-- PLAN 3 -->
+    <div class="plan">
+      <div class="name">Enterprise</div>
+      <div class="price">A medida</div>
+      <div class="setup">Para cadenas de <strong>5+ sucursales</strong></div>
+      <ul>
+        <li>Todo lo anterior</li>
+        <li>Funcionalidades custom</li>
+        <li>Dominio propio</li>
+        <li>SLA garantizado</li>
+        <li>Capacitación dedicada</li>
+        <li>Migración de datos</li>
+      </ul>
+      <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Cotizar</a>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO CTA -->
+<section>
+  <div class="demo">
+    <h2>Probalo antes de decidir</h2>
+    <p>Agendá una demo personalizada. 20 minutos para verlo funcionando con datos de ejemplo.</p>
+    <a href="#contacto" class="btn btn-primary">Agendar demo gratuita</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Preguntas frecuentes</h2>
+  <p class="subtitle">Si tenés otra duda, escribinos por WhatsApp.</p>
+
+  <div class="faq">
+    <details class="faq-item">
+      <summary>¿Cuánto demora la implementación?</summary>
+      <p>Entre 5 y 8 días desde que firmamos el contrato. Incluye personalización de marca, carga del menú, creación de usuarios y capacitación.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Necesito instalar algo?</summary>
+      <p>No. El sistema funciona 100% en el navegador. Accedés desde PC, tablet o móvil sin instalar nada.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué pasa si tengo 3 sucursales?</summary>
+      <p>Pagás L 1,500 por la principal + L 500 por cada sucursal extra. Con 3 sucursales: L 2,500/mes total.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué pasa con mis datos si cancelo?</summary>
+      <p>Son 100% tuyos. Te entregamos un respaldo completo en formato JSON sin costo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Hay permanencia?</summary>
+      <p>Mínimo 3 meses. Después renovás mes a mes y podés cancelar con 30 días de aviso.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo cambiar precios o productos del menú?</summary>
+      <p>Sí, desde el panel de Productos. Además, la mensualidad incluye 1 cambio asistido por nosotros si lo preferís.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿El sistema es sólo para restaurantes?</summary>
+      <p>Está optimizado para restaurantes y comidas rápidas, pero lo adaptamos a cafeterías, panaderías, food trucks y retail con inventario.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="demo" style="background: #0c1828;">
+    <h2 style="color:#fff;">¿Listo para empezar?</h2>
+    <p>Contactanos y te mostramos cómo se vería para tu negocio.</p>
+    <div class="buttons" style="margin-top: 20px;">
+      <a href="https://wa.me/504XXXXXXXX" class="btn btn-primary" style="background:#25d366;">📱 WhatsApp</a>
+      <a href="mailto:contacto@nexoemp.com" class="btn btn-primary">📧 Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Nexo<span>Labs</span></div>
+  <p>Sistemas operativos para PyMEs · Honduras</p>
+  <p><a href="https://nexoemp.com">nexoemp.com</a> · contacto@nexoemp.com</p>
+  <div class="copy">
+    © 2026 Nexo Labs. Todos los derechos reservados.
+  </div>
+</footer>
+
+</body>
+</html>

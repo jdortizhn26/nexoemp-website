@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Propuesta Comercial — Sistema POS | Nexo Labs</title>
+<style>
+  @page { size: A4; margin: 18mm 15mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 11pt;
+  }
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 50px;
+    background: #fff;
+  }
+  header {
+    border-bottom: 3px solid #0369a1;
+    padding-bottom: 18px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  header .brand h1 {
+    color: #0369a1;
+    font-size: 26pt;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  header .brand .tag {
+    color: #6b7280;
+    font-size: 10pt;
+    margin-top: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  header .meta {
+    text-align: right;
+    font-size: 10pt;
+    color: #6b7280;
+  }
+  header .meta strong { color: #0369a1; font-size: 12pt; }
+
+  h2 {
+    color: #0369a1;
+    font-size: 14pt;
+    margin: 26px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  h3 {
+    color: #1f2937;
+    font-size: 12pt;
+    margin: 16px 0 8px;
+  }
+  p { margin-bottom: 10px; color: #374151; }
+  ul { margin: 8px 0 14px 24px; }
+  li { margin-bottom: 4px; color: #374151; }
+
+  .client-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+  .client-box .label {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0369a1;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .client-box .val {
+    color: #1f2937;
+    font-size: 11pt;
+    font-weight: 500;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 2px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .feature {
+    background: #f9fafb;
+    border-left: 3px solid #0369a1;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 10pt;
+  }
+  .feature strong { color: #0369a1; display: block; margin-bottom: 2px; }
+
+  table.pricing {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 10.5pt;
+  }
+  table.pricing th {
+    background: #0369a1;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  table.pricing th.right, table.pricing td.right { text-align: right; }
+  table.pricing td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  table.pricing tr.total {
+    background: #f0f9ff;
+    font-weight: 800;
+  }
+  table.pricing tr.total td { color: #0369a1; font-size: 12pt; border: none; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #0369a1, #0284c7);
+    color: #fff;
+    padding: 18px 22px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .highlight-box .big {
+    font-size: 22pt;
+    font-weight: 900;
+    margin: 6px 0;
+  }
+  .highlight-box .small {
+    font-size: 10pt;
+    opacity: 0.9;
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .step {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 9.5pt;
+  }
+  .step .day {
+    display: inline-block;
+    background: #0369a1;
+    color: #fff;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .step strong { display: block; color: #1f2937; margin-bottom: 3px; font-size: 10pt; }
+  .step span { color: #6b7280; }
+
+  .terms {
+    font-size: 9.5pt;
+    color: #4b5563;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .terms li { margin-bottom: 4px; }
+
+  .sign {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+  }
+  .sign .line {
+    border-top: 1px solid #374151;
+    padding-top: 6px;
+    text-align: center;
+    font-size: 10pt;
+    color: #374151;
+  }
+  .sign .line strong { display: block; color: #0369a1; margin-bottom: 2px; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 9pt;
+    color: #6b7280;
+  }
+  footer strong { color: #0369a1; }
+
+  .print-hint {
+    max-width: 820px;
+    margin: 12px auto;
+    padding: 10px 16px;
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    font-size: 11pt;
+    text-align: center;
+    color: #78350f;
+  }
+  .print-hint button {
+    margin-left: 10px;
+    background: #0369a1;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  @media print {
+    .print-hint { display: none; }
+    body { font-size: 10pt; }
+    .page { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  📄 Para guardar como PDF: <strong>Ctrl+P</strong> (o ⌘+P en Mac) → Destino: <strong>Guardar como PDF</strong>
+  <button onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <h1>Nexo Labs</h1>
+      <div class="tag">Sistemas operativos para PyMEs</div>
+    </div>
+    <div class="meta">
+      <strong>PROPUESTA COMERCIAL</strong><br/>
+      Fecha: <span contenteditable="true">[FECHA]</span><br/>
+      N°: <span contenteditable="true">[NP-001]</span>
+    </div>
+  </header>
+
+  <!-- CLIENTE -->
+  <div class="client-box">
+    <div>
+      <div class="label">Cliente</div>
+      <div class="val" contenteditable="true">[NOMBRE DEL CLIENTE / RESTAURANTE]</div>
+    </div>
+    <div>
+      <div class="label">Contacto</div>
+      <div class="val" contenteditable="true">[Nombre del contacto]</div>
+    </div>
+    <div>
+      <div class="label">Teléfono</div>
+      <div class="val" contenteditable="true">[+504 ...]</div>
+    </div>
+    <div>
+      <div class="label">Email</div>
+      <div class="val" contenteditable="true">[correo@cliente.com]</div>
+    </div>
+    <div>
+      <div class="label">Sucursales</div>
+      <div class="val" contenteditable="true">[1]</div>
+    </div>
+    <div>
+      <div class="label">Rubro</div>
+      <div class="val" contenteditable="true">[Restaurante / Comida rápida]</div>
+    </div>
+  </div>
+
+  <!-- RESUMEN -->
+  <h2>1. Resumen Ejecutivo</h2>
+  <p>
+    Nexo Labs propone a <strong contenteditable="true">[NOMBRE DEL CLIENTE]</strong> la implementación de un
+    <strong>Sistema de Control Operacional</strong> a la medida de su negocio. La solución cubre
+    ingreso de ventas, control de inventarios, gestión de recetas y costos, reportes gerenciales
+    y dashboards en tiempo real — accesible desde cualquier dispositivo (PC, tablet, móvil).
+  </p>
+  <p>
+    El sistema se entrega <strong>100% personalizado con la marca, menú e identidad del cliente</strong>,
+    desplegado en la nube con alta disponibilidad, y listo para uso diario desde el primer día.
+  </p>
+
+  <!-- FUNCIONALIDADES -->
+  <h2>2. Funcionalidades Incluidas</h2>
+  <div class="features-grid">
+    <div class="feature"><strong>🧾 Ingreso de Ventas</strong>Registro diario con productos, gastos y depósitos bancarios</div>
+    <div class="feature"><strong>📊 Dashboard en Tiempo Real</strong>KPIs, metas, comparativos semanales y top de productos</div>
+    <div class="feature"><strong>📦 Control de Inventarios</strong>Stock por sucursal, alertas de mínimos y movimientos</div>
+    <div class="feature"><strong>🦐 Recetas & Costos</strong>Costo real por producto, márgenes y rentabilidad</div>
+    <div class="feature"><strong>🏭 Bodega Central</strong>Transferencias, requisiciones y consolidación HQ</div>
+    <div class="feature"><strong>🏦 Bancos & Depósitos</strong>Control de cuentas, pendientes y conciliación</div>
+    <div class="feature"><strong>📈 Reportes Imprimibles</strong>Cierre diario, mensual y por sucursal</div>
+    <div class="feature"><strong>👥 Usuarios con Roles</strong>Admin, encargado tienda, inventario, franquiciado</div>
+    <div class="feature"><strong>🏪 Multi-sucursal</strong>Gestión centralizada de múltiples locales</div>
+    <div class="feature"><strong>📺 Modo TV</strong>Pantalla de control para monitoreo en tiempo real</div>
+  </div>
+
+  <!-- INVERSIÓN -->
+  <h2>3. Inversión</h2>
+
+  <h3>Pago Único — Implementación</h3>
+  <table class="pricing">
+    <thead>
+      <tr>
+        <th>Concepto</th>
+        <th class="right">Precio (L.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong>Setup completo del sistema</strong><br/>
+          <span style="color:#6b7280;font-size:9.5pt">
+            Personalización de marca (logo, colores, menú), configuración en Firebase y Vercel,
+            carga del catálogo inicial, creación de usuarios y capacitación básica (2 horas).
+          </span>
+        </td>
+        <td class="right" contenteditable="true">10,000.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Pago Recurrente — Mensualidad</h3>
+  <table class="pricing">
+    <thead>
+      <tr>
+        <th>Concepto</th>
+        <th class="right">Cantidad</th>
+        <th class="right">Precio Unit. (L.)</th>
+        <th class="right">Total (L.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sucursal principal (incluye hosting, soporte y mantenimiento)</td>
+        <td class="right">1</td>
+        <td class="right">1,500.00</td>
+        <td class="right" contenteditable="true">1,500.00</td>
+      </tr>
+      <tr>
+        <td>Sucursales adicionales</td>
+        <td class="right" contenteditable="true">0</td>
+        <td class="right">500.00</td>
+        <td class="right" contenteditable="true">0.00</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Total mensual</td>
+        <td class="right" contenteditable="true">L 1,500.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="small">Inversión total primer mes</div>
+    <div class="big" contenteditable="true">L 11,500.00</div>
+    <div class="small">Setup (L 10,000) + Mensualidad sucursal principal (L 1,500)</div>
+  </div>
+
+  <h3>¿Qué incluye la mensualidad?</h3>
+  <ul>
+    <li>Hosting en la nube (Firebase + Vercel) con alta disponibilidad</li>
+    <li>Respaldo automático de datos en tiempo real</li>
+    <li>Soporte técnico vía WhatsApp/email (lunes a sábado)</li>
+    <li>Hasta 1 modificación menor al mes (precios, productos, ajustes)</li>
+    <li>Monitoreo proactivo del sistema</li>
+    <li>Actualizaciones de seguridad y correcciones</li>
+  </ul>
+
+  <h3>Servicios adicionales (cotizados aparte)</h3>
+  <ul>
+    <li>Capacitación presencial: <strong>L 800/hora</strong></li>
+    <li>Desarrollo de nuevas funcionalidades: <strong>L 500 – L 2,000</strong> según complejidad</li>
+    <li>Migración de datos históricos: <strong>L 1,500 – L 3,500</strong> (única vez)</li>
+    <li>Dominio propio (ej. sistema.cliente.com): <strong>L 500 setup</strong> + costo del dominio</li>
+  </ul>
+
+  <!-- CRONOGRAMA -->
+  <h2>4. Cronograma de Implementación</h2>
+  <div class="timeline">
+    <div class="step">
+      <div class="day">1</div>
+      <strong>Día 1-2</strong>
+      <span>Firma de contrato y levantamiento de requerimientos</span>
+    </div>
+    <div class="step">
+      <div class="day">2</div>
+      <strong>Día 3-5</strong>
+      <span>Personalización: marca, menú, colores, usuarios</span>
+    </div>
+    <div class="step">
+      <div class="day">3</div>
+      <strong>Día 6-7</strong>
+      <span>Deploy en producción y pruebas</span>
+    </div>
+    <div class="step">
+      <div class="day">4</div>
+      <strong>Día 8</strong>
+      <span>Capacitación y entrega formal</span>
+    </div>
+  </div>
+
+  <!-- TÉRMINOS -->
+  <h2>5. Términos y Condiciones</h2>
+  <div class="terms">
+    <ul>
+      <li><strong>Forma de pago:</strong> Setup al firmar contrato. Mensualidad por adelantado vía transferencia o depósito.</li>
+      <li><strong>Permanencia mínima:</strong> 3 meses. Después, se renueva mes a mes.</li>
+      <li><strong>Propiedad de datos:</strong> Los datos del cliente son 100% del cliente; se entregan en formato JSON si se solicita.</li>
+      <li><strong>Tiempo de respuesta de soporte:</strong> hasta 24h hábiles.</li>
+      <li><strong>SLA:</strong> 99% de uptime mensual (cubierto por Firebase y Vercel).</li>
+      <li><strong>Validez de la propuesta:</strong> 15 días calendario desde la fecha de emisión.</li>
+      <li><strong>Cancelación:</strong> con 30 días de aviso previo, sin penalidad después del período mínimo.</li>
+    </ul>
+  </div>
+
+  <!-- REFERENCIA -->
+  <h2>6. Caso de Éxito</h2>
+  <p>
+    Actualmente el sistema está en producción para <strong>Restaurante La Mar</strong>
+    (ceviches y mariscos, Honduras).
+    Demo disponible bajo solicitud.
+  </p>
+
+  <!-- FIRMAS -->
+  <div class="sign">
+    <div class="line">
+      <strong>Por el Cliente</strong>
+      Firma, nombre y sello
+    </div>
+    <div class="line">
+      <strong>Por Nexo Labs</strong>
+      Firma y nombre
+    </div>
+  </div>
+
+  <footer>
+    <strong>Nexo Labs</strong> · nexoemp.com · Sistemas a medida para PyMEs · Honduras<br/>
+    Esta propuesta es confidencial y para uso exclusivo del cliente mencionado.
+  </footer>
+
+</div>
+
+</body>
+</html>
