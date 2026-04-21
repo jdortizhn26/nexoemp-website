@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0369a1"/>
+<title>La Mar — Preview visual</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #060b15;
+    color: #d4e8f7;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .screen {
+    max-width: 420px;
+    margin: 0 auto 32px;
+    background: #0a1525;
+    border: 1px solid #1d3b5b;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .screen-label {
+    max-width: 420px;
+    margin: 0 auto 8px;
+    padding: 0 8px;
+    font-size: 11px;
+    color: #5d85aa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ── LOGIN ─────────────────────────── */
+  .login {
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .login .logo { font-size: 52px; margin-bottom: 10px; }
+  .login h1 {
+    color: #d4e8f7;
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-weight: 900;
+  }
+  .login .sub {
+    color: #5d85aa;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 24px;
+  }
+  .login input {
+    width: 100%;
+    background: #11233a;
+    border: 1px solid #1d3b5b;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #d4e8f7;
+    font-size: 13px;
+    margin-bottom: 12px;
+    outline: none;
+  }
+  .login input::placeholder { color: #5d85aa; }
+  .login button {
+    width: 100%;
+    background: #0369a1;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .login .foot {
+    color: #3a5c7f;
+    font-size: 10px;
+    margin-top: 20px;
+  }
+
+  /* ── DASHBOARD ─────────────────────── */
+  .dash-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #1d3b5b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0a1525;
+  }
+  .dash-header .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #0369a1;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 16px;
+  }
+  .dash-header .brand-name {
+    color: #d4e8f7;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .dash-header .role {
+    color: #5d85aa;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  .nav {
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #0a1525;
+    border-bottom: 1px solid #1d3b5b;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #8aafd2;
+  }
+  .nav-item.active {
+    background: #0369a1;
+    color: #fff;
+    font-weight: 700;
+  }
+  .nav-item.badge::after {
+    content: "3";
+    margin-left: auto;
+    background: #fbbf24;
+    color: #000;
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .dash-body {
+    padding: 16px;
+    background: #060b15;
+  }
+  .dash-body h2 {
+    color: #d4e8f7;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .dash-body .date {
+    color: #5d85aa;
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .section-label {
+    color: #5d85aa;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 6px;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .kpi {
+    background: #0c1828;
+    border: 1px solid #1d3b5b;
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .kpi .lbl {
+    color: #5d85aa;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .kpi .val {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 3px;
+  }
+  .kpi .sub {
+    color: #5d85aa;
+    font-size: 10px;
+  }
+  .kpi .val.green { color: #22c55e; }
+  .kpi .val.orange { color: #f97316; }
+  .kpi .val.blue { color: #60a5fa; }
+  .kpi .val.violet { color: #a78bfa; }
+
+  /* ── PRODUCT LIST ─────────────────── */
+  .prod-hdr {
+    padding: 16px;
+    border-bottom: 1px solid #1d3b5b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0a1525;
+  }
+  .prod-hdr h3 {
+    color: #d4e8f7;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .prod-hdr .count {
+    color: #5d85aa;
+    font-size: 11px;
+  }
+  .cat {
+    padding: 12px 16px 6px;
+    color: #8aafd2;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #060b15;
+  }
+  .prod {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid #11233a;
+    font-size: 13px;
+    align-items: center;
+  }
+  .prod .name { color: #d4e8f7; flex: 1; margin-right: 10px; }
+  .prod .price { color: #0369a1; font-weight: 800; white-space: nowrap; }
+
+  /* ── TV BANNER ────────────────────── */
+  .tv {
+    background: #030611;
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .tv .tv-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .tv .tv-logo .av {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #0369a1; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .tv .tv-brand {
+    color: #d4e8f7;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+  .tv .tv-sub { color: #5d85aa; font-size: 11px; margin-top: 2px; }
+  .tv-kpi {
+    background: #0a1525;
+    border: 1px solid #1d3b5b;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 10px;
+  }
+  .tv-kpi .lbl { color: #5d85aa; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .tv-kpi .val { font-size: 26px; font-weight: 900; }
+
+  .footer-note {
+    max-width: 420px;
+    margin: 20px auto 40px;
+    color: #5d85aa;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 16px;
+  }
+  .footer-note strong { color: #d4e8f7; }
+</style>
+</head>
+<body>
+
+<p style="max-width:420px;margin:0 auto 24px;color:#d4e8f7;font-size:18px;font-weight:800;text-align:center;letter-spacing:2px;">
+  ⚓ LA MAR — PREVIEW VISUAL
+</p>
+<p style="max-width:420px;margin:0 auto 28px;color:#5d85aa;font-size:12px;text-align:center;line-height:1.5;">
+  Así se ve el sistema adaptado a Restaurante La Mar.<br/>
+  Paleta, branding y catálogo de ceviches.
+</p>
+
+<!-- LOGIN -->
+<p class="screen-label">1. Pantalla de Login</p>
+<div class="screen">
+  <div class="login">
+    <div class="logo">🦐</div>
+    <h1>LA MAR</h1>
+    <div class="sub">Control Operacional</div>
+    <input type="email" placeholder="Correo electrónico"/>
+    <input type="password" placeholder="Contraseña"/>
+    <button>Ingresar</button>
+    <div class="foot">Sistema de control interno • La Mar</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<p class="screen-label">2. Dashboard (Sidebar + KPIs)</p>
+<div class="screen">
+  <div class="dash-header">
+    <div class="avatar">⚓</div>
+    <div>
+      <div class="brand-name">LA MAR</div>
+      <div class="role">Administrador</div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nav-item active"><span>📊</span> Dashboard</div>
+    <div class="nav-item"><span>🧾</span> Ingreso de Ventas</div>
+    <div class="nav-item"><span>📦</span> Inventario</div>
+    <div class="nav-item"><span>🦐</span> Recetas &amp; Costos</div>
+    <div class="nav-item"><span>📈</span> Reportes</div>
+    <div class="nav-item"><span>🏦</span> Bancos</div>
+    <div class="nav-item badge"><span>🏭</span> Bodega Central</div>
+    <div class="nav-item"><span>🛒</span> Productos</div>
+    <div class="nav-item"><span>🌿</span> Ingredientes</div>
+    <div class="nav-item"><span>🏪</span> Sucursales</div>
+  </div>
+  <div class="dash-body">
+    <h2>Dashboard</h2>
+    <div class="date">martes, 21 de abril de 2026</div>
+
+    <div class="section-label">Hoy — 2026-04-21</div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="lbl">💰 Ventas del día</div>
+        <div class="val green">L 4,820</div>
+        <div class="sub">12 registros</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">📤 Gastos del día</div>
+        <div class="val orange">L 1,540</div>
+        <div class="sub">Compras + pagos</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">📊 Utilidad</div>
+        <div class="val green">L 3,280</div>
+        <div class="sub">Ventas − Gastos</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">🧮 Margen real</div>
+        <div class="val green">58.4%</div>
+        <div class="sub">Costo: L 2,005</div>
+      </div>
+    </div>
+
+    <div class="section-label">Este mes — 2026-04</div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="lbl">📅 Ventas del mes</div>
+        <div class="val blue">L 98,450</div>
+        <div class="sub">21 días registrados</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">🏛️ Depositado</div>
+        <div class="val violet">L 72,800</div>
+        <div class="sub">En cuentas bancarias</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT CATALOG -->
+<p class="screen-label">3. Catálogo de Productos (Menú La Mar)</p>
+<div class="screen">
+  <div class="prod-hdr">
+    <h3>🛒 Productos</h3>
+    <div class="count">27 productos</div>
+  </div>
+
+  <div class="cat">Ceviches</div>
+  <div class="prod"><span class="name">Ceviche de Camarón</span><span class="price">L 280</span></div>
+  <div class="prod"><span class="name">Ceviche de Caracol</span><span class="price">L 280</span></div>
+  <div class="prod"><span class="name">Ceviche de Pescado</span><span class="price">L 280</span></div>
+  <div class="prod"><span class="name">Ceviche Mixto 2M (Camarón/Caracol)</span><span class="price">L 310</span></div>
+  <div class="prod"><span class="name">Ceviche Mixto 2M (Camarón/Pescado)</span><span class="price">L 310</span></div>
+  <div class="prod"><span class="name">Ceviche Mixto 3M (Cam/Car/Pes)</span><span class="price">L 330</span></div>
+  <div class="prod"><span class="name">Copa Contigo a la Mar (6 Cam + 4oz)</span><span class="price">L 390</span></div>
+
+  <div class="cat">Sopas</div>
+  <div class="prod"><span class="name">Sopa de Mariscos La Mar</span><span class="price">L 320</span></div>
+
+  <div class="cat">Salsas</div>
+  <div class="prod"><span class="name">Cerca de los Amantes (Dulce-ácida)</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Sirena del Valle (Ácida-picante)</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Proa (Dulce-picante)</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Estilo Peruano (Limón + especias)</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Manglares del Mar (mayonesa)</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Salsa Extra</span><span class="price">L 40</span></div>
+
+  <div class="cat">Acompañantes</div>
+  <div class="prod"><span class="name">Tajadas de Plátano</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Tajadas de Malanga</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Tajadas de Yuca</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Galleta Club Social</span><span class="price">incl.</span></div>
+  <div class="prod"><span class="name">Galleta Salada</span><span class="price">incl.</span></div>
+
+  <div class="cat">Complementos</div>
+  <div class="prod"><span class="name">Complemento Galletas</span><span class="price">L 30</span></div>
+  <div class="prod"><span class="name">Complemento Tajadas</span><span class="price">L 50</span></div>
+
+  <div class="cat">Bebidas</div>
+  <div class="prod"><span class="name">Refresco 0.5L</span><span class="price">L 27</span></div>
+  <div class="prod"><span class="name">Refresco 1.5L</span><span class="price">L 47</span></div>
+  <div class="prod"><span class="name">Refresco 2L</span><span class="price">L 57</span></div>
+  <div class="prod"><span class="name">Cerveza Nacional</span><span class="price">L 55</span></div>
+  <div class="prod"><span class="name">Michelada</span><span class="price">L 80</span></div>
+  <div class="prod"><span class="name">Jugo Natural</span><span class="price">L 45</span></div>
+</div>
+
+<!-- TV DASHBOARD -->
+<p class="screen-label">4. Modo TV (Dashboard en tiempo real)</p>
+<div class="screen">
+  <div class="tv">
+    <div class="tv-logo">
+      <div class="av">⚓</div>
+      <div>
+        <div class="tv-brand">LA MAR</div>
+        <div class="tv-sub">Control en tiempo real</div>
+      </div>
+    </div>
+    <div class="tv-kpi">
+      <div class="lbl">💰 Ventas Hoy</div>
+      <div class="val" style="color:#22c55e">L 4,820</div>
+    </div>
+    <div class="tv-kpi">
+      <div class="lbl">📅 Ventas del Mes</div>
+      <div class="val" style="color:#60a5fa">L 98,450</div>
+    </div>
+    <div class="tv-kpi">
+      <div class="lbl">🏆 Top Producto</div>
+      <div class="val" style="color:#d4e8f7;font-size:18px">Ceviche 3M · L 9,900</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">
+  <strong>Paleta sea-theme:</strong> azul océano <span style="color:#0369a1">#0369a1</span>, navy <span style="color:#8aafd2">#060b15 → #d4e8f7</span>.<br/>
+  <strong>Marca:</strong> ⚓ en el logo principal, 🦐 en splash/secciones.<br/>
+  <strong>Este es un preview estático</strong> — la app real (React + Firebase) está en la rama <code style="color:#8aafd2">claude/adapt-lamar-restaurant-YSF2j</code> de nexoemp-website.
+</div>
+
+</body>
+</html>
