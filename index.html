@@ -307,8 +307,14 @@
     display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
   }
   @media(max-width:800px){.labs-inner{grid-template-columns:1fr;gap:32px;}}
+  .labs-inner > div{min-width:0;}
   .labs-products{
     display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  }
+  @media(max-width:560px){
+    .labs-products{grid-template-columns:1fr;}
+    .svc.labs-feature{padding:32px 22px;}
+    .svc{padding:32px 24px;}
   }
   .labs-product{
     background:rgba(5,14,36,.5);
@@ -1140,7 +1146,7 @@
 <footer>
   <div class="container">
     <p>© 2026 <span class="brand">Nexo Empresarial</span> · Derecho, contabilidad y fiscal · Honduras</p>
-    <p>Josué Daniel Ortiz · Socio Director · Abogado · Contador Público Autorizado</p>
+    <p>Un equipo multidisciplinario · Derecho · Contabilidad · Fiscal · Finanzas · Tecnología</p>
   </div>
 </footer>
 
