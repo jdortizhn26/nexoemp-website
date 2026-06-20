@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Análisis & Noticias — Nexo Empresarial</title>
+<meta name="description" content="Análisis de leyes, decretos y novedades fiscales, contables y legales en Honduras, por la dirección profesional de Nexo Empresarial."/>
+<meta name="keywords" content="análisis legal Honduras, decretos Honduras, reforma fiscal SAR, noticias tributarias, contabilidad Honduras, Nexo Empresarial"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://nexoemp.com/analisis/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Nexo Empresarial"/>
+<meta property="og:title" content="Análisis & Noticias — Nexo Empresarial"/>
+<meta property="og:description" content="Análisis de leyes, decretos y novedades fiscales y legales en Honduras."/>
+<meta property="og:image" content="../assets/logo.png"/>
+<meta property="og:url" content="https://nexoemp.com/analisis/"/>
+<meta property="og:locale" content="es_HN"/>
+<link rel="icon" type="image/png" href="../assets/favicon.png"/>
+<link rel="apple-touch-icon" href="../assets/logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/site.css"/>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" style="display:flex;align-items:center;">
+      <img src="../assets/logo.png" class="nav-logo" alt="Nexo Empresarial"/>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../index.html#labs">Labs</a>
+      <a href="../index.html#demos">Demos</a>
+      <a href="../index.html#nosotros">Nosotros</a>
+      <a href="./" style="color:var(--white);">Análisis</a>
+      <a href="../index.html#contacto" class="nav-cta">Contactar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ PAGE HEAD ══════════════ -->
+<header class="page-head">
+  <div class="container">
+    <a href="../index.html" class="back-link">← Volver al inicio</a>
+    <span class="sec-label">Análisis &amp; Noticias</span>
+    <h1 class="sec-title">Leyes y decretos,<br/><em>traducidos a decisiones.</em></h1>
+    <p class="sec-desc">Análisis de la dirección profesional de Nexo Empresarial sobre los cambios fiscales, contables y legales que afectan a las empresas hondureñas — sin tecnicismos vacíos, con lo que realmente hay que hacer al respecto.</p>
+  </div>
+</header>
+
+<!-- ══════════════ LISTADO ══════════════ -->
+<section style="padding:64px 0 100px;">
+  <div class="container">
+    <div class="articles-grid" id="articlesGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <p>© 2026 <span class="brand">Nexo Empresarial</span> · Derecho, contabilidad y fiscal · Honduras</p>
+    <p>Un equipo multidisciplinario · Derecho · Contabilidad · Fiscal · Finanzas · Tecnología</p>
+  </div>
+</footer>
+
+<script src="../assets/articles.js"></script>
+<script>
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function fmtFecha(iso){
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.getDate() + ' ' + MESES[d.getMonth()] + ' ' + d.getFullYear();
+  }
+  function cardHTML(a){
+    return `<a class="article-card" href="${a.slug}.html">
+      <div class="article-meta">
+        <span class="article-cat">${a.category}</span>
+        <span class="article-date">${fmtFecha(a.date)}</span>
+      </div>
+      <h3>${a.title}</h3>
+      <p>${a.excerpt}</p>
+      <span class="article-readmore">Leer análisis <span class="arr">→</span></span>
+    </a>`;
+  }
+  const grid = document.getElementById('articlesGrid');
+  const arts = (window.NEXO_ARTICLES || []).slice().sort((a,b)=> (a.date < b.date ? 1 : -1));
+  if (arts.length === 0){
+    grid.outerHTML = '<div class="empty-state"><p>Próximamente publicaremos nuestros primeros análisis. Vuelve pronto.</p></div>';
+  } else {
+    grid.innerHTML = arts.map(cardHTML).join('');
+  }
+</script>
+
+</body>
+</html>
