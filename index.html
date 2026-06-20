@@ -645,6 +645,56 @@
     .cost-grid,.demos-grid{grid-template-columns:1fr;}
   }
 
+  /* ── Sección: Análisis & Noticias ── */
+  .news{background:var(--navy-2);border-top:1px solid var(--line);}
+  .news-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    flex-wrap:wrap;gap:20px;
+  }
+  .news-head .btn-ghost{flex-shrink:0;}
+  .news-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;
+  }
+  @media(max-width:900px){.news-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.news-grid{grid-template-columns:1fr;}}
+  .news-card{
+    display:flex;flex-direction:column;text-decoration:none;
+    background:var(--navy);border:1px solid var(--line);
+    border-radius:6px;padding:30px 28px;height:100%;
+    position:relative;overflow:hidden;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .news-card::before{
+    content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+    background:var(--light-blue);transform:scaleY(0);transform-origin:top;
+    transition:transform .4s ease;
+  }
+  .news-card:hover{transform:translateY(-4px);border-color:var(--graphite);}
+  .news-card:hover::before{transform:scaleY(1);}
+  .news-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+  .news-cat{
+    display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+    padding:4px 10px;border-radius:2px;font-weight:600;
+    background:rgba(184,197,214,.1);color:var(--light-blue);
+    border:1px solid rgba(184,197,214,.22);
+  }
+  .news-date{font-size:11px;color:var(--smoke);letter-spacing:.5px;}
+  .news-card h3{
+    font-family:'Playfair Display',serif;font-size:21px;font-weight:700;
+    color:var(--white);line-height:1.25;margin-bottom:12px;
+  }
+  .news-card p{font-size:14px;color:var(--cream-2);line-height:1.7;margin-bottom:20px;flex:1;}
+  .news-readmore{
+    font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--light-blue);
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;
+  }
+  .news-readmore .arr{transition:transform .2s;}
+  .news-card:hover .news-readmore .arr{transform:translateX(4px);}
+  .news-empty{
+    margin-top:48px;text-align:center;padding:48px 0;color:var(--smoke);
+    border:1px dashed var(--line);border-radius:8px;
+  }
+
 </style>
 </head>
 <body>
@@ -660,6 +710,7 @@
       <a href="#labs">Labs</a>
       <a href="#demos">Demos</a>
       <a href="#nosotros">Nosotros</a>
+      <a href="#analisis">Análisis</a>
       <a href="#recursos">Recursos</a>
       <a href="#contacto" class="nav-cta">Contactar</a>
     </div>
@@ -993,6 +1044,22 @@
   </div>
 </section>
 
+<!-- ══════════════ ANÁLISIS & NOTICIAS ══════════════ -->
+<section class="news" id="analisis">
+  <div class="container">
+    <div class="news-head">
+      <div>
+        <span class="sec-label">Análisis &amp; Noticias</span>
+        <h2 class="sec-title">Leyes y decretos,<br/><em>traducidos a decisiones.</em></h2>
+        <p class="sec-desc">Análisis de la dirección profesional de Nexo Empresarial sobre los cambios fiscales, contables y legales que afectan a las empresas hondureñas — con lo que realmente conviene hacer al respecto.</p>
+      </div>
+      <a href="analisis/" class="btn btn-ghost">Ver todos →</a>
+    </div>
+
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
 <!-- ══════════════ RECURSOS — LINKS OFICIALES ══════════════ -->
 <section class="resources" id="recursos">
   <div class="container">
@@ -1150,7 +1217,32 @@
   </div>
 </footer>
 
+<script src="assets/articles.js"></script>
 <script>
+  /* ── Render de los últimos 3 análisis en la portada ── */
+  (function(){
+    const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function fmtFecha(iso){
+      const d = new Date(iso + 'T00:00:00');
+      if (isNaN(d)) return iso;
+      return d.getDate() + ' ' + MESES[d.getMonth()] + ' ' + d.getFullYear();
+    }
+    const grid = document.getElementById('newsGrid');
+    if (!grid) return;
+    const arts = (window.NEXO_ARTICLES || []).slice().sort((a,b)=> (a.date < b.date ? 1 : -1)).slice(0,3);
+    if (arts.length === 0){
+      grid.outerHTML = '<div class="news-empty"><p>Próximamente publicaremos nuestros primeros análisis.</p></div>';
+      return;
+    }
+    grid.innerHTML = arts.map(function(a){
+      return '<a class="news-card" href="analisis/'+a.slug+'.html">'
+        + '<div class="news-meta"><span class="news-cat">'+a.category+'</span>'
+        + '<span class="news-date">'+fmtFecha(a.date)+'</span></div>'
+        + '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>'
+        + '<span class="news-readmore">Leer análisis <span class="arr">→</span></span></a>';
+    }).join('');
+  })();
+
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
