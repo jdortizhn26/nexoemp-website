@@ -12,9 +12,13 @@
 <meta property="og:site_name" content="Nexo Empresarial"/>
 <meta property="og:title" content="Análisis & Noticias — Nexo Empresarial"/>
 <meta property="og:description" content="Análisis de leyes, decretos y novedades fiscales y legales en Honduras."/>
-<meta property="og:image" content="../assets/logo.png"/>
+<meta property="og:image" content="https://nexoemp.com/assets/og/default.png"/>
 <meta property="og:url" content="https://nexoemp.com/analisis/"/>
 <meta property="og:locale" content="es_HN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Análisis &amp; Noticias — Nexo Empresarial"/>
+<meta name="twitter:description" content="Análisis de leyes, decretos y novedades fiscales y legales en Honduras."/>
+<meta name="twitter:image" content="https://nexoemp.com/assets/og/default.png"/>
 <link rel="icon" type="image/png" href="../assets/favicon.png"/>
 <link rel="apple-touch-icon" href="../assets/logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -76,13 +80,16 @@
   }
   function cardHTML(a){
     return `<a class="article-card" href="${a.slug}.html">
-      <div class="article-meta">
-        <span class="article-cat">${a.category}</span>
-        <span class="article-date">${fmtFecha(a.date)}</span>
+      <img class="article-card-cover" src="../assets/og/${a.slug}.png" alt="${a.title}" loading="lazy"/>
+      <div class="article-card-inner">
+        <div class="article-meta">
+          <span class="article-cat">${a.category}</span>
+          <span class="article-date">${fmtFecha(a.date)}</span>
+        </div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+        <span class="article-readmore">Leer análisis <span class="arr">→</span></span>
       </div>
-      <h3>${a.title}</h3>
-      <p>${a.excerpt}</p>
-      <span class="article-readmore">Leer análisis <span class="arr">→</span></span>
     </a>`;
   }
   const grid = document.getElementById('articlesGrid');

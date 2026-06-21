@@ -570,6 +570,20 @@
   }
   .form-submit:hover{background:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,197,214,.25);}
   .form-submit:disabled{opacity:.6;cursor:wait;transform:none;}
+  .form-submit.wa{background:#25D366;color:#06351b;}
+  .form-submit.wa:hover{background:#2ee676;box-shadow:0 8px 24px rgba(37,211,102,.25);}
+  .form-submit.secondary{
+    background:transparent;color:var(--cream);
+    border:1px solid var(--line);margin-top:12px;
+  }
+  .form-submit.secondary:hover{
+    background:transparent;border-color:var(--light-blue);color:var(--light-blue);
+    box-shadow:none;
+  }
+  .form-or{
+    text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+    color:var(--smoke);margin:14px 0 2px;
+  }
   .form-privacy{
     font-size:11px;color:var(--smoke);
     margin-top:14px;line-height:1.6;text-align:center;
@@ -660,10 +674,15 @@
   .news-card{
     display:flex;flex-direction:column;text-decoration:none;
     background:var(--navy);border:1px solid var(--line);
-    border-radius:6px;padding:30px 28px;height:100%;
+    border-radius:6px;height:100%;
     position:relative;overflow:hidden;
     transition:transform .25s ease, border-color .25s ease;
   }
+  .news-cover{
+    width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;
+    border-bottom:1px solid var(--line);
+  }
+  .news-body{padding:26px 28px;display:flex;flex-direction:column;flex:1;}
   .news-card::before{
     content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
     background:var(--light-blue);transform:scaleY(0);transform-origin:top;
@@ -1199,9 +1218,11 @@
             <textarea id="mensaje" name="mensaje" required placeholder="Breve descripción de su empresa y del objetivo profesional que desea abordar."></textarea>
           </div>
 
-          <button type="submit" class="form-submit" id="submitBtn">Enviar solicitud →</button>
+          <button type="button" class="form-submit wa" id="waBtn">Enviar por WhatsApp →</button>
+          <p class="form-or">— o si prefieres —</p>
+          <button type="submit" class="form-submit secondary" id="submitBtn">Enviar por correo</button>
 
-          <p class="form-privacy">La información compartida es confidencial y se utiliza exclusivamente para coordinar el contacto profesional inicial.</p>
+          <p class="form-privacy">La información compartida es confidencial y se utiliza exclusivamente para coordinar el contacto profesional inicial. Respuesta en un máximo de 24 horas hábiles.</p>
         </form>
       </div>
 
@@ -1236,10 +1257,13 @@
     }
     grid.innerHTML = arts.map(function(a){
       return '<a class="news-card" href="analisis/'+a.slug+'.html">'
+        + '<img class="news-cover" src="assets/og/'+a.slug+'.png" alt="'+a.title+'" loading="lazy"/>'
+        + '<div class="news-body">'
         + '<div class="news-meta"><span class="news-cat">'+a.category+'</span>'
         + '<span class="news-date">'+fmtFecha(a.date)+'</span></div>'
         + '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>'
-        + '<span class="news-readmore">Leer análisis <span class="arr">→</span></span></a>';
+        + '<span class="news-readmore">Leer análisis <span class="arr">→</span></span>'
+        + '</div></a>';
     }).join('');
   })();
 
@@ -1263,6 +1287,31 @@
     btn.disabled = true;
     btn.textContent = 'Enviando...';
   });
+
+  /* ── Enviar la solicitud directo a WhatsApp ── */
+  (function(){
+    const WA_NUMERO = '50433269814';
+    const form = document.getElementById('contactForm');
+    const waBtn = document.getElementById('waBtn');
+    if (!form || !waBtn) return;
+    waBtn.addEventListener('click', function(){
+      // Reutiliza la validación nativa del formulario (campos obligatorios)
+      if (!form.reportValidity()) return;
+      const v = id => (document.getElementById(id)?.value || '').trim();
+      const linea = (etq, val) => val ? (etq + ': ' + val + '\n') : '';
+      let msg = 'Hola Nexo Empresarial, quiero solicitar información.\n\n';
+      msg += linea('Nombre', v('nombre'));
+      msg += linea('Empresa o grupo', v('empresa'));
+      msg += linea('Correo', v('correo'));
+      msg += linea('Teléfono', v('telefono'));
+      msg += linea('Sector', v('sector'));
+      msg += linea('Servicio de interés', v('interes'));
+      const m = v('mensaje');
+      if (m) msg += '\nMensaje:\n' + m;
+      const url = 'https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank', 'noopener');
+    });
+  })();
 </script>
 
 </body>
