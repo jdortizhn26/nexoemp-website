@@ -18,12 +18,44 @@
    ════════════════════════════════════════════════════════════════ */
 window.NEXO_ARTICLES = [
   {
+    slug: "impuestos-empresa-honduras-isv-isr-retenciones",
+    title: "Impuestos de una empresa en Honduras: ISV, ISR y retenciones explicados",
+    category: "Fiscal / SAR",
+    date: "2026-06-20",
+    author: "Nexo Empresarial",
+    excerpt: "El mapa básico de la carga tributaria de una empresa en Honduras: ISV, ISR, aportación solidaria, impuesto al activo neto, pagos a cuenta y retenciones — en lenguaje claro."
+  },
+  {
+    slug: "que-es-el-rtn-y-como-obtenerlo-sar",
+    title: "Qué es el RTN y cómo obtenerlo ante el SAR",
+    category: "Guía",
+    date: "2026-06-10",
+    author: "Nexo Empresarial",
+    excerpt: "El primer documento fiscal que necesita cualquier persona o empresa para operar formalmente en Honduras. Qué es, para qué sirve y cómo se obtiene."
+  },
+  {
+    slug: "facturacion-conforme-sar-honduras",
+    title: "Facturación conforme al SAR: qué debe tener una factura legal en Honduras",
+    category: "Fiscal / SAR",
+    date: "2026-06-02",
+    author: "Nexo Empresarial",
+    excerpt: "CAI, RTN, rango de numeración y fecha límite: los elementos que hacen válida una factura — y los errores que más rápido generan multas del SAR."
+  },
+  {
     slug: "constituir-sociedad-honduras-ruta-formalizacion",
     title: "Constituir una sociedad en Honduras: la ruta completa de formalización",
     category: "Guía",
     date: "2026-05-28",
     author: "Nexo Empresarial",
     excerpt: "Del pacto social a la operación legal: el orden correcto de inscripciones ante el Instituto de la Propiedad, el SAR, IHSS, RAP, INFOP y la municipalidad — y los errores que más cuestan después."
+  },
+  {
+    slug: "contador-externo-o-departamento-contable",
+    title: "¿Contador externo o departamento contable? Qué le conviene a tu empresa",
+    category: "Contable",
+    date: "2026-05-20",
+    author: "Nexo Empresarial",
+    excerpt: "Costos, control y escala: cuándo conviene tercerizar la contabilidad, cuándo montar un equipo interno y por qué el modelo híbrido suele ganar."
   },
   {
     slug: "cierre-fiscal-honduras-7-puntos-clave",
