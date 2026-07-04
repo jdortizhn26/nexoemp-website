@@ -3,15 +3,18 @@
    ────────────────────────────────────────────────────────────────
    FUENTE ÚNICA de la lista de artículos. Para publicar uno nuevo:
 
-   1. Copia la plantilla  analisis/_plantilla.html  con un nombre
-      descriptivo, por ejemplo:  analisis/reforma-isv-2026.html
-   2. Edita el contenido del artículo dentro de esa página.
-   3. Agrega una entrada AL INICIO del arreglo de abajo (el más
-      reciente va primero). El campo "slug" es el nombre del archivo
-      SIN la carpeta ni la extensión .html.
+   1. Agrega una entrada AL INICIO del arreglo de abajo (el más
+      reciente va primero). El campo "slug" será el nombre del
+      archivo HTML, en minúsculas y con guiones.
+   2. Corre:  node scripts/nuevo-articulo.mjs
+      (genera la página desde la plantilla, la portada OG y la
+      entrada en sitemap.xml).
+   3. Redacta el cuerpo en analisis/<slug>.html reemplazando lo
+      que quedó entre [[corchetes]].
 
-   Tanto la portada (últimos 3) como el hub /analisis se generan
-   automáticamente desde este arreglo. No hay que tocar nada más.
+   Detalle completo en analisis/README.md. Tanto la portada
+   (últimos 3) como el hub /analisis se generan automáticamente
+   desde este arreglo.
 
    Categorías sugeridas: "Análisis legal", "Fiscal / SAR",
    "Decretos", "Contable", "Noticias", "Guía".

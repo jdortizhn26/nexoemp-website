@@ -1,15 +1,43 @@
 #!/usr/bin/env python3
 # Genera portadas (1200x630) de marca Nexo para los artículos.
 # Se usan como portada en las tarjetas y como imagen Open Graph al compartir.
+#
+# Uso:
+#   python3 scripts/generar_portadas.py <slug> <categoría> <título>
+#       → genera solo assets/og/<slug>.png (así lo llama nuevo-articulo.mjs)
+#   python3 scripts/generar_portadas.py
+#       → regenera la lista histórica COVERS de abajo
 import os
+import sys
 from PIL import Image, ImageDraw, ImageFont
 
-FONTS = "/mnt/skills/examples/canvas-design/canvas-fonts"
-SERIF      = os.path.join(FONTS, "Gloock-Regular.ttf")        # ~ Playfair Display
-SANS_B     = os.path.join(FONTS, "InstrumentSans-Bold.ttf")
-SANS_R     = os.path.join(FONTS, "InstrumentSans-Regular.ttf")
 
-OUT = "/home/user/nexoemp-website/assets/og"
+def _primera_fuente(*candidatas):
+    for ruta in candidatas:
+        if os.path.exists(ruta):
+            return ruta
+    raise FileNotFoundError(
+        "No se encontró ninguna fuente TTF; instalar fonts-dejavu o ajustar rutas: "
+        + ", ".join(candidatas)
+    )
+
+
+FONTS = "/mnt/skills/examples/canvas-design/canvas-fonts"
+DEJAVU = "/usr/share/fonts/truetype/dejavu"
+SERIF = _primera_fuente(  # ~ Playfair Display
+    os.path.join(FONTS, "Gloock-Regular.ttf"),
+    os.path.join(DEJAVU, "DejaVuSerif.ttf"),
+)
+SANS_B = _primera_fuente(
+    os.path.join(FONTS, "InstrumentSans-Bold.ttf"),
+    os.path.join(DEJAVU, "DejaVuSans-Bold.ttf"),
+)
+SANS_R = _primera_fuente(
+    os.path.join(FONTS, "InstrumentSans-Regular.ttf"),
+    os.path.join(DEJAVU, "DejaVuSans.ttf"),
+)
+
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "og")
 os.makedirs(OUT, exist_ok=True)
 
 W, H = 1200, 630
@@ -137,5 +165,14 @@ COVERS = [
      "Leyes y decretos, traducidos a decisiones."),
 ]
 
-for fn, cat, title in COVERS:
-    make_cover(os.path.join(OUT, fn), cat, title)
+if __name__ == "__main__":
+    if len(sys.argv) == 4:
+        # Modo de un solo artículo: <slug> <categoría> <título>
+        slug, categoria, titulo = sys.argv[1], sys.argv[2], sys.argv[3]
+        make_cover(os.path.join(OUT, f"{slug}.png"), categoria, titulo)
+    elif len(sys.argv) == 1:
+        for fn, cat, title in COVERS:
+            make_cover(os.path.join(OUT, fn), cat, title)
+    else:
+        print("Uso: generar_portadas.py [<slug> <categoría> <título>]", file=sys.stderr)
+        sys.exit(2)

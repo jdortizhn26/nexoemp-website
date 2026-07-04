@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  consistencia-articulos:
+    name: Consistencia de artículos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verificar índice ↔ HTML ↔ portadas ↔ sitemap
+        run: node scripts/verificar-articulos.mjs

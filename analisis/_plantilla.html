@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <!-- ════════════════════════════════════════════════════════════════
      PLANTILLA DE ARTÍCULO — Nexo Empresarial
-     Cómo publicar un artículo nuevo:
-       1. Copia este archivo con un nombre descriptivo, p. ej.
-          analisis/reforma-isv-2026.html
-       2. Reemplaza TODO lo marcado entre [[ corchetes dobles ]].
+     Cómo publicar un artículo nuevo (flujo automatizado):
+       1. Agrega la entrada en assets/articles.js.
+       2. Corre:  node scripts/nuevo-articulo.mjs
+          (crea analisis/<slug>.html desde esta plantilla, con la
+          cabecera SEO/OG ya rellenada, más portada y sitemap).
        3. Escribe el cuerpo dentro de <div class="prose"> usando
           <h2>, <h3>, <p>, <ul><li>, <ol><li>, <blockquote> y
           <div class="callout">…</div>.
-       4. Agrega la entrada correspondiente en assets/articles.js
-          (el "slug" es el nombre del archivo sin .html).
+     Detalle en analisis/README.md.
      No borres este archivo: sirve de plantilla. Empieza con "_"
      para distinguirlo y no aparece en el listado.
      ════════════════════════════════════════════════════════════════ -->
