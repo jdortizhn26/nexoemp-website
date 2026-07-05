@@ -53,16 +53,27 @@
   .country .st{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--smoke);}
   .country.live .st{color:var(--light-blue);}
   .band{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .auto-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:36px;}
-  .astep{padding:22px;border-left:1px solid var(--line);}
-  .astep h5{font-size:14px;color:var(--white);font-weight:600;margin-bottom:6px;}
-  .astep p{font-size:13px;color:var(--smoke);line-height:1.65;}
   section{padding:96px 0;position:relative;}
   @media(max-width:700px){section{padding:60px 0;}}
   .plat-hero{padding:190px 0 80px;}
   .plat-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5.4vw,58px);line-height:1.12;color:var(--white);font-weight:900;max-width:820px;margin:18px 0 22px;}
   .plat-hero h1 em{color:var(--light-blue);font-style:italic;}
   .plat-hero p{max-width:640px;font-size:17px;color:var(--cream-2);line-height:1.8;margin-bottom:34px;}
+  .flag-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .flag-chip{font-size:12px;color:var(--cream-2);border:1px solid var(--line);border-radius:999px;padding:7px 15px;background:rgba(5,14,36,.4);}
+  .spear{padding:80px 0;border-top:1px solid var(--line);}
+  .spear.alt{background:var(--navy-2);}
+  .spear-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:820px){.spear-grid{grid-template-columns:1fr;gap:28px;}}
+  .spear-grid>div{min-width:0;}
+  .spear-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--light-blue);font-weight:600;margin-bottom:14px;}
+  .spear h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:16px;}
+  .spear p.big{font-size:16px;color:var(--cream-2);line-height:1.8;margin-bottom:20px;}
+  .spear-visual{aspect-ratio:4/3;border-radius:12px;border:1px solid var(--line);background:linear-gradient(135deg,#0C2040,var(--navy-3));display:flex;align-items:center;justify-content:center;font-size:96px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+  .wedge{list-style:none;margin:0 0 22px;}
+  .wedge li{font-size:14px;color:var(--cream-2);padding:8px 0 8px 26px;position:relative;line-height:1.6;}
+  .wedge li::before{content:'✓';position:absolute;left:0;color:var(--light-blue);font-weight:700;}
+  .vs-note{font-size:13px;color:var(--smoke);font-style:italic;border-left:2px solid var(--line);padding-left:14px;margin-bottom:18px;}
 </style>
 </head>
 <body>
@@ -74,7 +85,6 @@
     </a>
     <div class="nav-links">
       <a href="index.html#servicios">Servicios</a>
-      <a href="labs/">Labs</a>
       <a href="plataforma.html">Plataforma</a>
       <a href="index.html#demos">Demos</a>
       <a href="analisis/">Análisis</a>
@@ -89,45 +99,97 @@
     <h1>Sistemas verticales hechos para <em>Latinoamérica</em>, no adaptados a ella.</h1>
     <p>
       Una suite de sistemas especializados por giro de negocio — restaurante,
-      colegio, clínica, firma contable, comercio — construidos desde Honduras
-      con la fiscalidad, la moneda y el WhatsApp de nuestra región en el centro,
-      y con una operación asistida por inteligencia artificial que responde,
-      recuerda y da soporte todos los días.
+      colegio, financiera, clínica, firma contable, comercio — construidos desde
+      Honduras con la fiscalidad, la moneda y el WhatsApp de nuestra región en el
+      centro. Software serio, en español y a precio de la región.
     </p>
     <a href="https://wa.me/50433269814?text=Hola%2C%20quiero%20conocer%20la%20Plataforma%20Nexo." class="btn btn-primary" target="_blank" rel="noopener">Hablar con nosotros →</a>
-    <a href="#suite" class="btn btn-ghost" style="margin-left:10px;">Ver la suite</a>
+    <a href="#punta" class="btn btn-ghost" style="margin-left:10px;">Ver la suite</a>
+    <div class="flag-row" style="margin-top:36px;">
+      <span class="flag-chip">🇭🇳 Construido y probado en Honduras</span>
+      <span class="flag-chip">🌎 Diseñado para Centroamérica y el Caribe</span>
+    </div>
   </div>
 </header>
 
+<section id="punta" style="padding:80px 0 0;">
+  <div class="container">
+    <div class="sec-label">Productos punta de lanza</div>
+    <h2 class="sec-title" style="margin-bottom:10px;">Tres sistemas que ya <em>funcionan en producción</em></h2>
+    <p class="sec-desc">Empezamos donde el dolor es mayor y la competencia atiende peor. Cada uno resuelve un problema real que el software genérico deja a medias.</p>
+  </div>
+</section>
+
+<section class="spear">
+  <div class="container">
+    <div class="spear-grid">
+      <div>
+        <span class="spear-badge">🍽️ RestaurantOS · En producción</span>
+        <h2>El back-office que el POS “gratis” no te da.</h2>
+        <p class="big">POS táctil con mapa de mesas, cocina (KDS), modificadores, propinas y modo offline — con recetas, food cost por plato y <strong>factura legal de tu país</strong>, para una o varias sucursales.</p>
+        <ul class="wedge">
+          <li>Factura conforme a la autoridad tributaria de cada país</li>
+          <li>Multi-sucursal, recetas y costeo real del platillo</li>
+          <li>Pedidos y cobranza por WhatsApp</li>
+        </ul>
+        <p class="vs-note">Donde el POS gratuito capta al micro, Nexo gana en el negocio que ya factura y necesita control.</p>
+        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20RestaurantOS." target="_blank" rel="noopener">Solicitar demo →</a>
+      </div>
+      <div class="spear-visual">🍽️</div>
+    </div>
+  </div>
+</section>
+
+<section class="spear alt">
+  <div class="container">
+    <div class="spear-grid">
+      <div class="spear-visual">💳</div>
+      <div>
+        <span class="spear-badge">💳 PréstamOS · En producción</span>
+        <h2>Para el prestamista y la cooperativa que hoy viven en Excel.</h2>
+        <p class="big">Cartera con amortización (francés, interés-only, balloon), cuotas, <strong>mora automática</strong>, estados de cuenta PDF y cobranza por WhatsApp. En español, fácil y sin precios enterprise.</p>
+        <ul class="wedge">
+          <li>Cartera, mora y estados de cuenta automáticos</li>
+          <li>Recordatorios y cobranza por WhatsApp</li>
+          <li>Para prestamistas, financieras y cooperativas de ahorro y crédito</li>
+        </ul>
+        <p class="vs-note">El hueco más limpio del mercado: nadie atiende bien al prestamista pyme con algo barato y sencillo.</p>
+        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20Pr%C3%A9stamOS." target="_blank" rel="noopener">Solicitar demo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spear">
+  <div class="container">
+    <div class="spear-grid">
+      <div>
+        <span class="spear-badge">🎓 EscuelaOS · En producción</span>
+        <h2>El ERP escolar bilingüe pensado para Latinoamérica.</h2>
+        <p class="big">Matrícula, expediente digital, facturación con descuentos por hermanos, <strong>portal de padres</strong>, asistencia, boletines por período y cobranza automática por WhatsApp. Bilingüe es/en de fábrica.</p>
+        <ul class="wedge">
+          <li>Bilingüe español/inglés desde el primer día</li>
+          <li>Cobranza, boletines y portal de padres</li>
+          <li>Comunicación con familias por WhatsApp</li>
+        </ul>
+        <p class="vs-note">Fuera de Brasil y México, el mercado escolar de la región está casi virgen — y ya tenemos el diferenciador bilingüe.</p>
+        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20EscuelaOS." target="_blank" rel="noopener">Solicitar demo →</a>
+      </div>
+      <div class="spear-visual">🎓</div>
+    </div>
+  </div>
+</section>
+
 <section id="suite">
   <div class="container">
-    <div class="sec-label">La suite</div>
-    <h2 class="sec-title">Un sistema por <em>vertical</em>, no un ERP genérico</h2>
+    <div class="sec-label">El resto de la suite</div>
+    <h2 class="sec-title">Y un sistema para <em>cada giro</em></h2>
     <p class="sec-desc">
-      Cada producto nace de una operación real en producción y se compara,
-      módulo por módulo, contra los ERP líderes del mundo. La diferencia:
-      hablan el idioma fiscal de tu país y el canal de tus clientes.
+      Más allá de los tres punta de lanza, la plataforma cubre otras verticales
+      — y construye a la medida cuando ninguna encaja.
     </p>
 
     <div class="plat-grid">
-      <div class="plat-card">
-        <span class="plat-tag">Restaurantes · Punta de lanza</span>
-        <h3>RestaurantOS</h3>
-        <p>POS táctil con mapa de mesas, pantalla de cocina (KDS), modificadores por plato, propinas, pago mixto, modo offline e impresión térmica. Recetas que descuentan inventario, food cost por plato y factura legal de tu país — el back-office que un POS gratuito no te da.</p>
-        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20RestaurantOS." target="_blank" rel="noopener">Solicitar demo →</a>
-      </div>
-      <div class="plat-card">
-        <span class="plat-tag">Educación · Punta de lanza</span>
-        <h3>EscuelaOS</h3>
-        <p>ERP para colegios privados y bilingües (español/inglés de fábrica): matrícula, expediente digital, facturación con descuentos por hermanos, portal de padres, asistencia, boletines por período y cobranza automática por WhatsApp.</p>
-        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20EscuelaOS." target="_blank" rel="noopener">Solicitar demo →</a>
-      </div>
-      <div class="plat-card">
-        <span class="plat-tag">Financieras · Punta de lanza</span>
-        <h3>PréstamOS</h3>
-        <p>Para prestamistas, financieras y cooperativas pyme: cartera de préstamos con amortización (francés, interés-only, balloon), cuotas, mora automática, estados de cuenta PDF y cobranza por WhatsApp. Fácil y en español — sin precios enterprise.</p>
-        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20Pr%C3%A9stamOS." target="_blank" rel="noopener">Solicitar demo →</a>
-      </div>
       <div class="plat-card">
         <span class="plat-tag">Firmas contables</span>
         <h3>Nexo Contabilidad + Fiscal</h3>
@@ -185,45 +247,6 @@
       <span class="country">🇸🇻 El Salvador <span class="st">· Hoja de ruta</span></span>
       <span class="country">🇵🇦 Panamá <span class="st">· Hoja de ruta</span></span>
       <span class="country">🇳🇮 Nicaragua <span class="st">· Hoja de ruta</span></span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="sec-label">Operación asistida por IA</div>
-    <h2 class="sec-title">Una empresa que <em>no duerme</em></h2>
-    <p class="sec-desc">
-      Detrás de la plataforma trabaja un equipo de agentes de inteligencia
-      artificial supervisado por nuestros profesionales. No es un chatbot:
-      es la operación diaria, con criterio y con respaldo humano en cada
-      decisión importante.
-    </p>
-    <div class="auto-steps">
-      <div class="astep">
-        <h5>Respuesta inmediata</h5>
-        <p>Cada consulta que entra por el sitio o por WhatsApp recibe atención en minutos, a cualquier hora.</p>
-      </div>
-      <div class="astep">
-        <h5>Recordatorios que cobran solos</h5>
-        <p>Mensualidades, colegiaturas y suscripciones se recuerdan automáticamente por WhatsApp, con estado de cuenta incluido.</p>
-      </div>
-      <div class="astep">
-        <h5>Soporte que da seguimiento</h5>
-        <p>Los reportes de los clientes se registran, se reproducen y se resuelven con trazabilidad — y te avisamos cuando está listo.</p>
-      </div>
-      <div class="astep">
-        <h5>Vigilancia continua</h5>
-        <p>Los sistemas se monitorean todo el día; los problemas se detectan y atienden antes de que afecten tu operación.</p>
-      </div>
-      <div class="astep">
-        <h5>Análisis al día</h5>
-        <p>Decretos, reformas y noticias fiscales de la región, analizados y publicados en <a href="analisis/" style="color:var(--light-blue);">nuestra sección de Análisis</a>.</p>
-      </div>
-      <div class="astep">
-        <h5>Criterio humano</h5>
-        <p>Todo lo sensible — precios, contratos, datos — pasa por nuestros profesionales. La IA opera; las personas deciden.</p>
-      </div>
     </div>
   </div>
 </section>
