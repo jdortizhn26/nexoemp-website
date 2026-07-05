@@ -100,8 +100,8 @@ def make_cover(path, category, title):
     else:
         ty0 = 230
 
-    # título
-    tf, lines, size = fit_title(d, title, max_w, max_lines=4)
+    # título (máx 3 líneas: los títulos largos se reducen para no chocar con el pie)
+    tf, lines, size = fit_title(d, title, max_w, max_lines=3)
     lh = int(size * 1.12)
     y = ty0
     for ln in lines:
@@ -133,6 +133,18 @@ COVERS = [
      "Facturación conforme al SAR: qué debe tener una factura legal en Honduras"),
     ("contador-externo-o-departamento-contable.png", "Contable",
      "¿Contador externo o departamento contable? Qué le conviene a tu empresa"),
+    ("comerciante-individual-vs-sociedad.png", "Guía",
+     "Comerciante individual o sociedad mercantil: cuál conviene en Honduras"),
+    ("obligaciones-laborales-empleador-honduras.png", "Laboral",
+     "Obligaciones laborales del empleador en Honduras: el costo real de contratar en regla"),
+    ("multas-comunes-sar-como-evitarlas.png", "Fiscal / SAR",
+     "Multas más comunes del SAR y cómo evitarlas en su MIPYME"),
+    ("libros-contables-obligatorios-honduras.png", "Contable",
+     "Libros contables obligatorios en Honduras: qué exige la ley y por qué te protegen"),
+    ("como-leer-estados-financieros.png", "Financiero",
+     "Cómo leer tus estados financieros: guía para dueños de negocio"),
+    ("factura-electronica-honduras-que-viene.png", "Fiscal / SAR",
+     "Factura electrónica en Honduras: qué viene y cómo preparar su MIPYME"),
     ("default.png", None,
      "Leyes y decretos, traducidos a decisiones."),
 ]

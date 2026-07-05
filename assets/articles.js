@@ -18,6 +18,54 @@
    ════════════════════════════════════════════════════════════════ */
 window.NEXO_ARTICLES = [
   {
+    slug: "comerciante-individual-vs-sociedad",
+    title: "Comerciante individual o sociedad mercantil: cuál conviene en Honduras",
+    category: "Guía",
+    date: "2026-07-01",
+    author: "Nexo Empresarial",
+    excerpt: "Guía práctica para dueños de MIPYME en Honduras: diferencias entre comerciante individual y sociedad mercantil, riesgo patrimonial, impuestos y cuándo dar el salto."
+  },
+  {
+    slug: "obligaciones-laborales-empleador-honduras",
+    title: "Obligaciones laborales del empleador en Honduras: el costo real de contratar en regla",
+    category: "Laboral",
+    date: "2026-06-27",
+    author: "Nexo Empresarial",
+    excerpt: "IHSS, RAP, INFOP, retención del ISR y prestaciones básicas: una guía clara para que tu MIPYME contrate en regla y calcule el costo verdadero de cada empleado."
+  },
+  {
+    slug: "multas-comunes-sar-como-evitarlas",
+    title: "Multas más comunes del SAR y cómo evitarlas en su MIPYME",
+    category: "Fiscal / SAR",
+    date: "2026-06-25",
+    author: "Nexo Empresarial",
+    excerpt: "Las sanciones del SAR rara vez llegan por sorpresa: casi siempre nacen de descuidos evitables. Le explicamos las cuatro más frecuentes y cómo blindar su negocio."
+  },
+  {
+    slug: "libros-contables-obligatorios-honduras",
+    title: "Libros contables obligatorios en Honduras: qué exige la ley y por qué te protegen",
+    category: "Contable",
+    date: "2026-06-23",
+    author: "Nexo Empresarial",
+    excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de tu empresa. Te explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño."
+  },
+  {
+    slug: "como-leer-estados-financieros",
+    title: "Cómo leer tus estados financieros: guía para dueños de negocio",
+    category: "Financiero",
+    date: "2026-06-17",
+    author: "Nexo Empresarial",
+    excerpt: "Aprende a interpretar el balance general, el estado de resultados y el flujo de efectivo sin tecnicismos, y descubre qué mirar en cada uno para tomar mejores decisiones."
+  },
+  {
+    slug: "factura-electronica-honduras-que-viene",
+    title: "Factura electrónica en Honduras: qué viene y cómo preparar su MIPYME",
+    category: "Fiscal / SAR",
+    date: "2026-06-13",
+    author: "Nexo Empresarial",
+    excerpt: "El régimen de facturación en Honduras avanza hacia lo electrónico. Le explicamos qué significa para su MIPYME y cómo ordenar su facturación desde hoy."
+  },
+  {
     slug: "impuestos-empresa-honduras-isv-isr-retenciones",
     title: "Impuestos de una empresa en Honduras: ISV, ISR y retenciones explicados",
     category: "Fiscal / SAR",
