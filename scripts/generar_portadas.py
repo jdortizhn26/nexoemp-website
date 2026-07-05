@@ -137,5 +137,6 @@ COVERS = [
      "Leyes y decretos, traducidos a decisiones."),
 ]
 
-for fn, cat, title in COVERS:
-    make_cover(os.path.join(OUT, fn), cat, title)
+if __name__ == "__main__":
+    for fn, cat, title in COVERS:
+        make_cover(os.path.join(OUT, fn), cat, title)
