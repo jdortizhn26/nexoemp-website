@@ -34,7 +34,14 @@
     <a href="../index.html" style="display:flex;align-items:center;">
       <img src="../assets/logo.png" class="nav-logo" alt="Nexo Empresarial"/>
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-box" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+    </button>
+    <div class="nav-links" id="nav-menu">
       <a href="../index.html#servicios">Servicios</a>
       <a href="../index.html#labs">Labs</a>
       <a href="../index.html#demos">Demos</a>
@@ -99,6 +106,41 @@
   } else {
     grid.innerHTML = arts.map(cardHTML).join('');
   }
+</script>
+
+<!-- Menú móvil (hamburguesa) -->
+<script>
+  (function(){
+    var toggle = document.querySelector('.nav-toggle');
+    if (!toggle) return;
+    var menu = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!menu) return;
+    function close(){
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+    }
+    function open(){
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Cerrar menú');
+    }
+    toggle.addEventListener('click', function(){
+      if (menu.classList.contains('open')) close(); else open();
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')){
+        close();
+        toggle.focus();
+      }
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 720) close();
+    });
+  })();
 </script>
 
 </body>

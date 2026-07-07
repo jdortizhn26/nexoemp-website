@@ -71,8 +71,43 @@ nav{
   text-transform:uppercase;transition:background .2s;
 }
 .nav-cta:hover{background:var(--white) !important;}
+.nav-toggle{
+  display:none;align-items:center;justify-content:center;
+  width:44px;height:44px;padding:0;margin:0;
+  background:transparent;border:1px solid rgba(184,197,214,.25);
+  border-radius:4px;cursor:pointer;color:var(--light-blue);
+}
+.nav-toggle:hover{border-color:var(--light-blue);color:var(--white);}
+.nav-toggle .nav-toggle-box{display:block;position:relative;width:20px;height:14px;}
+.nav-toggle .nav-toggle-bar{
+  position:absolute;left:0;width:100%;height:2px;border-radius:2px;
+  background:currentColor;transition:transform .25s ease,opacity .2s ease,top .25s ease;
+}
+.nav-toggle .nav-toggle-bar:nth-child(1){top:0;}
+.nav-toggle .nav-toggle-bar:nth-child(2){top:6px;}
+.nav-toggle .nav-toggle-bar:nth-child(3){top:12px;}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){top:6px;transform:rotate(45deg);}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){top:6px;transform:rotate(-45deg);}
 @media(max-width:720px){
-  .nav-links a:not(.nav-cta){display:none;}
+  /* Páginas sin hamburguesa (p.ej. artículos): comportamiento previo, solo el CTA visible */
+  nav:not(:has(.nav-toggle)) .nav-links a:not(.nav-cta){display:none;}
+  /* Páginas con hamburguesa: menú desplegable accesible */
+  .nav-toggle{display:inline-flex;}
+  nav:has(.nav-toggle) .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(10,31,68,.98);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(184,197,214,.12);
+    padding:8px 20px 18px;display:none;
+  }
+  nav:has(.nav-toggle) .nav-links.open{display:flex;}
+  nav:has(.nav-toggle) .nav-links a{padding:14px 4px;font-size:15px;border-bottom:1px solid rgba(184,197,214,.08);}
+  nav:has(.nav-toggle) .nav-links a.nav-cta{
+    margin-top:14px;text-align:center;border-bottom:none;
+    padding:13px 20px !important;
+  }
 }
 
 /* ── SECTION HEADERS ── */
