@@ -105,8 +105,40 @@
     text-transform:uppercase;transition:background .2s;
   }
   .nav-cta:hover{background:var(--white) !important;}
+  .nav-toggle{
+    display:none;align-items:center;justify-content:center;
+    width:44px;height:44px;padding:0;margin:0;
+    background:transparent;border:1px solid rgba(184,197,214,.25);
+    border-radius:4px;cursor:pointer;color:var(--light-blue);
+  }
+  .nav-toggle:hover{border-color:var(--light-blue);color:var(--white);}
+  .nav-toggle .nav-toggle-box{display:block;position:relative;width:20px;height:14px;}
+  .nav-toggle .nav-toggle-bar{
+    position:absolute;left:0;width:100%;height:2px;border-radius:2px;
+    background:currentColor;transition:transform .25s ease,opacity .2s ease,top .25s ease;
+  }
+  .nav-toggle .nav-toggle-bar:nth-child(1){top:0;}
+  .nav-toggle .nav-toggle-bar:nth-child(2){top:6px;}
+  .nav-toggle .nav-toggle-bar:nth-child(3){top:12px;}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){top:6px;transform:rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){top:6px;transform:rotate(-45deg);}
   @media(max-width:720px){
-    .nav-links a:not(.nav-cta){display:none;}
+    .nav-toggle{display:inline-flex;}
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:rgba(10,31,68,.98);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(184,197,214,.12);
+      padding:8px 20px 18px;display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 4px;font-size:15px;border-bottom:1px solid rgba(184,197,214,.08);}
+    .nav-links a.nav-cta{
+      margin-top:14px;text-align:center;border-bottom:none;
+      padding:13px 20px !important;
+    }
   }
 
   /* ── HERO ── */
@@ -852,7 +884,14 @@
     <a href="#" style="display:flex;align-items:center;">
       <img src="assets/logo.png" class="nav-logo" alt="Nexo Empresarial"/>
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-box" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+    </button>
+    <div class="nav-links" id="nav-menu">
       <a href="#servicios">Servicios</a>
       <a href="#labs">Labs</a>
       <a href="plataforma.html">Plataforma</a>
@@ -1576,6 +1615,41 @@
       if (m) msg += '\nMensaje:\n' + m;
       const url = 'https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(msg);
       window.open(url, '_blank', 'noopener');
+    });
+  })();
+</script>
+
+<!-- Menú móvil (hamburguesa) -->
+<script>
+  (function(){
+    var toggle = document.querySelector('.nav-toggle');
+    if (!toggle) return;
+    var menu = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!menu) return;
+    function close(){
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+    }
+    function open(){
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Cerrar menú');
+    }
+    toggle.addEventListener('click', function(){
+      if (menu.classList.contains('open')) close(); else open();
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')){
+        close();
+        toggle.focus();
+      }
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 720) close();
     });
   })();
 </script>
