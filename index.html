@@ -487,13 +487,29 @@
     background:#0C2040;
   }
   .res-card::after{
-    content:'→';position:absolute;top:28px;right:28px;
+    content:'→';position:absolute;bottom:26px;right:28px;
     font-size:20px;color:var(--smoke);
     transition:all .25s ease;
   }
   .res-card:hover::after{
     color:var(--light-blue);transform:translateX(4px);
   }
+  .res-logo{
+    position:absolute;top:26px;right:26px;
+    width:56px;height:56px;border-radius:10px;
+    background:#F4F6FA;border:1px solid rgba(184,197,214,.3);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .res-logo img{width:38px;height:38px;object-fit:contain;display:block;}
+  .res-logo .res-logo-sigla{
+    display:none;font-family:'Playfair Display',serif;
+    font-size:15px;font-weight:700;letter-spacing:.5px;color:var(--navy);
+  }
+  .res-logo.sin-logo{
+    background:rgba(184,197,214,.1);border-color:rgba(184,197,214,.25);
+  }
+  .res-logo.sin-logo .res-logo-sigla{display:block;color:var(--light-blue);}
   .res-badge{
     display:inline-block;font-size:9px;letter-spacing:1.5px;
     text-transform:uppercase;padding:3px 8px;border-radius:2px;
@@ -505,6 +521,7 @@
     font-family:'Playfair Display',serif;
     font-size:22px;color:var(--white);font-weight:700;
     margin-bottom:8px;line-height:1.2;
+    padding-right:64px;
   }
   .res-card p{
     font-size:13px;color:var(--cream-2);line-height:1.65;
@@ -1334,6 +1351,11 @@
     <div class="res-grid">
 
       <a href="https://www.sar.gob.hn" target="_blank" rel="noopener" class="res-card">
+        <span class="res-logo">
+          <img src="https://www.google.com/s2/favicons?domain=sar.gob.hn&amp;sz=128" alt="Logo del SAR" loading="lazy"
+               onerror="this.closest('.res-logo').classList.add('sin-logo');this.remove();"/>
+          <span class="res-logo-sigla" aria-hidden="true">SAR</span>
+        </span>
         <span class="res-badge">Tributario</span>
         <h4>Servicio de Administración de Rentas</h4>
         <p>Autoridad tributaria de Honduras. Portal oficial para declaraciones fiscales, consultas de RTN, oficina virtual y gestión de obligaciones ante el SAR.</p>
@@ -1341,6 +1363,11 @@
       </a>
 
       <a href="https://www.ip.gob.hn" target="_blank" rel="noopener" class="res-card">
+        <span class="res-logo">
+          <img src="https://www.google.com/s2/favicons?domain=ip.gob.hn&amp;sz=128" alt="Logo del Instituto de la Propiedad" loading="lazy"
+               onerror="this.closest('.res-logo').classList.add('sin-logo');this.remove();"/>
+          <span class="res-logo-sigla" aria-hidden="true">IP</span>
+        </span>
         <span class="res-badge">Registral</span>
         <h4>Instituto de la Propiedad</h4>
         <p>Registro Mercantil, Registro de la Propiedad Inmueble, propiedad intelectual y catastro nacional. Gestión registral de sociedades y bienes.</p>
@@ -1348,6 +1375,11 @@
       </a>
 
       <a href="https://factorix.app" target="_blank" rel="noopener" class="res-card">
+        <span class="res-logo">
+          <img src="https://www.google.com/s2/favicons?domain=factorix.app&amp;sz=128" alt="Logo de Factorix" loading="lazy"
+               onerror="this.closest('.res-logo').classList.add('sin-logo');this.remove();"/>
+          <span class="res-logo-sigla" aria-hidden="true">Fx</span>
+        </span>
         <span class="res-badge">Facturación</span>
         <h4>Factorix</h4>
         <p>Sistema ERP en la nube para facturación electrónica conforme al régimen SAR, contabilidad e inventario. Plataforma recomendada para empresas hondureñas.</p>
