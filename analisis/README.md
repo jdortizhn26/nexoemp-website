@@ -27,8 +27,11 @@ El script hace todo lo que antes era manual:
 
 - crea `analisis/<slug>.html` desde `_plantilla.html` con título, categoría,
   fecha, canonical, Open Graph, Twitter Card y JSON-LD ya rellenados;
-- genera la portada `assets/og/<slug>.png` (requiere `python3` + Pillow:
-  `pip install pillow`);
+- genera la portada `assets/og/<slug>.png` con una ilustración temática
+  (requiere `python3` + Pillow: `pip install pillow`). El dibujo se elige por
+  slug en `ICONO_POR_SLUG` de `scripts/generar_portadas.py` y, si el slug no
+  está mapeado, por categoría — para darle un ícono propio a un artículo
+  nuevo, agregalo a ese mapa antes de generar;
 - agrega la URL a `sitemap.xml`.
 
 Solo queda **redactar el cuerpo**: abre el HTML generado y reemplaza lo que
