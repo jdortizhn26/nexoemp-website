@@ -47,6 +47,9 @@ desincronizan o quedan placeholders).
 - Commits descriptivos en español.
 - No editar a mano lo que generan los scripts sin actualizar la fuente
   (`articles.js` manda; el chequeo de CI hace cumplir la consistencia).
+- **Los merges a producción los hace Claude, no el usuario** (regla de todo el
+  ecosistema). Preguntarle primero cuándo quiere hacer el merge; solo se fusiona
+  con su confirmación en la conversación.
 
 ## Configuración y despliegue (REGLA)
 
