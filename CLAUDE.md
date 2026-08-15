@@ -8,34 +8,62 @@ HTML/CSS/JS estático, **sin build ni frameworks**. Hosting sirve el repo tal cu
 
 ```
 index.html            Portada (servicios, labs, demos, contacto)
+plataforma.html       Plataforma Nexo (sistemas verticales)
 analisis/             Blog "Análisis & Noticias" (artículos SEO)
   _plantilla.html     Plantilla de artículo (no borrar)
   index.html          Hub que lista todos los artículos
   README.md           Guía de publicación
-labs/                 Página de Nexo Labs
+labs/                 Redirect noindex a /plataforma.html
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
+  analytics.js        GA4 (un solo lugar para el ID de medición)
   og/                 Portadas 1200x630 (tarjetas + Open Graph)
   site.css            Estilos de las páginas de análisis
 scripts/
-  nuevo-articulo.mjs      Generador: página + portada + sitemap
+  articulos.mjs           Lectura y validación de articles.js (compartido)
+  nuevo-articulo.mjs      Generador: página + portada + bloques + sitemap
+  bloques-seo.mjs         Bloques SEO/GEO de los artículos (idempotente)
   verificar-articulos.mjs Chequeo de consistencia (corre en CI)
   generar_portadas.py     Dibuja portadas OG (requiere Pillow)
-sitemap.xml / robots.txt
+sitemap.xml / robots.txt / llms.txt
+SEO.md                Checklist SEO/GEO: qué está hecho y qué falta a mano
 ```
 
 ## Publicar un artículo (flujo de 1 paso)
 
-1. Agregar la entrada al inicio de `assets/articles.js` (slug, título,
-   categoría, fecha AAAA-MM-DD, autor, excerpt).
+1. Agregar la entrada al inicio de `assets/articles.js` con **todos** sus
+   campos: `slug`, `title` (el H1), `metaTitle` (el `<title>`, distinto del
+   H1), `category`, `date` AAAA-MM-DD, `author`, `excerpt`, `intent`,
+   `cluster`, `tldr` y `faq`.
 2. `node scripts/nuevo-articulo.mjs` — genera `analisis/<slug>.html` desde la
-   plantilla (SEO/OG/JSON-LD rellenados), la portada `assets/og/<slug>.png` y
-   la entrada en `sitemap.xml`.
+   plantilla (SEO/OG/JSON-LD rellenados y bloques SEO insertados), la portada
+   `assets/og/<slug>.png` y la entrada en `sitemap.xml`.
 3. Redactar el cuerpo en el HTML generado (reemplazar los `[[corchetes]]`).
+4. Agregar el artículo a `llms.txt` (es lo único que se mantiene a mano).
 
 Antes de subir: `node scripts/verificar-articulos.mjs` (también corre en CI,
 `.github/workflows/ci.yml`; falla si índice, HTML, portadas o sitemap se
 desincronizan o quedan placeholders).
+
+## Bloques SEO de los artículos (`scripts/bloques-seo.mjs`)
+
+Todo lo que en un artículo no es el cuerpo redactado a mano se genera desde
+`articles.js` y vive entre marcadores `<!-- nexo:<id>:inicio/fin -->`: el
+resumen "En resumen", el CTA tras el primer párrafo, las preguntas frecuentes
+visibles y su `FAQPage`, las migas de pan, los artículos relacionados, los
+botones de compartir, la carga de GA4 y la barra fija de contacto en móvil.
+
+- Para cambiarlos: editar `articles.js` y correr `node scripts/bloques-seo.mjs`.
+  Reaplicar es idempotente y **no toca** el texto del artículo.
+- Editarlos a mano en el HTML rompe el chequeo de CI, que compara lo publicado
+  contra lo que el script generaría hoy.
+- Cuidado al agregar bloques nuevos: `assets/site.css` fija **todo** `<nav>` a
+  la parte superior de la ventana (es el encabezado del sitio), así que un
+  bloque dentro del artículo nunca debe ser un `<nav>`.
+
+El estado completo del checklist SEO/GEO está en `SEO.md`, incluidos los tres
+puntos que dependen de una cuenta de Google (GA4, Search Console y el envío del
+sitemap) y no se pueden cerrar desde el repo.
 
 ## Reglas
 

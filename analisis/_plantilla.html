@@ -2,13 +2,30 @@
 <!-- ════════════════════════════════════════════════════════════════
      PLANTILLA DE ARTÍCULO — Nexo Empresarial
      Cómo publicar un artículo nuevo (flujo automatizado):
-       1. Agrega la entrada en assets/articles.js.
+       1. Agrega la entrada en assets/articles.js, con TODOS sus
+          campos: title (será el H1), metaTitle (será el <title>,
+          distinto del H1), intent, cluster, tldr y faq.
        2. Corre:  node scripts/nuevo-articulo.mjs
-          (crea analisis/<slug>.html desde esta plantilla, con la
-          cabecera SEO/OG ya rellenada, más portada y sitemap).
+          (crea analisis/<slug>.html desde esta plantilla con la
+          cabecera SEO/OG rellenada, los bloques SEO insertados,
+          más portada y sitemap).
        3. Escribe el cuerpo dentro de <div class="prose"> usando
-          <h2>, <h3>, <p>, <ul><li>, <ol><li>, <blockquote> y
-          <div class="callout">…</div>.
+          <h2>, <h3>, <p>, <ul><li>, <ol><li>, <blockquote>,
+          <div class="callout">…</div> y tablas envueltas en
+          <div class="tabla-scroll">.
+
+     Lo que NO se escribe a mano (lo genera scripts/bloques-seo.mjs
+     desde articles.js y vive entre marcadores <!-- nexo:… -->):
+     el TL;DR "En resumen", el CTA tras el primer párrafo, las
+     preguntas frecuentes visibles, su schema FAQPage, las migas de
+     pan, los artículos relacionados, los botones de compartir y la
+     barra fija de contacto en móvil. Para actualizarlos, editá
+     articles.js y corré  node scripts/bloques-seo.mjs.
+
+     Al redactar: una sola idea por sección, un H1 por página (el
+     que ya trae la cabecera), jerarquía H2 → H3 sin saltos, y
+     listas o tablas cada vez que el contenido sea enumerable.
+
      Detalle en analisis/README.md.
      No borres este archivo: sirve de plantilla. Empieza con "_"
      para distinguirlo y no aparece en el listado.
@@ -86,6 +103,19 @@
 
       <h2>[[Otra sección]]</h2>
       <p>[[Cierre y conclusión.]]</p>
+
+      <!-- Comparaciones y cifras enumerables van en tabla, no en prosa.
+           El envoltorio .tabla-scroll evita el desborde en móvil. -->
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr><th>[[Concepto]]</th><th>[[Opción A]]</th><th>[[Opción B]]</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>[[Fila]]</td><td>[[Dato]]</td><td>[[Dato]]</td></tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
 

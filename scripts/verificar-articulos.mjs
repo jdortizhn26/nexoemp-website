@@ -12,20 +12,21 @@
      · una página publicada aún contiene placeholders [[...]]
      · falta la portada assets/og/<slug>.png
      · falta la URL del artículo en sitemap.xml
+     · los bloques SEO de una página no coinciden con lo que
+       scripts/bloques-seo.mjs generaría hoy (TL;DR, FAQ, schema,
+       relacionados, compartir, CTA)
 
    Se corre en CI (.github/workflows/ci.yml) y localmente:
      node scripts/verificar-articulos.mjs
    ════════════════════════════════════════════════════════════════ */
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { cargarArticulos, validarArticulo } from "./nuevo-articulo.mjs";
+import { ROOT, DOMINIO, cargarArticulos, validarArticulo } from "./articulos.mjs";
+import { aplicarBloques } from "./bloques-seo.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIR_ANALISIS = path.join(ROOT, "analisis");
 const DIR_OG = path.join(ROOT, "assets", "og");
 const RUTA_SITEMAP = path.join(ROOT, "sitemap.xml");
-const DOMINIO = "https://nexoemp.com";
 const IGNORADOS = new Set(["index.html", "_plantilla.html"]);
 
 const errores = [];
@@ -65,6 +66,68 @@ for (const { slug, date } of articulos) {
   }
   if (!sitemap.includes(`<loc>${DOMINIO}/analisis/${slug}.html</loc>`)) {
     errores.push(`falta ${slug}.html en sitemap.xml (correr: node scripts/nuevo-articulo.mjs)`);
+  }
+}
+
+// 2b. Los bloques SEO publicados coinciden con los que se generarían hoy.
+for (const art of articulos) {
+  const html = path.join(DIR_ANALISIS, `${art.slug}.html`);
+  if (!existsSync(html)) continue;
+  const publicado = readFileSync(html, "utf8");
+  let esperado;
+  try {
+    esperado = aplicarBloques(publicado, art, articulos);
+  } catch (e) {
+    errores.push(`analisis/${art.slug}.html: ${e.message}`);
+    continue;
+  }
+  if (publicado !== esperado) {
+    errores.push(
+      `analisis/${art.slug}.html tiene bloques SEO desactualizados (correr: node scripts/bloques-seo.mjs)`
+    );
+  }
+}
+
+// 2c. Cabeceras SEO: un solo H1, meta-título distinto del H1, y títulos y
+//     descripciones que no se repitan entre artículos.
+const titulosVistos = new Map();
+const descripcionesVistas = new Map();
+for (const art of articulos) {
+  const ruta = path.join(DIR_ANALISIS, `${art.slug}.html`);
+  if (!existsSync(ruta)) continue;
+  const contenido = readFileSync(ruta, "utf8");
+
+  const h1 = (contenido.match(/<h1\b/g) ?? []).length;
+  if (h1 !== 1) {
+    errores.push(`analisis/${art.slug}.html tiene ${h1} etiquetas <h1> (debe haber exactamente 1)`);
+  }
+
+  const titulo = contenido.match(/<title>([\s\S]*?)<\/title>/)?.[1]?.trim();
+  if (!titulo) {
+    errores.push(`analisis/${art.slug}.html no tiene <title>`);
+  } else {
+    if (titulo === `${art.title} — Nexo Empresarial`) {
+      errores.push(
+        `analisis/${art.slug}.html usa el H1 como <title>: deben ser distintos ` +
+          `(sembrar desde "metaTitle" en articles.js)`
+      );
+    }
+    const duplicado = titulosVistos.get(titulo);
+    if (duplicado) {
+      errores.push(`<title> repetido entre "${duplicado}" y "${art.slug}"`);
+    }
+    titulosVistos.set(titulo, art.slug);
+  }
+
+  const desc = contenido.match(/<meta name="description" content="([^"]*)"/)?.[1]?.trim();
+  if (!desc) {
+    errores.push(`analisis/${art.slug}.html no tiene meta description`);
+  } else {
+    const duplicado = descripcionesVistas.get(desc);
+    if (duplicado) {
+      errores.push(`meta description repetida entre "${duplicado}" y "${art.slug}"`);
+    }
+    descripcionesVistas.set(desc, art.slug);
   }
 }
 

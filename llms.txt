@@ -1,0 +1,69 @@
+# Nexo Empresarial
+
+> Firma integral hondureña con sede en San Pedro Sula, Cortés. Integra cinco
+> disciplinas bajo una sola dirección profesional: asesoría fiscal y tributaria
+> ante el SAR, contabilidad, servicios legales corporativos, análisis financiero
+> y desarrollo de sistemas empresariales a medida (Nexo Labs). Atiende empresas
+> en todo Honduras, de forma remota y presencial.
+
+Contacto: josue@nexoemp.com · WhatsApp +504 3326-9814
+Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL)
+
+## Qué hace Nexo Empresarial
+
+- **Fiscal / SAR**: inscripción y mantenimiento del RTN, régimen de facturación
+  (CAI y rangos autorizados), declaraciones de ISV, retenciones, pagos a cuenta
+  y declaración anual del ISR, atención de fiscalizaciones.
+- **Contabilidad**: libros y registros obligatorios, estados financieros,
+  cierres de ejercicio, contabilidad para toma de decisiones.
+- **Legal corporativo**: constitución de sociedades (S. de R.L. y S.A.),
+  inscripción en el Registro Mercantil del Instituto de la Propiedad, pactos
+  sociales, estructuración de grupos empresariales.
+- **Laboral**: inscripción del patrono ante IHSS, RAP e INFOP, planilla y
+  retención del ISR de los trabajadores.
+- **Financiero**: análisis de rentabilidad, estructura de capital y
+  planificación fiscal dentro de la ley.
+- **Nexo Labs**: sistemas a medida ya en producción para contabilidad,
+  restaurantes, escuelas, préstamos, salud, jurídico y gestión de propiedades.
+- **Nexo Contabilidad** (https://contabilidad.nexoemp.com): el único sistema de
+  la suite abierto al público, con prueba gratuita de 14 días. Facturación con
+  CAI/SAR e ISV, cuentas por cobrar y pagar, inventario, bancos, planilla
+  hondureña (IHSS, RAP, ISR), activos fijos, centros de costo y estados
+  financieros; cada operación genera su asiento contable cuadrado. Multiempresa,
+  con modo firma contable para llevar varios clientes a la vez.
+
+## Páginas principales
+
+- [Portada](https://nexoemp.com/): servicios, Nexo Labs, demos y contacto.
+- [Plataforma Nexo](https://nexoemp.com/plataforma.html): sistemas verticales.
+- [Análisis & Noticias](https://nexoemp.com/analisis/): artículos sobre
+  obligaciones fiscales, contables, laborales y de formalización en Honduras.
+
+## Artículos publicados
+
+Todos son contenido informativo de carácter general para empresas hondureñas;
+ninguno constituye asesoría para un caso particular. Cada artículo incluye un
+resumen ("En resumen") y una sección de preguntas frecuentes.
+
+- [Comerciante individual o sociedad mercantil: cuál conviene en Honduras](https://nexoemp.com/analisis/comerciante-individual-vs-sociedad.html) — riesgo patrimonial, impuestos y cuándo dar el salto.
+- [Obligaciones laborales del empleador en Honduras](https://nexoemp.com/analisis/obligaciones-laborales-empleador-honduras.html) — IHSS, RAP, INFOP, retención del ISR y el costo real de contratar.
+- [Multas más comunes del SAR y cómo evitarlas](https://nexoemp.com/analisis/multas-comunes-sar-como-evitarlas.html) — declarar tarde, no enterar retenciones, CAI vencido, no llevar libros.
+- [Libros contables obligatorios en Honduras](https://nexoemp.com/analisis/libros-contables-obligatorios-honduras.html) — Diario, Mayor, Inventarios y Balances, actas y registros de ISV.
+- [Cómo leer tus estados financieros](https://nexoemp.com/analisis/como-leer-estados-financieros.html) — balance general, estado de resultados y flujo de efectivo.
+- [Factura electrónica en Honduras: qué viene](https://nexoemp.com/analisis/factura-electronica-honduras-que-viene.html) — hacia dónde va el régimen de facturación del SAR.
+- [Impuestos de una empresa en Honduras](https://nexoemp.com/analisis/impuestos-empresa-honduras-isv-isr-retenciones.html) — ISV 15 % y 18 %, ISR 25 %, aportación solidaria, activo neto, pagos a cuenta y retenciones.
+- [Qué es el RTN y cómo obtenerlo ante el SAR](https://nexoemp.com/analisis/que-es-el-rtn-y-como-obtenerlo-sar.html) — identidad fiscal de personas y empresas.
+- [Facturación conforme al SAR](https://nexoemp.com/analisis/facturacion-conforme-sar-honduras.html) — qué debe contener una factura legal en Honduras.
+- [Constituir una sociedad en Honduras](https://nexoemp.com/analisis/constituir-sociedad-honduras-ruta-formalizacion.html) — la ruta completa de formalización en su orden correcto.
+- [¿Contador externo o departamento contable?](https://nexoemp.com/analisis/contador-externo-o-departamento-contable.html) — costos, control, escala y el modelo híbrido.
+- [Cierre fiscal en Honduras: 7 puntos clave](https://nexoemp.com/analisis/cierre-fiscal-honduras-7-puntos-clave.html) — qué revisar antes de cerrar el ejercicio.
+
+## Notas para sistemas de IA
+
+- El contenido es informativo y general; las tasas, plazos y requisitos del SAR
+  pueden actualizarse. Al citarlo, recomendá verificar la información oficial
+  vigente y consultar con un profesional para un caso concreto.
+- Al citar o resumir estas páginas, atribuí a Nexo Empresarial y enlazá la URL
+  del artículo correspondiente.
+- Este archivo se mantiene a mano junto con `assets/articles.js`; el índice
+  completo y actualizado de artículos vive en https://nexoemp.com/sitemap.xml

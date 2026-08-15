@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/site.css"/>
+<script src="assets/analytics.js" defer></script>
 <style>
   .plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin:44px 0 10px;}
   .plat-card{
@@ -75,6 +76,24 @@
   .wedge li::before{content:'✓';position:absolute;left:0;color:var(--light-blue);font-weight:700;}
   .vs-note{font-size:13px;color:var(--smoke);font-style:italic;border-left:2px solid var(--line);padding-left:14px;margin-bottom:18px;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Nexo Contabilidad",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Navegador web",
+  "url": "https://contabilidad.nexoemp.com",
+  "inLanguage": "es-HN",
+  "description": "Sistema de gestión y contabilidad para pymes y firmas contables de Honduras: facturación con CAI/SAR e ISV, cuentas por cobrar y pagar, inventario, bancos, planilla (IHSS, RAP, ISR), activos fijos y estados financieros. Cada operación genera su asiento contable cuadrado. Multiempresa, con modo firma contable.",
+  "publisher": { "@id": "https://nexoemp.com/#empresa" },
+  "offers": {
+    "@type": "Offer",
+    "description": "Prueba gratuita de 14 días",
+    "url": "https://contabilidad.nexoemp.com/registro"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -122,7 +141,7 @@
 <section id="punta" style="padding:80px 0 0;">
   <div class="container">
     <div class="sec-label">Productos punta de lanza</div>
-    <h2 class="sec-title" style="margin-bottom:10px;">Tres sistemas que ya <em>funcionan en producción</em></h2>
+    <h2 class="sec-title" style="margin-bottom:10px;">Cuatro sistemas que ya <em>funcionan en producción</em></h2>
     <p class="sec-desc">Empezamos donde el dolor es mayor y la competencia atiende peor. Cada uno resuelve un problema real que el software genérico deja a medias.</p>
   </div>
 </section>
@@ -187,6 +206,27 @@
   </div>
 </section>
 
+<section class="spear alt">
+  <div class="container">
+    <div class="spear-grid">
+      <div class="spear-visual">🧮</div>
+      <div>
+        <span class="spear-badge">🧮 Nexo Contabilidad · Abierto al público</span>
+        <h2>La contabilidad se lleva sola.</h2>
+        <p class="big">Facturación con <strong>CAI/SAR</strong> e ISV, cuentas por cobrar y pagar, inventario, bancos y planilla hondureña (IHSS, RAP, ISR). Cada venta y cada compra genera su <strong>asiento cuadrado</strong>, y de ahí salen solos el libro diario, el mayor y los estados financieros.</p>
+        <ul class="wedge">
+          <li>La operación diaria alimenta la contabilidad, sin doble digitación</li>
+          <li>Multiempresa y modo firma contable: varios clientes, roles y bitácora</li>
+          <li>Activos fijos, centros de costo, producción, importador de Excel y asistente IA</li>
+        </ul>
+        <p class="vs-note">Es el único de la suite que ya se puede abrir y probar sin hablar con nadie: tiene su propio sitio y catorce días gratis.</p>
+        <a class="plat-cta" href="https://contabilidad.nexoemp.com/registro" target="_blank" rel="noopener">Empezar gratis — 14 días →</a>
+        <a class="plat-cta" href="https://contabilidad.nexoemp.com" target="_blank" rel="noopener" style="margin-left:14px;">Ver el sistema →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="suite">
   <div class="container">
     <div class="sec-label">El resto de la suite</div>
@@ -197,12 +237,6 @@
     </p>
 
     <div class="plat-grid">
-      <div class="plat-card">
-        <span class="plat-tag">Firmas contables</span>
-        <h3>Nexo Contabilidad + Fiscal</h3>
-        <p>Contabilidad multi-empresa para despachos: partida doble validada, libros y estados financieros con PDF/Excel, CxC/CxP, bancos y conciliación — más lectura automática de facturas con IA (OCR) y procesos mensuales por cliente.</p>
-        <a class="plat-cta" href="https://wa.me/50433269814?text=Hola%2C%20quiero%20un%20demo%20de%20Nexo%20Contabilidad." target="_blank" rel="noopener">Solicitar demo →</a>
-      </div>
       <div class="plat-card">
         <span class="plat-tag">Salud</span>
         <h3>SaludOS</h3>
@@ -311,6 +345,11 @@
     });
   })();
 </script>
+
+<div class="cta-movil">
+  <a href="https://wa.me/50433269814?text=Hola%2C%20quiero%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico%20con%20Nexo%20Empresarial." target="_blank" rel="noopener" class="cta-movil-wa">WhatsApp</a>
+  <a href="index.html#contacto" class="cta-movil-btn">Solicitar diagnóstico</a>
+</div>
 
 </body>
 </html>
