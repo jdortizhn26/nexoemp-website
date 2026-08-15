@@ -25,6 +25,12 @@ Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL
   planificación fiscal dentro de la ley.
 - **Nexo Labs**: sistemas a medida ya en producción para contabilidad,
   restaurantes, escuelas, préstamos, salud, jurídico y gestión de propiedades.
+- **Nexo Contabilidad** (https://contabilidad.nexoemp.com): el único sistema de
+  la suite abierto al público, con prueba gratuita de 14 días. Facturación con
+  CAI/SAR e ISV, cuentas por cobrar y pagar, inventario, bancos, planilla
+  hondureña (IHSS, RAP, ISR), activos fijos, centros de costo y estados
+  financieros; cada operación genera su asiento contable cuadrado. Multiempresa,
+  con modo firma contable para llevar varios clientes a la vez.
 
 ## Páginas principales
 

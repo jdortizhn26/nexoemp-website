@@ -378,6 +378,15 @@
   }
   .status-live{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.25);}
   .status-dev{background:rgba(184,197,214,.12);color:var(--light-blue);border:1px solid rgba(184,197,214,.25);}
+  /* Único producto con sitio propio abierto: se distingue del resto. */
+  .status-open{background:rgba(34,197,94,.18);color:#4ade80;border:1px solid rgba(74,222,128,.45);}
+  .lp-link{
+    display:inline-block;margin-top:12px;
+    font-size:12px;font-weight:600;letter-spacing:.4px;
+    color:var(--light-blue);text-decoration:none;
+    border-bottom:1px solid rgba(184,197,214,.35);padding-bottom:2px;
+  }
+  .lp-link:hover{color:var(--white);border-bottom-color:var(--white);}
   .labs-product h5{
     font-family:'Playfair Display',serif;
     font-size:18px;color:var(--white);font-weight:700;
@@ -720,6 +729,8 @@
   }
   .demo-btn:hover{background:var(--white);}
   .demo-btn.soon{background:transparent;border:1px solid var(--line);color:var(--smoke);cursor:default;}
+  .demo-btn.ghost{background:transparent;border:1px solid var(--line);color:var(--light-blue);margin-top:8px;}
+  .demo-btn.ghost:hover{background:transparent;border-color:var(--light-blue);color:var(--white);}
   @media(max-width:800px){
     .cost-grid,.demos-grid{grid-template-columns:1fr;}
   }
@@ -1158,9 +1169,10 @@
           </div>
           <div class="labs-product">
             <div class="lp-ico">🧮</div>
-            <span class="status status-live">En producción</span>
-            <h5>ContabilidadOS</h5>
-            <p>Contabilidad, bancos, conciliación e inventario. Cierres mensuales, estados financieros y consolidación de grupos.</p>
+            <span class="status status-open">Abierto al público</span>
+            <h5>Nexo Contabilidad</h5>
+            <p>Facturación con CAI/SAR, cuentas por cobrar, inventario, bancos, planilla y contabilidad: la operación genera sola su asiento cuadrado. Multiempresa, con modo firma contable.</p>
+            <a href="https://contabilidad.nexoemp.com" class="lp-link" target="_blank" rel="noopener">Entrar al sistema →</a>
           </div>
           <div class="labs-product">
             <div class="lp-ico">💳</div>
@@ -1276,9 +1288,10 @@
       </div>
       <div class="demo-card">
         <div class="demo-ico">🧮</div>
-        <h4>Sistema de Contabilidad</h4>
-        <p>Contabilidad, bancos, conciliación, inventario y estados financieros. Cierres mensuales y consolidación de grupos.</p>
-        <a href="https://wa.me/50433269814?text=Hola%2C%20quiero%20ver%20el%20demo%20del%20Sistema%20de%20Contabilidad%20de%20Nexo%20Labs." class="demo-btn" target="_blank" rel="noopener">Solicitar demo →</a>
+        <h4>Nexo Contabilidad</h4>
+        <p>Facturación con CAI/SAR, cuentas por cobrar, inventario, bancos, planilla y estados financieros. Cada venta y cada compra genera su asiento cuadrado. Multiempresa, con modo firma contable.</p>
+        <a href="https://contabilidad.nexoemp.com" class="demo-btn" target="_blank" rel="noopener">Probar gratis 14 días →</a>
+        <a href="https://wa.me/50433269814?text=Hola%2C%20quiero%20ver%20el%20demo%20de%20Nexo%20Contabilidad." class="demo-btn ghost" target="_blank" rel="noopener">Que me lo muestren →</a>
       </div>
       <div class="demo-card">
         <div class="demo-ico">💳</div>
