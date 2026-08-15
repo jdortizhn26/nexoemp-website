@@ -23,6 +23,7 @@
 <meta name="twitter:description" content="Legal, contable, fiscal, financiera y sistemas a medida bajo un solo techo."/>
 <meta name="twitter:image" content="assets/logo.png"/>
 <link rel="icon" type="image/png" href="assets/favicon.png"/>
+<script src="assets/analytics.js" defer></script>
 <link rel="apple-touch-icon" href="assets/logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -813,6 +814,25 @@
   }
   .sector-chip:hover{border-color:var(--light-blue);color:var(--white);}
 
+
+  /* ── CTA FIJO EN MÓVIL ── */
+  .cta-movil{display:none;}
+  @media(max-width:760px){
+    .cta-movil{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:120;
+      gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(7,22,49,.96);
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border-top:1px solid var(--line);
+    }
+    .cta-movil a{
+      flex:1;text-align:center;padding:13px 10px;border-radius:3px;
+      font-size:13px;font-weight:600;letter-spacing:.4px;text-decoration:none;
+    }
+    .cta-movil-wa{background:#25D366;color:#06301A;}
+    .cta-movil-btn{background:var(--light-blue);color:var(--navy);}
+    body{padding-bottom:76px;}
+  }
 </style>
 
 <!-- ══════════════ DATOS ESTRUCTURADOS (SEO / Google) ══════════════ -->
@@ -1685,6 +1705,11 @@
     });
   })();
 </script>
+
+<div class="cta-movil">
+  <a href="https://wa.me/50433269814?text=Hola%2C%20quiero%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico%20con%20Nexo%20Empresarial." target="_blank" rel="noopener" class="cta-movil-wa">WhatsApp</a>
+  <a href="#contacto" class="cta-movil-btn">Solicitar diagnóstico</a>
+</div>
 
 </body>
 </html>

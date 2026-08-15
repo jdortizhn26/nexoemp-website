@@ -26,62 +26,26 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { ROOT, DOMINIO, cargarArticulos, validarArticulo, escaparHtml } from "./articulos.mjs";
+import { aplicarBloques } from "./bloques-seo.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const RUTA_ARTICLES = path.join(ROOT, "assets", "articles.js");
 const RUTA_PLANTILLA = path.join(ROOT, "analisis", "_plantilla.html");
 const RUTA_SITEMAP = path.join(ROOT, "sitemap.xml");
 const RUTA_PORTADAS = path.join(ROOT, "scripts", "generar_portadas.py");
 const DIR_ANALISIS = path.join(ROOT, "analisis");
 const DIR_OG = path.join(ROOT, "assets", "og");
-const DOMINIO = "https://nexoemp.com";
 
 const MESES = [
   "enero", "febrero", "marzo", "abril", "mayo", "junio",
   "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
 ];
 
-export function cargarArticulos() {
-  const src = readFileSync(RUTA_ARTICLES, "utf8");
-  const ventana = {};
-  new Function("window", src)(ventana);
-  const articulos = ventana.NEXO_ARTICLES;
-  if (!Array.isArray(articulos)) {
-    throw new Error("assets/articles.js no define window.NEXO_ARTICLES como arreglo.");
-  }
-  return articulos;
-}
-
-export function validarArticulo(art) {
-  const errores = [];
-  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(art.slug ?? "")) {
-    errores.push(`slug inválido: "${art.slug}" (usar minúsculas, números y guiones)`);
-  }
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(art.date ?? "")) {
-    errores.push(`fecha inválida en "${art.slug}": "${art.date}" (formato AAAA-MM-DD)`);
-  }
-  for (const campo of ["title", "category", "author", "excerpt"]) {
-    if (!art[campo] || !String(art[campo]).trim()) {
-      errores.push(`campo "${campo}" vacío en "${art.slug}"`);
-    }
-  }
-  return errores;
-}
-
 function fechaLarga(iso) {
   const [a, m, d] = iso.split("-").map(Number);
   return `${d} ${MESES[m - 1]} ${a}`;
 }
 
-function escaparHtml(texto) {
-  return String(texto)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-function generarPagina(art) {
+function generarPagina(art, articulos) {
   const destino = path.join(DIR_ANALISIS, `${art.slug}.html`);
   if (existsSync(destino)) return false;
 
@@ -90,10 +54,16 @@ function generarPagina(art) {
   html = html.replace(/<!-- ═+[\s\S]*?═+ -->\n?/, "");
 
   const titulo = escaparHtml(art.title);
+  const metaTitulo = escaparHtml(art.metaTitle);
   const resumen = escaparHtml(art.excerpt);
   const ogPng = `${DOMINIO}/assets/og/${art.slug}.png`;
 
+  // El <title> y el Open Graph usan el meta-título; el H1 usa el title.
   html = html
+    .replaceAll("<title>[[Título del artículo]] — Nexo Empresarial</title>",
+      `<title>${metaTitulo} — Nexo Empresarial</title>`)
+    .replaceAll('<meta property="og:title" content="[[Título del artículo]]"/>',
+      `<meta property="og:title" content="${metaTitulo}"/>`)
     .replaceAll("[[Título del artículo]]", titulo)
     .replaceAll("[[Resumen de una o dos frases para buscadores y redes sociales.]]", resumen)
     .replaceAll("[[Resumen de una o dos frases.]]", resumen)
@@ -113,7 +83,7 @@ function generarPagina(art) {
     '<meta property="og:locale" content="es_HN"/>',
     `<meta property="og:locale" content="es_HN"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="${titulo}"/>
+<meta name="twitter:title" content="${metaTitulo}"/>
 <meta name="twitter:description" content="${resumen}"/>
 <meta name="twitter:image" content="${ogPng}"/>`
   );
@@ -139,6 +109,8 @@ function generarPagina(art) {
     "</head>",
     `<script type="application/ld+json">\n${jsonLd}\n</script>\n</head>`
   );
+
+  html = aplicarBloques(html, art, articulos);
 
   writeFileSync(destino, html);
   console.log(`✓ Página creada: analisis/${art.slug}.html`);
@@ -185,7 +157,8 @@ function main() {
   const forzarPortadas = args.includes("--force-portadas");
   const slugsPedidos = args.filter((a) => !a.startsWith("--"));
 
-  let articulos = cargarArticulos();
+  const todos = cargarArticulos();
+  let articulos = todos;
 
   const errores = articulos.flatMap(validarArticulo);
   if (errores.length) {
@@ -206,7 +179,7 @@ function main() {
 
   let cambios = 0;
   for (const art of articulos) {
-    if (generarPagina(art)) cambios++;
+    if (generarPagina(art, todos)) cambios++;
     if (generarPortada(art, forzarPortadas)) cambios++;
     if (actualizarSitemap(art)) cambios++;
   }

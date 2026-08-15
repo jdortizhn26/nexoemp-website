@@ -1,4 +1,35 @@
+# nexoemp.com — sitio público y estático.
+# El sitio entero es indexable; /labs/ se excluye por su propia
+# meta robots (noindex) porque solo redirige a /plataforma.html.
+
 User-agent: *
+Allow: /
+
+# Rastreadores de sistemas de IA: permitidos de forma explícita para
+# que el contenido pueda citarse en ChatGPT, Claude, Perplexity y Gemini.
+# Ver también /llms.txt, con el resumen del sitio para esos sistemas.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://nexoemp.com/sitemap.xml
