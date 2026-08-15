@@ -306,6 +306,11 @@ def icono_periodico(L):
         L.linea([(215, y), (785, y)], w=16, color=TRAZO_SUAVE)
 
 ICONO_POR_SLUG = {
+    "cuanto-se-paga-de-isr-en-honduras": icono_porcentaje,
+    "calcular-sueldo-neto-honduras": icono_calculadora,
+    "decimo-tercero-y-decimo-cuarto-honduras": icono_maletin,
+    "prestaciones-laborales-fin-de-contrato-honduras": icono_balanza,
+    "gastos-deducibles-isr-honduras": icono_lista_check,
     "comerciante-individual-vs-sociedad": icono_edificio_persona,
     "obligaciones-laborales-empleador-honduras": icono_maletin,
     "multas-comunes-sar-como-evitarlas": icono_alerta_documento,
