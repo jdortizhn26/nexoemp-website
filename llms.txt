@@ -45,6 +45,11 @@ Todos son contenido informativo de carácter general para empresas hondureñas;
 ninguno constituye asesoría para un caso particular. Cada artículo incluye un
 resumen ("En resumen") y una sección de preguntas frecuentes.
 
+- [¿Cuánto se paga de ISR en Honduras?](https://nexoemp.com/analisis/cuanto-se-paga-de-isr-en-honduras.html) — escala progresiva del impuesto sobre la renta de personas naturales, tramo exento y quién declara.
+- [Del sueldo bruto al neto en Honduras](https://nexoemp.com/analisis/calcular-sueldo-neto-honduras.html) — descuentos de IHSS, RAP y retención del ISR, y el costo patronal que el trabajador no ve.
+- [Décimo tercer y décimo cuarto mes en Honduras](https://nexoemp.com/analisis/decimo-tercero-y-decimo-cuarto-honduras.html) — cómo se calculan, cuándo se pagan y cómo se prorratean.
+- [Qué se le paga a un empleado al terminar su contrato](https://nexoemp.com/analisis/prestaciones-laborales-fin-de-contrato-honduras.html) — derechos adquiridos frente a preaviso y auxilio de cesantía.
+- [Qué gastos puede deducir tu empresa del ISR](https://nexoemp.com/analisis/gastos-deducibles-isr-honduras.html) — las tres condiciones de un gasto deducible y lo que nunca lo es.
 - [Comerciante individual o sociedad mercantil: cuál conviene en Honduras](https://nexoemp.com/analisis/comerciante-individual-vs-sociedad.html) — riesgo patrimonial, impuestos y cuándo dar el salto.
 - [Obligaciones laborales del empleador en Honduras](https://nexoemp.com/analisis/obligaciones-laborales-empleador-honduras.html) — IHSS, RAP, INFOP, retención del ISR y el costo real de contratar.
 - [Multas más comunes del SAR y cómo evitarlas](https://nexoemp.com/analisis/multas-comunes-sar-como-evitarlas.html) — declarar tarde, no enterar retenciones, CAI vencido, no llevar libros.
