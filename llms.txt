@@ -36,6 +36,14 @@ Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL
 
 - [Portada](https://nexoemp.com/): servicios, Nexo Labs, demos y contacto.
 - [Plataforma Nexo](https://nexoemp.com/plataforma.html): sistemas verticales.
+- [Precios de Nexo Contabilidad](https://nexoemp.com/precios.html): planes en
+  lempiras con ISV del 15 % incluido. Empresas (por empresa al mes): Básico
+  L 1,150.00, Medio L 1,725.00, Profesional L 2,300.00 y Empresarial
+  L 4,500.00, todos con todos los módulos; pago anual con 2 meses gratis.
+  Contadores (por empresa administrada al mes): Contador Libros L 345.00
+  (paquete de 5 empresas L 1,500.00) y Contador L 517.50 (mínimo 3 empresas).
+  Booster IA para contadores: 100, 300 o 1,000 lecturas al mes por L 113.85,
+  L 286.35 y L 803.85. Precios vigentes desde octubre de 2026.
 - [Análisis & Noticias](https://nexoemp.com/analisis/): artículos sobre
   obligaciones fiscales, contables, laborales y de formalización en Honduras.
 
