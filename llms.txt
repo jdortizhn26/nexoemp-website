@@ -1,10 +1,11 @@
 # Nexo Empresarial
 
-> Firma integral hondureña con sede en San Pedro Sula, Cortés. Integra cinco
-> disciplinas bajo una sola dirección profesional: asesoría fiscal y tributaria
-> ante el SAR, contabilidad, servicios legales corporativos, análisis financiero
-> y desarrollo de sistemas empresariales a medida (Nexo Labs). Atiende empresas
-> en todo Honduras, de forma remota y presencial.
+> Firma integral hondureña con sede en San Pedro Sula, Cortés. Lema: «Un
+> equipo. Cuatro ramas. Todo lo que su empresa necesita.» Las cuatro ramas son
+> legal, fiscal, contable y financiera, con un mismo equipo en cada etapa de la
+> empresa, de la escritura al estado financiero. Como apoyo, Nexo Labs desarrolla
+> sistemas empresariales a medida. Atiende empresas en todo Honduras, de forma
+> remota y presencial, y acompaña a inversionistas extranjeros.
 
 Contacto: josue@nexoemp.com · WhatsApp +504 3326-9814
 Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL)
@@ -16,17 +17,20 @@ Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL
   y declaración anual del ISR, atención de fiscalizaciones.
 - **Contabilidad**: libros y registros obligatorios, estados financieros,
   cierres de ejercicio, contabilidad para toma de decisiones.
-- **Legal corporativo**: constitución de sociedades (S. de R.L. y S.A.),
-  inscripción en el Registro Mercantil del Instituto de la Propiedad, pactos
-  sociales, estructuración de grupos empresariales.
+- **Legal corporativo**: constitución y reformas de sociedades (S. de R.L. y
+  S.A.), poderes, contrato de adhesión con Aduanas, contratos y gobierno
+  corporativo, gestiones ante el Registro Mercantil del Instituto de la
+  Propiedad y la municipalidad, y atención a inversionistas extranjeros. Las
+  escrituras se coordinan con notario independiente; los honorarios notariales
+  y las tasas se pagan aparte.
 - **Laboral**: inscripción del patrono ante IHSS, RAP e INFOP, planilla y
   retención del ISR de los trabajadores.
 - **Financiero**: análisis de rentabilidad, estructura de capital y
   planificación fiscal dentro de la ley.
 - **Nexo Labs**: sistemas a medida ya en producción para contabilidad,
   restaurantes, escuelas, préstamos, salud, jurídico y gestión de propiedades.
-- **Nexo Contabilidad** (https://contabilidad.nexoemp.com): el único sistema de
-  la suite abierto al público, con prueba gratuita de 14 días. Facturación con
+- **Nexo Contabilidad** (https://contabilidad.nexoemp.com): el sistema de la
+  suite que ya está abierto al público, con prueba gratuita de 14 días. Facturación con
   CAI/SAR e ISV, cuentas por cobrar y pagar, inventario, bancos, planilla
   hondureña (IHSS, RAP, ISR), activos fijos, centros de costo y estados
   financieros; cada operación genera su asiento contable cuadrado. Multiempresa,
@@ -34,7 +38,14 @@ Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL
 
 ## Páginas principales
 
-- [Portada](https://nexoemp.com/): servicios, Nexo Labs, demos y contacto.
+- [Portada](https://nexoemp.com/): las cuatro ramas, cómo trabajamos, equipo
+  por especialidad, Nexo Labs, análisis y contacto.
+- [Invertir en Honduras](https://nexoemp.com/invertir-en-honduras.html): para
+  empresas e inversionistas de fuera de Honduras. Recorrido en siete pasos
+  (documentos apostillados, escritura con notario independiente, Registro
+  Mercantil, RTN, facturación, contrato de adhesión con Aduanas, IHSS, RAP y
+  permiso municipal), costos claros y preguntas frecuentes. Los plazos dependen
+  de las instituciones públicas y se entregan por escrito en un calendario.
 - [Plataforma Nexo](https://nexoemp.com/plataforma.html): sistemas verticales.
 - [Precios de Nexo Contabilidad](https://nexoemp.com/precios.html): planes en
   lempiras con ISV del 15 % incluido. Empresas (por empresa al mes): Básico

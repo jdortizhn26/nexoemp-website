@@ -48,14 +48,14 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
 }
 .nav-logo{
-  height:92px;width:auto;
+  height:56px;width:150px;object-fit:cover;display:block;
   filter:brightness(0) invert(1);
   transition:transform .3s ease;
 }
 .nav-logo:hover{transform:scale(1.03);}
 @media(max-width:600px){
   nav{padding:12px 20px;}
-  .nav-logo{height:64px;}
+  .nav-logo{height:46px;width:124px;}
 }
 .nav-links{display:flex;gap:32px;align-items:center;}
 .nav-links a{
@@ -140,13 +140,13 @@ nav{
 
 /* ── PAGE HEADER (hub / artículo) ── */
 .page-head{
-  padding:180px 0 60px;
+  padding:150px 0 60px;
   background:
     radial-gradient(ellipse at 15% 0%, rgba(184,197,214,.08) 0%, transparent 55%),
     linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
   border-bottom:1px solid var(--line);
 }
-@media(max-width:600px){.page-head{padding:140px 0 48px;}}
+@media(max-width:600px){.page-head{padding:120px 0 48px;}}
 
 /* ── ARTICLE CARDS (grid) ── */
 .articles-grid{
