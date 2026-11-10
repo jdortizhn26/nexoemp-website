@@ -16,7 +16,7 @@ analisis/             Blog "Análisis & Noticias" (artículos SEO)
 labs/                 Redirect noindex a /plataforma.html
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
-  analytics.js        GA4 (un solo lugar para el ID de medición)
+  analytics.js        Medición: Vercel Analytics + GA4 (un solo lugar)
   og/                 Portadas 1200x630 (tarjetas + Open Graph)
   site.css            Estilos de las páginas de análisis
 scripts/
