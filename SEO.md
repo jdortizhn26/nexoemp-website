@@ -41,17 +41,10 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 Estos tres puntos no se pueden cerrar desde el repo porque dependen de datos
 que solo se obtienen iniciando sesión en Google.
 
-**23. Google Analytics 4.** El código ya está puesto y cargando en todas las
-páginas; solo falta el identificador.
+**23. Google Analytics 4.** Hecho (10 nov 2026): ID de medición `G-2ZQZV6K84S`
+en `assets/analytics.js`. Vercel Web Analytics también carga desde ese archivo.
 
-1. Entrá a [analytics.google.com](https://analytics.google.com) → Administrar →
-   Flujos de datos → Web → crear el flujo de `nexoemp.com`.
-2. Copiá el **ID de medición** (empieza con `G-`).
-3. Pegalo en `assets/analytics.js`, en la línea `var GA4_ID = "";`.
-4. Commit y push: con el ID vacío el archivo no hace nada, y con el ID
-   empieza a medir en el siguiente despliegue.
-
-**24. Google Search Console.** Verificar la propiedad `nexoemp.com`:
+**24. Google Search Console.** Hecho (10 nov 2026): propiedad de dominio `nexoemp.com` verificada por el proveedor de dominio. Pasos originales, por si hubiera que repetirlos:
 
 1. Entrá a [search.google.com/search-console](https://search.google.com/search-console)
    y agregá la propiedad.
@@ -60,7 +53,7 @@ páginas; solo falta el identificador.
 3. Pegala en el `<head>` de `index.html`, junto a las otras `<meta>`, y subila.
 4. Volvé a Search Console y pulsá Verificar.
 
-**26. Enviar el sitemap en Search Console.** Ya verificada la propiedad:
+**26. Enviar el sitemap en Search Console.** Hecho (10 nov 2026): `https://nexoemp.com/sitemap.xml`, estado Correcto. Pasos:
 Search Console → Sitemaps → escribir `sitemap.xml` → Enviar.
 
 ## Cómo se mantiene
