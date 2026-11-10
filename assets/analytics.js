@@ -25,7 +25,7 @@
   v.src = "/_vercel/insights/script.js";
   document.head.appendChild(v);
 
-  var GA4_ID = "";
+  var GA4_ID = "G-2ZQZV6K84S";
 
   if (!GA4_ID) return;
 
