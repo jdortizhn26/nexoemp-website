@@ -323,6 +323,7 @@ ICONO_POR_SLUG = {
     "constituir-sociedad-honduras-ruta-formalizacion": icono_ruta,
     "contador-externo-o-departamento-contable": icono_calculadora,
     "cierre-fiscal-honduras-7-puntos-clave": icono_lista_check,
+    "contadores": icono_ruta,
     "default": icono_balanza,
 }
 
