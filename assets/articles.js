@@ -37,23 +37,23 @@ window.NEXO_ARTICLES = [
   {
     slug: "cuanto-se-paga-de-isr-en-honduras",
     title: "¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta",
-    metaTitle: "Cuánto se paga de ISR en Honduras: tramos y cálculo",
+    metaTitle: "Cuánto se paga de ISR en Honduras: tabla 2026 y cálculo",
     category: "Fiscal / SAR",
-    date: "2026-08-15",
+    date: "2026-11-10",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Saber cuánto impuesto sobre la renta paga una persona en Honduras y cómo se calcula.",
-    excerpt: "El ISR de una persona natural no se paga sobre todo lo que gana: hay un tramo exento y una escala progresiva. Te explicamos la lógica del cálculo, quién declara y quién no.",
+    excerpt: "El ISR de una persona natural no se paga sobre todo lo que gana: hay un tramo exento y una escala del 15 %, 20 % y 25 %. Le mostramos la tabla 2026 del SAR, dos ejemplos de cálculo y cuándo se declara.",
     tldr: [
       "El ISR de las personas naturales es progresivo: hay un tramo exento y, sobre el excedente, tasas que suben por tramos (15 %, 20 % y 25 %).",
       "Nadie paga la tasa más alta sobre todo su ingreso: cada tasa se aplica solo a la porción que cae dentro de su tramo.",
-      "Los montos de cada tramo los actualiza el SAR cada año, así que la tabla vigente hay que consultarla antes de calcular.",
-      "Al asalariado con un solo patrono se le retiene mes a mes; quien tiene ingresos por su cuenta suele estar obligado a presentar declaración anual."
+      "Para 2026, según la tabla del SAR, la renta neta gravable anual está exenta hasta L 228,324.32, que equivale a un salario de hasta L 22,360.36 al mes.",
+      "Al asalariado el patrono le retiene el ISR cada mes; la declaración anual se presenta entre el 1 de enero y el 30 de abril del año siguiente (Arts. 27 y 28 de la Ley del ISR)."
     ],
     faq: [
       {
         q: "¿Cuánto se paga de impuesto sobre la renta en Honduras?",
-        a: "Depende de cuánto se gane al año. El ISR de personas naturales es progresivo: existe un tramo exento sobre el que no se paga nada y, sobre lo que excede, se aplican tasas crecientes por tramos (15 %, 20 % y 25 %). Los montos de cada tramo se actualizan cada año, por lo que conviene consultar la tabla vigente publicada por el SAR."
+        a: "Depende de cuánto se gane al año. El ISR de personas naturales es progresivo: existe un tramo exento sobre el que no se paga nada y, sobre lo que excede, se aplican tasas crecientes por tramos (15 %, 20 % y 25 %). Para 2026 está exenta la renta neta gravable de hasta L 228,324.32 al año; paga 15 % la porción hasta L 348,154.10, 20 % la porción hasta L 809,660.75 y 25 % lo que exceda. Los tramos se actualizan cada año con la inflación."
       },
       {
         q: "Si mi sueldo entra en el tramo del 25 %, ¿pago 25 % de todo?",
@@ -61,7 +61,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Un empleado asalariado tiene que presentar declaración de ISR?",
-        a: "Como regla general, el asalariado que recibe su sueldo de un solo patrono no presenta declaración, porque el patrono ya le retiene el impuesto mes a mes y lo entera al SAR. La obligación de declarar aparece cuando hay ingresos de otras fuentes, más de un patrono o actividad por cuenta propia. Ante la duda, confirmá tu caso con un contador."
+        a: "La Ley del ISR (Arts. 27 y 28) fija la declaración anual entre el 1 de enero y el 30 de abril del año siguiente. Lo que el patrono retuvo durante el año se acredita contra el impuesto. Si además del salario tiene otros ingresos o más de un patrono, la retención suele quedar corta y la declaración es la que ajusta la diferencia; si su único ingreso es un salario, confirme su caso con su contador o con el SAR."
       },
       {
         q: "¿El ISR de una empresa se calcula igual que el de una persona?",
@@ -74,16 +74,16 @@ window.NEXO_ARTICLES = [
     title: "Del sueldo bruto al neto en Honduras: qué se descuenta y por qué",
     metaTitle: "Cómo calcular el sueldo neto en Honduras: IHSS, RAP e ISR",
     category: "Laboral",
-    date: "2026-08-15",
+    date: "2026-11-10",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Entender qué descuentos convierten el sueldo bruto pactado en el neto que recibe el trabajador.",
-    excerpt: "IHSS, RAP y retención del ISR explican casi toda la diferencia entre lo que se pactó y lo que llega a la cuenta. Te mostramos el orden del cálculo y qué paga el patrono aparte.",
+    excerpt: "IHSS, RAP y retención del ISR explican casi toda la diferencia entre lo que se pactó y lo que llega a la cuenta. Le mostramos el orden del cálculo y qué paga el patrono aparte.",
     tldr: [
       "Del sueldo bruto salen tres descuentos de ley al trabajador: su cuota del IHSS, su aporte al RAP y la retención del ISR.",
       "El IHSS y el RAP se calculan sobre bases con techo de cotización, así que un aumento de sueldo no siempre aumenta el descuento en la misma proporción.",
-      "La retención del ISR se calcula sobre la base gravable, después de restar los aportes de ley y las deducciones que permite la norma.",
-      "Aparte de lo que descuenta, el patrono paga su propia cuota patronal de IHSS y RAP más el aporte al INFOP: ese es el costo real del puesto."
+      "La retención del ISR se calcula sobre el salario anual menos las deducciones de ley, la principal de L 40,000 al año sin comprobante (Art. 13 a de la Ley del ISR), y con la tabla vigente.",
+      "Aparte de lo que descuenta, el patrono paga su propia cuota patronal de IHSS y RAP y, cuando está obligado, el aporte al INFOP: ese es el costo real del puesto."
     ],
     faq: [
       {
@@ -96,7 +96,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿El patrono paga algo además de lo que me descuenta?",
-        a: "Sí, y suele ser más de lo que la gente imagina. Además de enterar lo retenido al trabajador, el patrono paga su cuota patronal del IHSS y del RAP y el aporte al INFOP. Por eso el costo de un puesto siempre es mayor que el sueldo bruto pactado."
+        a: "Sí, y suele ser más de lo que la gente imagina. Además de enterar lo retenido al trabajador, el patrono paga su cuota patronal del IHSS y del RAP y, cuando está obligado, el aporte al INFOP. Por eso el costo de un puesto siempre es mayor que el sueldo bruto pactado."
       }
     ]
   },
@@ -105,7 +105,7 @@ window.NEXO_ARTICLES = [
     title: "Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan",
     metaTitle: "Décimo tercero y décimo cuarto en Honduras: cálculo y fechas",
     category: "Laboral",
-    date: "2026-08-15",
+    date: "2026-11-10",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Calcular correctamente el décimo tercer y el décimo cuarto mes de salario y saber cuándo corresponde pagarlos.",
@@ -114,7 +114,7 @@ window.NEXO_ARTICLES = [
       "Son dos prestaciones separadas: el décimo tercer mes se paga a fin de año y el décimo cuarto a mitad de año.",
       "Cada uno equivale a un mes de salario cuando el trabajador completó el período correspondiente.",
       "Si entró o salió a mitad del período, se paga la parte proporcional al tiempo efectivamente trabajado.",
-      "No son un bono voluntario ni sustituyen al aguinaldo: son obligaciones de ley y su falta de pago genera reclamos."
+      "No son un bono voluntario: el décimo tercer mes es el aguinaldo de ley y el décimo cuarto es una prestación aparte; los dos son obligatorios y su falta de pago genera reclamos."
     ],
     faq: [
       {
@@ -136,21 +136,21 @@ window.NEXO_ARTICLES = [
     title: "Qué se le paga a un empleado cuando termina su contrato en Honduras",
     metaTitle: "Prestaciones laborales en Honduras: qué se paga al salir",
     category: "Laboral",
-    date: "2026-08-15",
+    date: "2026-11-10",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Distinguir qué conceptos se pagan siempre al terminar una relación laboral y cuáles dependen de la causa de la salida.",
     excerpt: "Hay conceptos que se pagan siempre y otros que dependen de por qué terminó la relación. Confundirlos es el origen de la mayoría de las demandas laborales contra las MIPYME.",
     tldr: [
       "Los derechos adquiridos —vacaciones y décimos proporcionales, salario pendiente— se pagan siempre, sin importar quién terminó la relación.",
-      "El preaviso y el auxilio de cesantía son distintos: proceden cuando el despido no tiene causa justificada, no en toda salida.",
+      "El preaviso y el auxilio de cesantía proceden cuando el despido no tiene causa justificada, con una excepción: quien renuncia tras 15 años o más de servicio continuo recibe el 35 % de la cesantía (Art. 120, literal g, del Código del Trabajo).",
       "Una renuncia no borra los derechos ya devengados; solo cambia si corresponden o no los conceptos indemnizatorios.",
       "El cálculo depende de la antigüedad y del salario base, y ahí es donde nacen la mayoría de los reclamos: documentar fechas y pagos es la mejor defensa."
     ],
     faq: [
       {
         q: "¿Qué se le paga a un empleado que renuncia en Honduras?",
-        a: "Los derechos ya devengados: el salario pendiente, las vacaciones proporcionales y la parte proporcional de los décimos. Los conceptos indemnizatorios propios del despido sin causa justificada, como el preaviso y el auxilio de cesantía, no proceden por el solo hecho de renunciar."
+        a: "Los derechos ya devengados: el salario pendiente, las vacaciones proporcionales y la parte proporcional de los décimos. Los conceptos indemnizatorios propios del despido sin causa justificada, como el preaviso y el auxilio de cesantía, no proceden por el solo hecho de renunciar, con una excepción: quien renuncia después de 15 años o más de trabajo continuo tiene derecho al 35 % del auxilio de cesantía que le correspondería (Art. 120, literal g, del Código del Trabajo)."
       },
       {
         q: "¿Qué diferencia hay entre preaviso y auxilio de cesantía?",
@@ -158,25 +158,25 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Puedo pagar la liquidación en cuotas?",
-        a: "El pago de la liquidación tiene plazos y formalidades que conviene respetar; los acuerdos de pago deben documentarse con cuidado y no pueden usarse para renunciar a derechos irrenunciables. Antes de proponer un arreglo, revisá el caso con un asesor: un acuerdo mal documentado no protege al empleador."
+        a: "El pago de la liquidación tiene plazos y formalidades que conviene respetar; los acuerdos de pago deben documentarse con cuidado y no pueden usarse para renunciar a derechos irrenunciables. Antes de proponer un arreglo, revise el caso con un asesor: un acuerdo mal documentado no protege al empleador."
       }
     ]
   },
   {
     slug: "gastos-deducibles-isr-honduras",
-    title: "Qué gastos puede deducir tu empresa del ISR en Honduras",
+    title: "Qué gastos puede deducir su empresa del ISR en Honduras",
     metaTitle: "Gastos deducibles del ISR en Honduras: requisitos y errores",
     category: "Fiscal / SAR",
-    date: "2026-08-15",
+    date: "2026-11-10",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Saber qué gastos reducen legalmente el impuesto de una empresa y qué requisitos debe cumplir cada comprobante.",
-    excerpt: "No todo lo que la empresa paga reduce el impuesto. Un gasto es deducible cuando es necesario para generar la renta, está documentado y está registrado — y falla cualquiera de los tres, se cae.",
+    excerpt: "No todo lo que la empresa paga reduce el impuesto. Un gasto es deducible cuando es necesario para generar la renta, está documentado y está registrado; si falla cualquiera de los tres, se cae.",
     tldr: [
       "Un gasto es deducible cuando cumple tres condiciones a la vez: es necesario para generar la renta, está documentado con un comprobante válido y está registrado en la contabilidad.",
       "El comprobante debe ser un documento fiscal autorizado, emitido a nombre y con el RTN de la empresa: la factura a nombre del socio no sirve.",
-      "Los gastos personales mezclados con los del negocio son la causa número uno de ajustes en una fiscalización.",
-      "Multas, recargos y pagos sin la retención que correspondía no son deducibles, aunque estén documentados."
+      "Los gastos personales del dueño o de su familia no son deducibles aunque los pague la empresa (Art. 12, literal c, de la Ley del ISR).",
+      "Una multa difícilmente es un gasto necesario para generar la renta, y si la empresa debía retener y no retuvo, responde solidariamente por ese impuesto (Art. 51 de la Ley del ISR)."
     ],
     faq: [
       {
@@ -189,7 +189,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Las multas del SAR se pueden deducir como gasto?",
-        a: "No. Las multas y los recargos por incumplimiento no son deducibles: la ley no permite que la sanción reduzca el impuesto. Ese es un costo que la empresa absorbe íntegro, lo que hace todavía más cara la falta de cumplimiento."
+        a: "No cuente con ello. La ley admite como deducibles los gastos ordinarios y necesarios para generar la renta (Art. 11 de la Ley del ISR), y una multa por incumplir una obligación difícilmente cumple esa condición. Lo prudente es tratarla como un costo que la empresa absorbe completo y confirmar el criterio con su contador."
       }
     ]
   },
