@@ -47,6 +47,10 @@ Sitio: https://nexoemp.com/ · Idioma: español (es-HN) · Moneda: lempiras (HNL
   permiso municipal), costos claros y preguntas frecuentes. Los plazos dependen
   de las instituciones públicas y se entregan por escrito en un calendario.
 - [Plataforma Nexo](https://nexoemp.com/plataforma.html): sistemas verticales.
+- [Contadores en San Pedro Sula](https://nexoemp.com/contadores/): oficina en
+  Colonia Los Laureles, 22 Calle B, 12 Avenida, Oficina No. 3, San Pedro Sula;
+  visitas presenciales a Tela, Santa Rosa de Copán, Santa Bárbara, Siguatepeque
+  y Comayagua, y trámites legales en Tegucigalpa.
 - [Precios de Nexo Contabilidad](https://nexoemp.com/precios.html): planes en
   lempiras con ISV del 15 % incluido. Empresas (por empresa al mes): Básico
   L 1,150.00, Medio L 1,725.00, Profesional L 2,300.00 y Empresarial
