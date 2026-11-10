@@ -35,12 +35,171 @@
    ════════════════════════════════════════════════════════════════ */
 window.NEXO_ARTICLES = [
   {
+    slug: "cuanto-se-paga-de-isr-en-honduras",
+    title: "¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta",
+    metaTitle: "Cuánto se paga de ISR en Honduras: tabla 2026 y cálculo",
+    category: "Fiscal / SAR",
+    date: "2026-11-10",
+    author: "Dirección profesional",
+    cluster: "fiscal",
+    intent: "Saber cuánto impuesto sobre la renta paga una persona en Honduras y cómo se calcula.",
+    excerpt: "El ISR de una persona natural no se paga sobre todo lo que gana: hay un tramo exento y una escala del 15 %, 20 % y 25 %. Le mostramos la tabla 2026 del SAR, dos ejemplos de cálculo y cuándo se declara.",
+    tldr: [
+      "El ISR de las personas naturales es progresivo: hay un tramo exento y, sobre el excedente, tasas que suben por tramos (15 %, 20 % y 25 %).",
+      "Nadie paga la tasa más alta sobre todo su ingreso: cada tasa se aplica solo a la porción que cae dentro de su tramo.",
+      "Para 2026, según la tabla del SAR, la renta neta gravable anual está exenta hasta L 228,324.32, que equivale a un salario de hasta L 22,360.36 al mes.",
+      "Al asalariado el patrono le retiene el ISR cada mes; la declaración anual se presenta entre el 1 de enero y el 30 de abril del año siguiente (Arts. 27 y 28 de la Ley del ISR)."
+    ],
+    faq: [
+      {
+        q: "¿Cuánto se paga de impuesto sobre la renta en Honduras?",
+        a: "Depende de cuánto se gane al año. El ISR de personas naturales es progresivo: existe un tramo exento sobre el que no se paga nada y, sobre lo que excede, se aplican tasas crecientes por tramos (15 %, 20 % y 25 %). Para 2026 está exenta la renta neta gravable de hasta L 228,324.32 al año; paga 15 % la porción hasta L 348,154.10, 20 % la porción hasta L 809,660.75 y 25 % lo que exceda. Los tramos se actualizan cada año con la inflación."
+      },
+      {
+        q: "Si mi sueldo entra en el tramo del 25 %, ¿pago 25 % de todo?",
+        a: "No. La escala es progresiva, no de todo o nada: el tramo exento sigue sin pagar, la porción que cae en el primer tramo gravado paga su tasa, y así sucesivamente. Solo la parte del ingreso que supera el umbral del último tramo paga la tasa más alta."
+      },
+      {
+        q: "¿Un empleado asalariado tiene que presentar declaración de ISR?",
+        a: "La Ley del ISR (Arts. 27 y 28) fija la declaración anual entre el 1 de enero y el 30 de abril del año siguiente. Lo que el patrono retuvo durante el año se acredita contra el impuesto. Si además del salario tiene otros ingresos o más de un patrono, la retención suele quedar corta y la declaración es la que ajusta la diferencia; si su único ingreso es un salario, confirme su caso con su contador o con el SAR."
+      },
+      {
+        q: "¿El ISR de una empresa se calcula igual que el de una persona?",
+        a: "No. Las sociedades no usan la escala progresiva: tributan a una tasa fija sobre la renta neta gravable, más la aportación solidaria sobre el excedente que fija la ley. La lógica de deducciones y de pagos a cuenta también es distinta."
+      }
+    ]
+  },
+  {
+    slug: "calcular-sueldo-neto-honduras",
+    title: "Del sueldo bruto al neto en Honduras: qué se descuenta y por qué",
+    metaTitle: "Cómo calcular el sueldo neto en Honduras: IHSS, RAP e ISR",
+    category: "Laboral",
+    date: "2026-11-10",
+    author: "Dirección profesional",
+    cluster: "laboral",
+    intent: "Entender qué descuentos convierten el sueldo bruto pactado en el neto que recibe el trabajador.",
+    excerpt: "IHSS, RAP y retención del ISR explican casi toda la diferencia entre lo que se pactó y lo que llega a la cuenta. Le mostramos el orden del cálculo y qué paga el patrono aparte.",
+    tldr: [
+      "Del sueldo bruto salen tres descuentos de ley al trabajador: su cuota del IHSS, su aporte al RAP y la retención del ISR.",
+      "El IHSS y el RAP se calculan sobre bases con techo de cotización, así que un aumento de sueldo no siempre aumenta el descuento en la misma proporción.",
+      "La retención del ISR se calcula sobre el salario anual menos las deducciones de ley, la principal de L 40,000 al año sin comprobante (Art. 13 a de la Ley del ISR), y con la tabla vigente.",
+      "Aparte de lo que descuenta, el patrono paga su propia cuota patronal de IHSS y RAP y, cuando está obligado, el aporte al INFOP: ese es el costo real del puesto."
+    ],
+    faq: [
+      {
+        q: "¿Qué descuentos de ley se le hacen a un salario en Honduras?",
+        a: "Al trabajador se le descuenta su cuota del IHSS (seguridad social), su aporte al RAP y la retención del Impuesto Sobre la Renta cuando su salario supera el mínimo exento. Cualquier otro descuento —préstamos, cooperativa, embargos— requiere base legal o autorización del trabajador."
+      },
+      {
+        q: "¿Por qué mi descuento del IHSS no sube cuando me aumentan el sueldo?",
+        a: "Porque el IHSS cotiza sobre un salario base con techo: a partir de cierto monto, el descuento deja de crecer aunque el sueldo siga subiendo. Ese techo lo actualiza el IHSS periódicamente, así que conviene verificar el vigente."
+      },
+      {
+        q: "¿El patrono paga algo además de lo que me descuenta?",
+        a: "Sí, y suele ser más de lo que la gente imagina. Además de enterar lo retenido al trabajador, el patrono paga su cuota patronal del IHSS y del RAP y, cuando está obligado, el aporte al INFOP. Por eso el costo de un puesto siempre es mayor que el sueldo bruto pactado."
+      }
+    ]
+  },
+  {
+    slug: "decimo-tercero-y-decimo-cuarto-honduras",
+    title: "Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan",
+    metaTitle: "Décimo tercero y décimo cuarto en Honduras: cálculo y fechas",
+    category: "Laboral",
+    date: "2026-11-10",
+    author: "Dirección profesional",
+    cluster: "laboral",
+    intent: "Calcular correctamente el décimo tercer y el décimo cuarto mes de salario y saber cuándo corresponde pagarlos.",
+    excerpt: "Son dos pagos distintos, con fechas distintas, y ambos se prorratean cuando el trabajador no completó el año. La confusión entre ellos es una de las causas más frecuentes de reclamo.",
+    tldr: [
+      "Son dos prestaciones separadas: el décimo tercer mes se paga a fin de año y el décimo cuarto a mitad de año.",
+      "Cada uno equivale a un mes de salario cuando el trabajador completó el período correspondiente.",
+      "Si entró o salió a mitad del período, se paga la parte proporcional al tiempo efectivamente trabajado.",
+      "No son un bono voluntario: el décimo tercer mes es el aguinaldo de ley y el décimo cuarto es una prestación aparte; los dos son obligatorios y su falta de pago genera reclamos."
+    ],
+    faq: [
+      {
+        q: "¿Cuál es la diferencia entre el décimo tercer y el décimo cuarto mes?",
+        a: "Son dos prestaciones independientes que se pagan en momentos distintos del año: el décimo tercer mes corresponde al cierre del año y el décimo cuarto a mitad de año. Cada uno se calcula por separado y ninguno reemplaza al otro."
+      },
+      {
+        q: "¿Cómo se calcula el décimo si el empleado no trabajó todo el año?",
+        a: "Se paga la parte proporcional al tiempo efectivamente trabajado dentro del período que cubre esa prestación. La proporción se calcula sobre el salario que corresponde según la regla de cálculo aplicable, así que conviene documentar bien las fechas de ingreso y salida."
+      },
+      {
+        q: "¿Se le puede descontar el décimo a un empleado que renunció?",
+        a: "No. La parte proporcional ya devengada es un derecho adquirido y debe pagarse en la liquidación, con independencia de si el trabajador renunció o fue despedido. Retenerla es una de las causas más frecuentes de reclamo laboral."
+      }
+    ]
+  },
+  {
+    slug: "prestaciones-laborales-fin-de-contrato-honduras",
+    title: "Qué se le paga a un empleado cuando termina su contrato en Honduras",
+    metaTitle: "Prestaciones laborales en Honduras: qué se paga al salir",
+    category: "Laboral",
+    date: "2026-11-10",
+    author: "Dirección profesional",
+    cluster: "laboral",
+    intent: "Distinguir qué conceptos se pagan siempre al terminar una relación laboral y cuáles dependen de la causa de la salida.",
+    excerpt: "Hay conceptos que se pagan siempre y otros que dependen de por qué terminó la relación. Confundirlos es el origen de la mayoría de las demandas laborales contra las MIPYME.",
+    tldr: [
+      "Los derechos adquiridos —vacaciones y décimos proporcionales, salario pendiente— se pagan siempre, sin importar quién terminó la relación.",
+      "El preaviso y el auxilio de cesantía proceden cuando el despido no tiene causa justificada, con una excepción: quien renuncia tras 15 años o más de servicio continuo recibe el 35 % de la cesantía (Art. 120, literal g, del Código del Trabajo).",
+      "Una renuncia no borra los derechos ya devengados; solo cambia si corresponden o no los conceptos indemnizatorios.",
+      "El cálculo depende de la antigüedad y del salario base, y ahí es donde nacen la mayoría de los reclamos: documentar fechas y pagos es la mejor defensa."
+    ],
+    faq: [
+      {
+        q: "¿Qué se le paga a un empleado que renuncia en Honduras?",
+        a: "Los derechos ya devengados: el salario pendiente, las vacaciones proporcionales y la parte proporcional de los décimos. Los conceptos indemnizatorios propios del despido sin causa justificada, como el preaviso y el auxilio de cesantía, no proceden por el solo hecho de renunciar, con una excepción: quien renuncia después de 15 años o más de trabajo continuo tiene derecho al 35 % del auxilio de cesantía que le correspondería (Art. 120, literal g, del Código del Trabajo)."
+      },
+      {
+        q: "¿Qué diferencia hay entre preaviso y auxilio de cesantía?",
+        a: "El preaviso compensa la falta de aviso anticipado de la terminación; el auxilio de cesantía compensa el tiempo de servicio acumulado. Son conceptos distintos, con reglas de cálculo distintas, y ambos dependen de la antigüedad del trabajador."
+      },
+      {
+        q: "¿Puedo pagar la liquidación en cuotas?",
+        a: "El pago de la liquidación tiene plazos y formalidades que conviene respetar; los acuerdos de pago deben documentarse con cuidado y no pueden usarse para renunciar a derechos irrenunciables. Antes de proponer un arreglo, revise el caso con un asesor: un acuerdo mal documentado no protege al empleador."
+      }
+    ]
+  },
+  {
+    slug: "gastos-deducibles-isr-honduras",
+    title: "Qué gastos puede deducir su empresa del ISR en Honduras",
+    metaTitle: "Gastos deducibles del ISR en Honduras: requisitos y errores",
+    category: "Fiscal / SAR",
+    date: "2026-11-10",
+    author: "Dirección profesional",
+    cluster: "fiscal",
+    intent: "Saber qué gastos reducen legalmente el impuesto de una empresa y qué requisitos debe cumplir cada comprobante.",
+    excerpt: "No todo lo que la empresa paga reduce el impuesto. Un gasto es deducible cuando es necesario para generar la renta, está documentado y está registrado; si falla cualquiera de los tres, se cae.",
+    tldr: [
+      "Un gasto es deducible cuando cumple tres condiciones a la vez: es necesario para generar la renta, está documentado con un comprobante válido y está registrado en la contabilidad.",
+      "El comprobante debe ser un documento fiscal autorizado, emitido a nombre y con el RTN de la empresa: la factura a nombre del socio no sirve.",
+      "Los gastos personales del dueño o de su familia no son deducibles aunque los pague la empresa (Art. 12, literal c, de la Ley del ISR).",
+      "Una multa difícilmente es un gasto necesario para generar la renta, y si la empresa debía retener y no retuvo, responde solidariamente por ese impuesto (Art. 51 de la Ley del ISR)."
+    ],
+    faq: [
+      {
+        q: "¿Qué requisitos debe cumplir un gasto para ser deducible en Honduras?",
+        a: "Debe ser necesario para generar o mantener la renta gravable, estar respaldado por un documento fiscal válido emitido a nombre y con el RTN de la empresa, y estar registrado en la contabilidad en el período correspondiente. Si falla cualquiera de esos tres elementos, el gasto es objetable en una revisión."
+      },
+      {
+        q: "¿Puedo deducir una factura que está a mi nombre y no al de la empresa?",
+        a: "No. Si la empresa es una sociedad, es una persona distinta de sus socios: el comprobante debe estar emitido a nombre y con el RTN de la sociedad. Facturar a título personal lo del negocio es uno de los errores que más ajustes genera."
+      },
+      {
+        q: "¿Las multas del SAR se pueden deducir como gasto?",
+        a: "No cuente con ello. La ley admite como deducibles los gastos ordinarios y necesarios para generar la renta (Art. 11 de la Ley del ISR), y una multa por incumplir una obligación difícilmente cumple esa condición. Lo prudente es tratarla como un costo que la empresa absorbe completo y confirmar el criterio con su contador."
+      }
+    ]
+  },
+  {
     slug: "comerciante-individual-vs-sociedad",
     title: "Comerciante individual o sociedad mercantil: cuál conviene en Honduras",
     metaTitle: "Comerciante individual vs. sociedad en Honduras: cuál conviene",
     category: "Guía",
     date: "2026-07-01",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Entender qué figura jurídica conviene para un negocio en Honduras antes de formalizarlo.",
     excerpt: "Guía práctica para dueños de MIPYME en Honduras: diferencias entre comerciante individual y sociedad mercantil, riesgo patrimonial, impuestos y cuándo dar el salto.",
@@ -71,7 +230,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Obligaciones laborales en Honduras: IHSS, RAP, INFOP e ISR",
     category: "Laboral",
     date: "2026-06-27",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "laboral",
     intent: "Saber qué debe pagar y registrar un empleador hondureño por cada trabajador contratado.",
     excerpt: "IHSS, RAP, INFOP, retención del ISR y prestaciones básicas: una guía clara para que tu MIPYME contrate en regla y calcule el costo verdadero de cada empleado.",
@@ -102,7 +261,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Multas del SAR en Honduras: las 4 más comunes y cómo evitarlas",
     category: "Fiscal / SAR",
     date: "2026-06-25",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Identificar por qué sanciona el SAR a una MIPYME y qué rutina previene cada multa.",
     excerpt: "Las sanciones del SAR rara vez llegan por sorpresa: casi siempre nacen de descuidos evitables. Le explicamos las cuatro más frecuentes y cómo blindar su negocio.",
@@ -137,7 +296,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Libros contables obligatorios en Honduras: qué exige la ley",
     category: "Contable",
     date: "2026-06-23",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "contable",
     intent: "Saber qué libros y registros contables debe llevar una empresa hondureña y por qué.",
     excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de tu empresa. Te explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño.",
@@ -168,7 +327,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Cómo leer estados financieros: balance, resultados y flujo",
     category: "Financiero",
     date: "2026-06-17",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "contable",
     intent: "Interpretar los reportes contables que recibe el dueño de un negocio, sin tecnicismos.",
     excerpt: "Aprende a interpretar el balance general, el estado de resultados y el flujo de efectivo sin tecnicismos, y descubre qué mirar en cada uno para tomar mejores decisiones.",
@@ -199,7 +358,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Factura electrónica en Honduras: cómo prepararse desde hoy",
     category: "Fiscal / SAR",
     date: "2026-06-13",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Anticipar el cambio hacia la facturación electrónica y saber qué ordenar desde ahora.",
     excerpt: "El régimen de facturación en Honduras avanza hacia lo electrónico. Le explicamos qué significa para su MIPYME y cómo ordenar su facturación desde hoy.",
@@ -230,7 +389,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Impuestos de una empresa en Honduras: ISV, ISR y retenciones",
     category: "Fiscal / SAR",
     date: "2026-06-20",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Conocer qué impuestos paga una empresa hondureña y con qué lógica se calcula cada uno.",
     excerpt: "El mapa básico de la carga tributaria de una empresa en Honduras: ISV, ISR, aportación solidaria, impuesto al activo neto, pagos a cuenta y retenciones — en lenguaje claro.",
@@ -265,7 +424,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "RTN en Honduras: qué es, para qué sirve y cómo obtenerlo",
     category: "Guía",
     date: "2026-06-10",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Obtener el Registro Tributario Nacional y entender qué obligaciones activa tenerlo.",
     excerpt: "El primer documento fiscal que necesita cualquier persona o empresa para operar formalmente en Honduras. Qué es, para qué sirve y cómo se obtiene.",
@@ -296,7 +455,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Factura legal en Honduras: requisitos del SAR y errores comunes",
     category: "Fiscal / SAR",
     date: "2026-06-02",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Verificar que las facturas del negocio cumplan los requisitos del SAR antes de emitirlas.",
     excerpt: "CAI, RTN, rango de numeración y fecha límite: los elementos que hacen válida una factura — y los errores que más rápido generan multas del SAR.",
@@ -327,7 +486,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Constituir una sociedad en Honduras: pasos y orden correcto",
     category: "Guía",
     date: "2026-05-28",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Conocer el orden correcto de los trámites para constituir y formalizar una empresa en Honduras.",
     excerpt: "Del pacto social a la operación legal: el orden correcto de inscripciones ante el Instituto de la Propiedad, el SAR, IHSS, RAP, INFOP y la municipalidad — y los errores que más cuestan después.",
@@ -358,7 +517,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Contador externo o interno: cuál conviene a tu empresa",
     category: "Contable",
     date: "2026-05-20",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "contable",
     intent: "Decidir entre tercerizar la contabilidad o montar un equipo contable interno.",
     excerpt: "Costos, control y escala: cuándo conviene tercerizar la contabilidad, cuándo montar un equipo interno y por qué el modelo híbrido suele ganar.",
@@ -389,7 +548,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Cierre fiscal en Honduras: checklist antes de cerrar el período",
     category: "Fiscal / SAR",
     date: "2026-04-15",
-    author: "Nexo Empresarial",
+    author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Revisar la contabilidad antes del cierre del ejercicio para evitar ajustes y observaciones del SAR.",
     excerpt: "El cierre no empieza en diciembre. Una revisión ordenada de conciliaciones, gastos no deducibles, retenciones e inventarios evita ajustes, multas y sorpresas frente al SAR.",
