@@ -11,9 +11,11 @@ index.html            Portada (servicios, labs, demos, contacto)
 plataforma.html       Plataforma Nexo (sistemas verticales)
 analisis/             Blog "Análisis & Noticias" (artículos SEO)
   _plantilla.html     Plantilla de artículo (no borrar)
-  index.html          Hub que lista todos los artículos
+  index.html          Hub que lista todos los artículos (listado estático generado)
   README.md           Guía de publicación
-labs/                 Redirect noindex a /plataforma.html
+labs/                 Redirect noindex a /plataforma.html (respaldo; el 308 real está en vercel.json)
+vercel.json           Solo redirecciones: /labs y el dominio nexoemp-website.vercel.app → nexoemp.com
+404.html              Página de error propia (Vercel la sirve en cualquier 404)
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
   analytics.js        Medición: Vercel Analytics + GA4 (un solo lugar)
@@ -36,8 +38,9 @@ SEO.md                Checklist SEO/GEO: qué está hecho y qué falta a mano
    H1), `category`, `date` AAAA-MM-DD, `author`, `excerpt`, `intent`,
    `cluster`, `tldr` y `faq`.
 2. `node scripts/nuevo-articulo.mjs` — genera `analisis/<slug>.html` desde la
-   plantilla (SEO/OG/JSON-LD rellenados y bloques SEO insertados), la portada
-   `assets/og/<slug>.png` y la entrada en `sitemap.xml`.
+   plantilla (SEO/OG rellenados y bloques SEO insertados), la portada
+   `assets/og/<slug>.png`, la entrada en `sitemap.xml` y la tarjeta en el
+   listado estático del hub y de la portada.
 3. Redactar el cuerpo en el HTML generado (reemplazar los `[[corchetes]]`).
 4. Agregar el artículo a `llms.txt` (es lo único que se mantiene a mano).
 
@@ -48,10 +51,17 @@ desincronizan o quedan placeholders).
 ## Bloques SEO de los artículos (`scripts/bloques-seo.mjs`)
 
 Todo lo que en un artículo no es el cuerpo redactado a mano se genera desde
-`articles.js` y vive entre marcadores `<!-- nexo:<id>:inicio/fin -->`: el
-resumen "En resumen", el CTA tras el primer párrafo, las preguntas frecuentes
-visibles y su `FAQPage`, las migas de pan, los artículos relacionados, los
+`articles.js` y vive entre marcadores `<!-- nexo:<id>:inicio/fin -->`: el menú
+y el pie del sitio, el resumen "En resumen", el CTA tras el primer párrafo, el
+CTA al terminar el artículo, las preguntas frecuentes visibles, los schemas
+`Article` y `FAQPage`, las migas de pan, los artículos relacionados, los
 botones de compartir, la carga de GA4 y la barra fija de contacto en móvil.
+
+El mismo script mantiene, también entre marcadores, el listado de tarjetas de
+`analisis/index.html` (`nexo:listado`), las tres más recientes de `index.html`
+(`nexo:ultimos`) y la fecha de `/analisis/` en `sitemap.xml`. Ese listado es
+HTML estático a propósito: los rastreadores que no ejecutan JavaScript tienen
+que poder seguir los enlaces a cada artículo.
 
 - Para cambiarlos: editar `articles.js` y correr `node scripts/bloques-seo.mjs`.
   Reaplicar es idempotente y **no toca** el texto del artículo.
@@ -70,8 +80,10 @@ sitemap) y no se pueden cerrar desde el repo.
 - **No subir documentos internos** al repo (contratos, notas de clientes,
   informes, PDFs de trabajo): es un sitio público y todo lo commiteado se
   sirve en producción. Ya ocurrió una vez y hubo que retirarlos.
-- Contenido en español (es-HN). Los artículos son informativos, nunca asesoría
-  para un caso particular (mantener el disclaimer de la plantilla).
+- Contenido en español (es-HN) y siempre de **usted**: ni tuteo ni voseo en
+  páginas, artículos ni en los campos de `articles.js`. Los artículos son
+  informativos, nunca asesoría para un caso particular (mantener el disclaimer
+  de la plantilla).
 - Commits descriptivos en español.
 - No editar a mano lo que generan los scripts sin actualizar la fuente
   (`articles.js` manda; el chequeo de CI hace cumplir la consistencia).

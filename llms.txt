@@ -77,7 +77,7 @@ resumen ("En resumen") y una sección de preguntas frecuentes.
 - [Obligaciones laborales del empleador en Honduras](https://nexoemp.com/analisis/obligaciones-laborales-empleador-honduras.html) — IHSS, RAP, INFOP, retención del ISR y el costo real de contratar.
 - [Multas más comunes del SAR y cómo evitarlas](https://nexoemp.com/analisis/multas-comunes-sar-como-evitarlas.html) — declarar tarde, no enterar retenciones, CAI vencido, no llevar libros.
 - [Libros contables obligatorios en Honduras](https://nexoemp.com/analisis/libros-contables-obligatorios-honduras.html) — Diario, Mayor, Inventarios y Balances, actas y registros de ISV.
-- [Cómo leer tus estados financieros](https://nexoemp.com/analisis/como-leer-estados-financieros.html) — balance general, estado de resultados y flujo de efectivo.
+- [Cómo leer sus estados financieros](https://nexoemp.com/analisis/como-leer-estados-financieros.html) — balance general, estado de resultados y flujo de efectivo.
 - [Factura electrónica en Honduras: qué viene](https://nexoemp.com/analisis/factura-electronica-honduras-que-viene.html) — hacia dónde va el régimen de facturación del SAR.
 - [Impuestos de una empresa en Honduras](https://nexoemp.com/analisis/impuestos-empresa-honduras-isv-isr-retenciones.html) — ISV 15 % y 18 %, ISR 25 %, aportación solidaria, activo neto, pagos a cuenta y retenciones.
 - [Qué es el RTN y cómo obtenerlo ante el SAR](https://nexoemp.com/analisis/que-es-el-rtn-y-como-obtenerlo-sar.html) — identidad fiscal de personas y empresas.

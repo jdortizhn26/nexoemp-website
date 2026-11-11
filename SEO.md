@@ -19,8 +19,12 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 6 | TL;DR / conclusiones clave | campo `tldr` → bloque "En resumen" |
 | 7 | El resumen va después de la intención | orden fijo del bloque `nexo:tldr` |
 | 8 | CTA después del primer párrafo | bloque `nexo:cta-inline` (WhatsApp con el artículo precargado) |
+| — | CTA al terminar el artículo | bloque `nexo:cta-final` (WhatsApp y formulario), justo después del cuerpo |
 | 9 | Jerarquía H1 → H2 → H3 | cuerpo del artículo; la plantilla lo recuerda al redactar |
 | 10 | Interlinkeado y clusters | campo `cluster` → bloque "Seguir leyendo", enlaces estáticos |
+| — | Listado de artículos sin JavaScript | tarjetas estáticas en `analisis/index.html` (`nexo:listado`) y en la portada (`nexo:ultimos`); CI falla si se desincronizan del índice |
+| — | Menú y pie iguales en todo el sitio | bloques `nexo:nav` y `nexo:pie` en los artículos, con menú móvil y enlace a `/contadores/` |
+| — | Página 404 propia | `404.html` en la raíz |
 | 11 | Tablas y listas | estilos `.prose table` + `.tabla-scroll` en `assets/site.css`; ejemplo en `_plantilla.html` |
 | 12 | FAQ visible | campo `faq` → bloque `nexo:faq`; la portada ya tenía la suya |
 | 13 | Schema de FAQ | `FAQPage` generado del mismo campo `faq` (visible y schema nunca se desincronizan) |
@@ -29,12 +33,14 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 16 | Schema de negocio local | `ProfessionalService` en `index.html` (dirección, teléfono, horario, servicios) |
 | 17 | robots.txt | `robots.txt`, con permiso explícito a los rastreadores de IA |
 | 18 | URLs sin números ni conectores | los slugs se validan en `scripts/articulos.mjs` |
-| 19 | Desindexar lo que no debe rankear | `labs/index.html` es `noindex` y solo redirige a `/plataforma.html` |
+| 19 | Desindexar lo que no debe rankear | `/labs` redirige con 308 a `/plataforma.html` (`vercel.json`); `labs/index.html` queda de respaldo con `noindex` |
+| — | Un solo dominio | `vercel.json` redirige `nexoemp-website.vercel.app` a `nexoemp.com` |
 | 20 | llms.txt | `llms.txt` en la raíz: qué hace la firma, páginas y artículos, con nota de atribución |
 | 21 | CTA fijo en móvil | bloque `nexo:cta-movil` en artículos; barra propia en portada, plataforma y hub |
 | 22 | Botón para compartir | bloque `nexo:compartir` (WhatsApp, LinkedIn, Facebook, copiar enlace) |
 | 25 | Sitemap | `sitemap.xml`; el generador agrega cada artículo nuevo y CI verifica que no falte ninguno |
 | — | Migas de pan | `BreadcrumbList` en cada artículo (Inicio → Análisis → artículo) |
+| — | Schema de artículo | `Article` generado en `nexo:schema`, enlazado al negocio por `@id`; `dateModified` sale del campo opcional `updated` |
 
 ## Pendiente — requiere una cuenta, no código
 
