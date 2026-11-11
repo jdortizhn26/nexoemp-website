@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Nexo Empresarial — Legal, fiscal, contable y financiero en Honduras</title>
-<meta name="description" content="Firma integral en San Pedro Sula, Honduras. Constituimos, registramos, llevamos la contabilidad y analizamos los números de su empresa: legal, fiscal, contable y financiero con el mismo equipo en cada etapa."/>
+<meta name="description" content="Firma integral en San Pedro Sula, Honduras: legal, fiscal, contable y financiero. Constituimos su empresa, llevamos su contabilidad y analizamos sus números."/>
 <meta name="keywords" content="constituir empresa Honduras, asesoría legal corporativa, asesoría fiscal SAR, contabilidad Honduras, análisis financiero, contrato de adhesión Aduanas, invertir en Honduras, San Pedro Sula, Nexo Labs"/>
 <meta name="author" content="Nexo Empresarial"/>
 <meta name="robots" content="index, follow"/>
@@ -457,7 +457,7 @@
     transition:transform .25s ease, box-shadow .25s ease;
   }
   .news-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(10,31,68,.12);}
-  .news-cover{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block;}
+  .news-cover{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;display:block;}
   .news-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;}
   .news-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px;}
   .news-cat{
@@ -738,7 +738,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#portada" style="display:flex;align-items:center;" aria-label="Nexo Empresarial, inicio">
-      <img src="assets/logo.png" class="nav-logo" alt="Nexo Empresarial"/>
+      <img src="assets/logo.png" class="nav-logo" alt="Nexo Empresarial" width="256" height="256"/>
     </a>
     <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
       <span class="nav-toggle-box" aria-hidden="true">
@@ -1041,7 +1041,37 @@
       <a href="analisis/" class="btn btn-line">Ver todos los análisis <svg class="ico"><use href="#i-flecha"/></svg></a>
     </div>
 
-    <div class="news-grid" id="newsGrid"></div>
+    <div class="news-grid" id="newsGrid">
+<!-- nexo:ultimos:inicio -->
+      <a class="news-card" href="analisis/cuanto-se-paga-de-isr-en-honduras.html">
+        <img class="news-cover" src="assets/og/cuanto-se-paga-de-isr-en-honduras.png" alt="¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta" width="1200" height="630" loading="lazy"/>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Fiscal / SAR</span><span class="news-date">10 noviembre 2026</span></div>
+          <h3>¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta</h3>
+          <p>El ISR de una persona natural no se paga sobre todo lo que gana: hay un tramo exento y una escala del 15 %, 20 % y 25 %. Le mostramos la tabla 2026 del SAR, dos ejemplos de cálculo y cuándo se declara.</p>
+          <span class="news-readmore">Leer análisis <svg class="ico"><use href="#i-flecha"/></svg></span>
+        </div>
+      </a>
+      <a class="news-card" href="analisis/calcular-sueldo-neto-honduras.html">
+        <img class="news-cover" src="assets/og/calcular-sueldo-neto-honduras.png" alt="Del sueldo bruto al neto en Honduras: qué se descuenta y por qué" width="1200" height="630" loading="lazy"/>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Laboral</span><span class="news-date">10 noviembre 2026</span></div>
+          <h3>Del sueldo bruto al neto en Honduras: qué se descuenta y por qué</h3>
+          <p>IHSS, RAP y retención del ISR explican casi toda la diferencia entre lo que se pactó y lo que llega a la cuenta. Le mostramos el orden del cálculo y qué paga el patrono aparte.</p>
+          <span class="news-readmore">Leer análisis <svg class="ico"><use href="#i-flecha"/></svg></span>
+        </div>
+      </a>
+      <a class="news-card" href="analisis/decimo-tercero-y-decimo-cuarto-honduras.html">
+        <img class="news-cover" src="assets/og/decimo-tercero-y-decimo-cuarto-honduras.png" alt="Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan" width="1200" height="630" loading="lazy"/>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">Laboral</span><span class="news-date">10 noviembre 2026</span></div>
+          <h3>Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan</h3>
+          <p>Son dos pagos distintos, con fechas distintas, y ambos se prorratean cuando el trabajador no completó el año. La confusión entre ellos es una de las causas más frecuentes de reclamo.</p>
+          <span class="news-readmore">Leer análisis <svg class="ico"><use href="#i-flecha"/></svg></span>
+        </div>
+      </a>
+<!-- nexo:ultimos:fin -->
+    </div>
   </div>
 </section>
 
@@ -1246,13 +1276,14 @@
   <div class="container">
     <div class="foot">
       <div>
-        <img src="assets/logo.png" class="foot-logo" alt="Nexo Empresarial"/>
+        <img src="assets/logo.png" class="foot-logo" alt="Nexo Empresarial" width="256" height="256"/>
         <p class="foot-lema">Un equipo. Cuatro ramas. Todo lo que su empresa necesita.</p>
       </div>
       <div class="foot-links">
         <a href="#servicios">Servicios</a>
         <a href="#equipo">Equipo</a>
         <a href="invertir-en-honduras.html">Invertir en Honduras</a>
+        <a href="contadores/">Contadores</a>
         <a href="plataforma.html">Plataforma</a>
         <a href="precios.html">Precios</a>
         <a href="analisis/">Análisis</a>
@@ -1266,35 +1297,7 @@
   </div>
 </footer>
 
-<script src="assets/articles.js"></script>
 <script>
-  /* ── Render de los últimos 3 análisis en la portada ── */
-  (function(){
-    const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    function fmtFecha(iso){
-      const d = new Date(iso + 'T00:00:00');
-      if (isNaN(d)) return iso;
-      return d.getDate() + ' ' + MESES[d.getMonth()] + ' ' + d.getFullYear();
-    }
-    const grid = document.getElementById('newsGrid');
-    if (!grid) return;
-    const arts = (window.NEXO_ARTICLES || []).slice().sort((a,b)=> (a.date === b.date ? 0 : (a.date < b.date ? 1 : -1))).slice(0,3);
-    if (arts.length === 0){
-      grid.outerHTML = '<div class="news-empty"><p>Próximamente publicaremos nuestros primeros análisis.</p></div>';
-      return;
-    }
-    grid.innerHTML = arts.map(function(a){
-      return '<a class="news-card" href="analisis/'+a.slug+'.html">'
-        + '<img class="news-cover" src="assets/og/'+a.slug+'.png" alt="'+a.title+'" loading="lazy"/>'
-        + '<div class="news-body">'
-        + '<div class="news-meta"><span class="news-cat">'+a.category+'</span>'
-        + '<span class="news-date">'+fmtFecha(a.date)+'</span></div>'
-        + '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>'
-        + '<span class="news-readmore">Leer análisis <svg class="ico"><use href="#i-flecha"/></svg></span>'
-        + '</div></a>';
-    }).join('');
-  })();
-
   /* ── Aparición al hacer scroll ── */
   (function(){
     const els = document.querySelectorAll('.revelar');

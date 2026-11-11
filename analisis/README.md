@@ -44,16 +44,18 @@ El script hace todo lo que antes era manual:
 
 - crea `analisis/<slug>.html` desde `_plantilla.html` con título, categoría,
   fecha, canonical, Open Graph, Twitter Card y JSON-LD ya rellenados;
-- inserta los bloques SEO del artículo (resumen "En resumen", CTA tras el
-  primer párrafo, preguntas frecuentes visibles con su schema `FAQPage`, migas
-  de pan, artículos relacionados, botones de compartir y barra fija de contacto
-  en móvil), todos derivados de los campos de arriba;
+- inserta los bloques SEO del artículo (menú y pie del sitio, resumen "En
+  resumen", CTA tras el primer párrafo, CTA al terminar el artículo, preguntas
+  frecuentes visibles, schemas `Article` y `FAQPage`, migas de pan, artículos
+  relacionados, botones de compartir y barra fija de contacto en móvil), todos
+  derivados de los campos de arriba;
 - genera la portada `assets/og/<slug>.png` con una ilustración temática
   (requiere `python3` + Pillow: `pip install pillow`). El dibujo se elige por
   slug en `ICONO_POR_SLUG` de `scripts/generar_portadas.py` y, si el slug no
   está mapeado, por categoría — para darle un ícono propio a un artículo
   nuevo, agregalo a ese mapa antes de generar;
-- agrega la URL a `sitemap.xml`.
+- agrega la URL a `sitemap.xml`;
+- agrega la tarjeta al listado estático del hub y de la portada.
 
 Solo queda **redactar el cuerpo**: abre el HTML generado y reemplaza lo que
 quedó entre `[[corchetes]]` dentro de `<div class="prose">`, usando
@@ -97,7 +99,7 @@ queden placeholders `[[...]]` sin redactar. El mismo chequeo corre en CI
 
 ## Archivos
 
-- `index.html` — hub que lista todos los artículos (se genera solo en el navegador).
+- `index.html` — hub que lista todos los artículos (las tarjetas las escribe `bloques-seo.mjs` entre marcadores `nexo:listado`).
 - `_plantilla.html` — plantilla base que usa el generador. **No borrar.**
 - `../assets/articles.js` — índice/fuente única de artículos.
 - `../assets/site.css` — estilos compartidos de estas páginas.

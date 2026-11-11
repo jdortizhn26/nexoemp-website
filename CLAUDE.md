@@ -11,9 +11,10 @@ index.html            Portada (servicios, labs, demos, contacto)
 plataforma.html       Plataforma Nexo (sistemas verticales)
 analisis/             Blog "Análisis & Noticias" (artículos SEO)
   _plantilla.html     Plantilla de artículo (no borrar)
-  index.html          Hub que lista todos los artículos
+  index.html          Hub que lista todos los artículos (listado estático generado)
   README.md           Guía de publicación
 labs/                 Redirect noindex a /plataforma.html
+404.html              Página de error propia (Vercel la sirve en cualquier 404)
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
   analytics.js        Medición: Vercel Analytics + GA4 (un solo lugar)
@@ -36,8 +37,9 @@ SEO.md                Checklist SEO/GEO: qué está hecho y qué falta a mano
    H1), `category`, `date` AAAA-MM-DD, `author`, `excerpt`, `intent`,
    `cluster`, `tldr` y `faq`.
 2. `node scripts/nuevo-articulo.mjs` — genera `analisis/<slug>.html` desde la
-   plantilla (SEO/OG/JSON-LD rellenados y bloques SEO insertados), la portada
-   `assets/og/<slug>.png` y la entrada en `sitemap.xml`.
+   plantilla (SEO/OG rellenados y bloques SEO insertados), la portada
+   `assets/og/<slug>.png`, la entrada en `sitemap.xml` y la tarjeta en el
+   listado estático del hub y de la portada.
 3. Redactar el cuerpo en el HTML generado (reemplazar los `[[corchetes]]`).
 4. Agregar el artículo a `llms.txt` (es lo único que se mantiene a mano).
 
@@ -48,10 +50,17 @@ desincronizan o quedan placeholders).
 ## Bloques SEO de los artículos (`scripts/bloques-seo.mjs`)
 
 Todo lo que en un artículo no es el cuerpo redactado a mano se genera desde
-`articles.js` y vive entre marcadores `<!-- nexo:<id>:inicio/fin -->`: el
-resumen "En resumen", el CTA tras el primer párrafo, las preguntas frecuentes
-visibles y su `FAQPage`, las migas de pan, los artículos relacionados, los
+`articles.js` y vive entre marcadores `<!-- nexo:<id>:inicio/fin -->`: el menú
+y el pie del sitio, el resumen "En resumen", el CTA tras el primer párrafo, el
+CTA al terminar el artículo, las preguntas frecuentes visibles, los schemas
+`Article` y `FAQPage`, las migas de pan, los artículos relacionados, los
 botones de compartir, la carga de GA4 y la barra fija de contacto en móvil.
+
+El mismo script mantiene, también entre marcadores, el listado de tarjetas de
+`analisis/index.html` (`nexo:listado`), las tres más recientes de `index.html`
+(`nexo:ultimos`) y la fecha de `/analisis/` en `sitemap.xml`. Ese listado es
+HTML estático a propósito: los rastreadores que no ejecutan JavaScript tienen
+que poder seguir los enlaces a cada artículo.
 
 - Para cambiarlos: editar `articles.js` y correr `node scripts/bloques-seo.mjs`.
   Reaplicar es idempotente y **no toca** el texto del artículo.

@@ -32,6 +32,9 @@
      tldr       3–4 conclusiones en una frase cada una (key takeaways).
      faq        3+ preguntas frecuentes {q, a}; alimentan el bloque
                 visible y el schema FAQPage de la página.
+   Opcional:
+     updated    Fecha AAAA-MM-DD de la última revisión de fondo del
+                artículo; sale como dateModified en el schema.
    ════════════════════════════════════════════════════════════════ */
 window.NEXO_ARTICLES = [
   {

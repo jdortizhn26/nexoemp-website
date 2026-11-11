@@ -19,8 +19,12 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 6 | TL;DR / conclusiones clave | campo `tldr` → bloque "En resumen" |
 | 7 | El resumen va después de la intención | orden fijo del bloque `nexo:tldr` |
 | 8 | CTA después del primer párrafo | bloque `nexo:cta-inline` (WhatsApp con el artículo precargado) |
+| — | CTA al terminar el artículo | bloque `nexo:cta-final` (WhatsApp y formulario), justo después del cuerpo |
 | 9 | Jerarquía H1 → H2 → H3 | cuerpo del artículo; la plantilla lo recuerda al redactar |
 | 10 | Interlinkeado y clusters | campo `cluster` → bloque "Seguir leyendo", enlaces estáticos |
+| — | Listado de artículos sin JavaScript | tarjetas estáticas en `analisis/index.html` (`nexo:listado`) y en la portada (`nexo:ultimos`); CI falla si se desincronizan del índice |
+| — | Menú y pie iguales en todo el sitio | bloques `nexo:nav` y `nexo:pie` en los artículos, con menú móvil y enlace a `/contadores/` |
+| — | Página 404 propia | `404.html` en la raíz |
 | 11 | Tablas y listas | estilos `.prose table` + `.tabla-scroll` en `assets/site.css`; ejemplo en `_plantilla.html` |
 | 12 | FAQ visible | campo `faq` → bloque `nexo:faq`; la portada ya tenía la suya |
 | 13 | Schema de FAQ | `FAQPage` generado del mismo campo `faq` (visible y schema nunca se desincronizan) |
@@ -35,6 +39,7 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 22 | Botón para compartir | bloque `nexo:compartir` (WhatsApp, LinkedIn, Facebook, copiar enlace) |
 | 25 | Sitemap | `sitemap.xml`; el generador agrega cada artículo nuevo y CI verifica que no falte ninguno |
 | — | Migas de pan | `BreadcrumbList` en cada artículo (Inicio → Análisis → artículo) |
+| — | Schema de artículo | `Article` generado en `nexo:schema`, enlazado al negocio por `@id`; `dateModified` sale del campo opcional `updated` |
 
 ## Pendiente — requiere una cuenta, no código
 

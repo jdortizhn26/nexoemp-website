@@ -14,7 +14,9 @@
      · falta la URL del artículo en sitemap.xml
      · los bloques SEO de una página no coinciden con lo que
        scripts/bloques-seo.mjs generaría hoy (TL;DR, FAQ, schema,
-       relacionados, compartir, CTA)
+       relacionados, compartir, CTA, menú y pie)
+     · el listado estático del hub o de la portada, o la fecha de
+       /analisis/ en el sitemap, no coinciden con el índice
 
    Se corre en CI (.github/workflows/ci.yml) y localmente:
      node scripts/verificar-articulos.mjs
@@ -22,7 +24,7 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { ROOT, DOMINIO, cargarArticulos, validarArticulo } from "./articulos.mjs";
-import { aplicarBloques } from "./bloques-seo.mjs";
+import { aplicarBloques, LISTADOS } from "./bloques-seo.mjs";
 
 const DIR_ANALISIS = path.join(ROOT, "analisis");
 const DIR_OG = path.join(ROOT, "assets", "og");
@@ -88,6 +90,20 @@ for (const art of articulos) {
   }
 }
 
+// 2b-bis. El listado del hub, el de la portada y el lastmod de /analisis/
+//         coinciden con el índice.
+for (const [ruta, aplicar] of LISTADOS) {
+  const nombre = path.relative(ROOT, ruta);
+  try {
+    const publicado = readFileSync(ruta, "utf8");
+    if (publicado !== aplicar(publicado, articulos)) {
+      errores.push(`${nombre} está desactualizado respecto del índice (correr: node scripts/bloques-seo.mjs)`);
+    }
+  } catch (e) {
+    errores.push(`${nombre}: ${e.message}`);
+  }
+}
+
 // 2c. Cabeceras SEO: un solo H1, meta-título distinto del H1, y títulos y
 //     descripciones que no se repitan entre artículos.
 const titulosVistos = new Map();
@@ -106,7 +122,7 @@ for (const art of articulos) {
   if (!titulo) {
     errores.push(`analisis/${art.slug}.html no tiene <title>`);
   } else {
-    if (titulo === `${art.title} — Nexo Empresarial`) {
+    if (titulo === art.title) {
       errores.push(
         `analisis/${art.slug}.html usa el H1 como <title>: deben ser distintos ` +
           `(sembrar desde "metaTitle" en articles.js)`

@@ -16,10 +16,11 @@
 
      Lo que NO se escribe a mano (lo genera scripts/bloques-seo.mjs
      desde articles.js y vive entre marcadores <!-- nexo:… -->):
-     el TL;DR "En resumen", el CTA tras el primer párrafo, las
-     preguntas frecuentes visibles, su schema FAQPage, las migas de
-     pan, los artículos relacionados, los botones de compartir y la
-     barra fija de contacto en móvil. Para actualizarlos, editá
+     el menú y el pie del sitio, el TL;DR "En resumen", el CTA tras
+     el primer párrafo, el CTA al terminar el artículo, las
+     preguntas frecuentes visibles, los schemas Article y FAQPage,
+     las migas de pan, los artículos relacionados, los botones de
+     compartir y la barra fija de contacto en móvil. Para actualizarlos, editá
      articles.js y corré  node scripts/bloques-seo.mjs.
 
      Al redactar: una sola idea por sección, un H1 por página (el
@@ -34,7 +35,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>[[Título del artículo]] — Nexo Empresarial</title>
+<title>[[Título del artículo]]</title>
 <meta name="description" content="[[Resumen de una o dos frases para buscadores y redes sociales.]]"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://nexoemp.com/analisis/[[nombre-archivo]].html"/>
@@ -53,23 +54,6 @@
 <link rel="stylesheet" href="../assets/site.css"/>
 </head>
 <body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" style="display:flex;align-items:center;">
-      <img src="../assets/logo.png" class="nav-logo" alt="Nexo Empresarial"/>
-    </a>
-    <div class="nav-links">
-      <a href="../index.html#servicios">Servicios</a>
-      <a href="../index.html#labs">Labs</a>
-      <a href="../index.html#demos">Demos</a>
-      <a href="../index.html#nosotros">Nosotros</a>
-      <a href="../precios.html">Precios</a>
-      <a href="./">Análisis</a>
-      <a href="../index.html#contacto" class="nav-cta">Contactar</a>
-    </div>
-  </div>
-</nav>
 
 <header class="page-head">
   <div class="container container-sm">
@@ -133,13 +117,6 @@
     </div>
   </div>
 </article>
-
-<footer>
-  <div class="container">
-    <p>© 2026 <span class="brand">Nexo Empresarial</span> · Derecho, contabilidad y fiscal · Honduras</p>
-    <p>Un equipo multidisciplinario · Derecho · Contabilidad · Fiscal · Finanzas · Tecnología</p>
-  </div>
-</footer>
 
 </body>
 </html>

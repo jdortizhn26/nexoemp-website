@@ -6,11 +6,12 @@
    aún no tenga página, hace TODO lo que antes era manual:
 
      1. Genera analisis/<slug>.html desde analisis/_plantilla.html
-        (título, categoría, fecha, resumen, canonical, Open Graph,
-        Twitter Card y JSON-LD ya rellenados).
+        (título, categoría, fecha, resumen, canonical, Open Graph
+        y Twitter Card ya rellenados, más los bloques SEO).
      2. Genera la portada OG (assets/og/<slug>.png) llamando a
         scripts/generar_portadas.py.
      3. Agrega la URL del artículo a sitemap.xml.
+     4. Actualiza el listado estático del hub y de la portada.
 
    Uso:
      node scripts/nuevo-articulo.mjs            → procesa lo que falte
@@ -27,23 +28,13 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROOT, DOMINIO, cargarArticulos, validarArticulo, escaparHtml } from "./articulos.mjs";
-import { aplicarBloques } from "./bloques-seo.mjs";
+import { aplicarBloques, actualizarListados, fechaLarga } from "./bloques-seo.mjs";
 
 const RUTA_PLANTILLA = path.join(ROOT, "analisis", "_plantilla.html");
 const RUTA_SITEMAP = path.join(ROOT, "sitemap.xml");
 const RUTA_PORTADAS = path.join(ROOT, "scripts", "generar_portadas.py");
 const DIR_ANALISIS = path.join(ROOT, "analisis");
 const DIR_OG = path.join(ROOT, "assets", "og");
-
-const MESES = [
-  "enero", "febrero", "marzo", "abril", "mayo", "junio",
-  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
-];
-
-function fechaLarga(iso) {
-  const [a, m, d] = iso.split("-").map(Number);
-  return `${d} ${MESES[m - 1]} ${a}`;
-}
 
 function generarPagina(art, articulos) {
   const destino = path.join(DIR_ANALISIS, `${art.slug}.html`);
@@ -60,8 +51,8 @@ function generarPagina(art, articulos) {
 
   // El <title> y el Open Graph usan el meta-título; el H1 usa el title.
   html = html
-    .replaceAll("<title>[[Título del artículo]] — Nexo Empresarial</title>",
-      `<title>${metaTitulo} — Nexo Empresarial</title>`)
+    .replaceAll("<title>[[Título del artículo]]</title>",
+      `<title>${metaTitulo}</title>`)
     .replaceAll('<meta property="og:title" content="[[Título del artículo]]"/>',
       `<meta property="og:title" content="${metaTitulo}"/>`)
     .replaceAll("[[Título del artículo]]", titulo)
@@ -86,28 +77,6 @@ function generarPagina(art, articulos) {
 <meta name="twitter:title" content="${metaTitulo}"/>
 <meta name="twitter:description" content="${resumen}"/>
 <meta name="twitter:image" content="${ogPng}"/>`
-  );
-
-  // Datos estructurados JSON-LD.
-  const jsonLd = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: art.title,
-    description: art.excerpt,
-    image: ogPng,
-    datePublished: art.date,
-    inLanguage: "es-HN",
-    author: { "@type": "Organization", name: art.author },
-    publisher: {
-      "@type": "Organization",
-      name: "Nexo Empresarial",
-      logo: { "@type": "ImageObject", url: `${DOMINIO}/assets/logo.png` },
-    },
-    mainEntityOfPage: `${DOMINIO}/analisis/${art.slug}.html`,
-  });
-  html = html.replace(
-    "</head>",
-    `<script type="application/ld+json">\n${jsonLd}\n</script>\n</head>`
   );
 
   html = aplicarBloques(html, art, articulos);
@@ -183,6 +152,7 @@ function main() {
     if (generarPortada(art, forzarPortadas)) cambios++;
     if (actualizarSitemap(art)) cambios++;
   }
+  cambios += actualizarListados(todos);
 
   if (cambios === 0) {
     console.log("Nada que generar: todos los artículos ya tienen página, portada y sitemap.");

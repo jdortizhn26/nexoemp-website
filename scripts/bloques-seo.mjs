@@ -5,14 +5,25 @@
    Todo lo que en un artículo NO es el cuerpo redactado a mano se
    genera desde assets/articles.js y se inserta entre marcadores:
 
-     nexo:schema        FAQPage + BreadcrumbList (JSON-LD, en <head>)
+     nexo:schema        Article + FAQPage + BreadcrumbList (JSON-LD, en <head>)
      nexo:analytics     Carga de assets/analytics.js (GA4)
+     nexo:nav           Menú del sitio (el mismo de las páginas principales)
      nexo:tldr          Intención de búsqueda + "En resumen"
      nexo:cta-inline    Llamado a la acción tras el primer párrafo
+     nexo:cta-final     Llamado a la acción al terminar el artículo
      nexo:faq           Preguntas frecuentes visibles
      nexo:relacionados  Interlinkeado por cluster temático
      nexo:compartir     Botones de compartir
+     nexo:pie           Pie de página con enlaces + menú móvil
      nexo:cta-movil     Barra fija de contacto en móvil
+
+   Además mantiene el listado estático de artículos, también entre
+   marcadores, para que exista en el HTML sin depender de JavaScript:
+
+     nexo:listado       Todas las tarjetas, en analisis/index.html
+     nexo:ultimos       Las 3 más recientes, en index.html
+
+   y la fecha <lastmod> de /analisis/ en sitemap.xml.
 
    Cada bloque vive entre <!-- nexo:<id>:inicio --> y
    <!-- nexo:<id>:fin -->. Regenerar = borrar los bloques viejos y
@@ -20,7 +31,7 @@
    toca el texto del artículo.
 
    Uso:
-     node scripts/bloques-seo.mjs          → reaplica en todos
+     node scripts/bloques-seo.mjs          → reaplica en todos y en los listados
      node scripts/bloques-seo.mjs <slug>   → solo ese artículo
 
    Lo llama scripts/nuevo-articulo.mjs al crear una página nueva, y
@@ -33,15 +44,31 @@ import { fileURLToPath } from "node:url";
 import { ROOT, DOMINIO, WHATSAPP, cargarArticulos, escaparHtml } from "./articulos.mjs";
 
 const DIR_ANALISIS = path.join(ROOT, "analisis");
+const RUTA_HUB = path.join(DIR_ANALISIS, "index.html");
+const RUTA_PORTADA = path.join(ROOT, "index.html");
+const RUTA_SITEMAP = path.join(ROOT, "sitemap.xml");
+
+const MESES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+];
+
+export function fechaLarga(iso) {
+  const [a, m, d] = iso.split("-").map(Number);
+  return `${d} ${MESES[m - 1]} ${a}`;
+}
 
 const IDS = [
   "schema",
   "analytics",
+  "nav",
   "tldr",
   "cta-inline",
+  "cta-final",
   "faq",
   "relacionados",
   "compartir",
+  "pie",
   "cta-movil",
 ];
 
@@ -50,8 +77,8 @@ function envolver(id, contenido) {
 }
 
 /** Quita los bloques generados para poder reinsertarlos desde cero. */
-function limpiarBloques(html) {
-  for (const id of IDS) {
+function limpiarBloques(html, ids = IDS) {
+  for (const id of ids) {
     const re = new RegExp(
       `[ \\t]*<!-- nexo:${id}:inicio -->[\\s\\S]*?<!-- nexo:${id}:fin -->\\n?`,
       "g"
@@ -73,6 +100,24 @@ export function relacionados(art, articulos, cantidad = 3) {
 
 function bloqueSchema(art) {
   const url = `${DOMINIO}/analisis/${art.slug}.html`;
+  const articuloLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: art.title,
+    description: art.excerpt,
+    image: `${DOMINIO}/assets/og/${art.slug}.png`,
+    datePublished: art.date,
+    dateModified: art.updated ?? art.date,
+    inLanguage: "es-HN",
+    author: { "@type": "Organization", "@id": `${DOMINIO}/#empresa`, name: "Nexo Empresarial" },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${DOMINIO}/#empresa`,
+      name: "Nexo Empresarial",
+      logo: { "@type": "ImageObject", url: `${DOMINIO}/assets/logo.png` },
+    },
+    mainEntityOfPage: url,
+  };
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -93,13 +138,42 @@ function bloqueSchema(art) {
   };
   return envolver(
     "schema",
-    `<script type="application/ld+json">\n${JSON.stringify(faqLd, null, 2)}\n</script>\n` +
+    `<script type="application/ld+json">\n${JSON.stringify(articuloLd, null, 2)}\n</script>\n` +
+      `<script type="application/ld+json">\n${JSON.stringify(faqLd, null, 2)}\n</script>\n` +
       `<script type="application/ld+json">\n${JSON.stringify(migasLd, null, 2)}\n</script>`
   );
 }
 
 function bloqueAnalytics() {
   return envolver("analytics", '<script src="../assets/analytics.js" defer></script>');
+}
+
+function bloqueNav() {
+  return envolver(
+    "nav",
+    `<nav>
+  <div class="nav-inner">
+    <a href="../index.html" style="display:flex;align-items:center;" aria-label="Nexo Empresarial, inicio">
+      <img src="../assets/logo.png" class="nav-logo" alt="Nexo Empresarial" width="256" height="256"/>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-box" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+    </button>
+    <div class="nav-links" id="nav-menu">
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../plataforma.html">Plataforma</a>
+      <a href="../precios.html">Precios</a>
+      <a href="../invertir-en-honduras.html">Invertir en Honduras</a>
+      <a href="./" style="color:var(--white);">Análisis</a>
+      <a href="../index.html#contacto" class="nav-cta">Contactar</a>
+    </div>
+  </div>
+</nav>`
+  );
 }
 
 function bloqueTldr(art) {
@@ -128,6 +202,23 @@ function bloqueCtaInline(art) {
         <p><strong>¿Su caso necesita revisión profesional?</strong> Agende una sesión de diagnóstico sin costo con nuestro equipo fiscal, contable y legal.</p>
         <a href="https://wa.me/${WHATSAPP}?text=${texto}" target="_blank" rel="noopener" class="cta-inline-btn">Hablar por WhatsApp →</a>
       </div>`
+  );
+}
+
+function bloqueCtaFinal(art) {
+  const texto = encodeURIComponent(
+    `Hola, terminé de leer "${art.title}" en nexoemp.com y quiero hablar con ustedes sobre mi caso.`
+  );
+  return envolver(
+    "cta-final",
+    `    <div class="cta-final-art">
+      <h2>Hablemos de su caso</h2>
+      <p>Lo que acaba de leer es la regla general; su empresa tiene sus propios números. Cuéntenos su situación y le decimos qué le aplica. La primera sesión de diagnóstico no tiene costo.</p>
+      <div class="cta-final-btns">
+        <a href="https://wa.me/${WHATSAPP}?text=${texto}" target="_blank" rel="noopener" class="btn btn-wa">Hablar con nosotros por WhatsApp →</a>
+        <a href="../index.html#contacto" class="btn btn-ghost">Escribirnos por el formulario</a>
+      </div>
+    </div>`
   );
 }
 
@@ -200,6 +291,62 @@ function bloqueCompartir(art) {
   );
 }
 
+function bloquePie() {
+  return envolver(
+    "pie",
+    `<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="../index.html">Inicio</a>
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../contadores/">Contadores</a>
+      <a href="../plataforma.html">Plataforma</a>
+      <a href="../precios.html">Precios</a>
+      <a href="../invertir-en-honduras.html">Invertir en Honduras</a>
+      <a href="./">Análisis</a>
+      <a href="../index.html#contacto">Contacto</a>
+    </div>
+    <p>© 2026 <span class="brand">Nexo Empresarial</span> · San Pedro Sula, Honduras</p>
+    <p>Legal · Fiscal · Contable · Financiera</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.querySelector('.nav-toggle');
+    if (!toggle) return;
+    var menu = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!menu) return;
+    function close(){
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+    }
+    function open(){
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Cerrar menú');
+    }
+    toggle.addEventListener('click', function(){
+      if (menu.classList.contains('open')) close(); else open();
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')){
+        close();
+        toggle.focus();
+      }
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 720) close();
+    });
+  })();
+</script>`
+  );
+}
+
 function bloqueCtaMovil(art) {
   const texto = encodeURIComponent(
     `Hola, leí "${art.title}" en nexoemp.com y quiero una asesoría.`
@@ -233,6 +380,7 @@ export function aplicarBloques(html, art, articulos) {
 
   html = insertarAntes(html, "</head>", bloqueSchema(art), art.slug);
   html = insertarAntes(html, "</head>", bloqueAnalytics(), art.slug);
+  html = insertarDespues(html, "<body>", bloqueNav(), art.slug);
 
   const ANCLA_PROSE = '<div class="prose">';
   html = insertarDespues(html, ANCLA_PROSE, bloqueTldr(art), art.slug);
@@ -254,14 +402,96 @@ export function aplicarBloques(html, art, articulos) {
   // Un solo salto entre bloques: limpiarBloques() se lleva exactamente ese
   // salto con cada bloque, y así reaplicar deja el archivo idéntico.
   const bloques =
-    [bloqueFaq(art), bloqueCompartir(art), bloqueRelacionados(art, articulos)]
+    [bloqueCtaFinal(art), bloqueFaq(art), bloqueCompartir(art), bloqueRelacionados(art, articulos)]
       .map((b) => `${b}\n`)
       .join("");
   html = html.slice(0, inicioLinea) + bloques + html.slice(inicioLinea);
 
+  html = insertarAntes(html, "</body>", bloquePie(), art.slug);
   html = insertarAntes(html, "</body>", bloqueCtaMovil(art), art.slug);
 
   return html;
+}
+
+function porFecha(articulos) {
+  return articulos.slice().sort((a, b) => (a.date === b.date ? 0 : a.date < b.date ? 1 : -1));
+}
+
+/** Reemplaza el contenido entre los marcadores de `id`; falla si no existen. */
+function reemplazarBloque(html, id, contenido, archivo) {
+  const re = new RegExp(`[ \\t]*<!-- nexo:${id}:inicio -->[\\s\\S]*?<!-- nexo:${id}:fin -->`);
+  if (!re.test(html)) throw new Error(`faltan los marcadores nexo:${id} en ${archivo}`);
+  return html.replace(re, () => envolver(id, contenido));
+}
+
+/** Listado completo de artículos del hub analisis/index.html. */
+export function aplicarListadoHub(html, articulos) {
+  const tarjetas = porFecha(articulos)
+    .map(
+      (a) => `      <a class="article-card" href="${a.slug}.html">
+        <img class="article-card-cover" src="../assets/og/${a.slug}.png" alt="${escaparHtml(a.title)}" width="1200" height="630" loading="lazy"/>
+        <div class="article-card-inner">
+          <div class="article-meta">
+            <span class="article-cat">${escaparHtml(a.category)}</span>
+            <span class="article-date">${fechaLarga(a.date)}</span>
+          </div>
+          <h2>${escaparHtml(a.title)}</h2>
+          <p>${escaparHtml(a.excerpt)}</p>
+          <span class="article-readmore">Leer análisis <span class="arr">→</span></span>
+        </div>
+      </a>`
+    )
+    .join("\n");
+  return reemplazarBloque(html, "listado", tarjetas, "analisis/index.html");
+}
+
+/** Los 3 artículos más recientes en la portada. */
+export function aplicarUltimosPortada(html, articulos) {
+  const tarjetas = porFecha(articulos)
+    .slice(0, 3)
+    .map(
+      (a) => `      <a class="news-card" href="analisis/${a.slug}.html">
+        <img class="news-cover" src="assets/og/${a.slug}.png" alt="${escaparHtml(a.title)}" width="1200" height="630" loading="lazy"/>
+        <div class="news-body">
+          <div class="news-meta"><span class="news-cat">${escaparHtml(a.category)}</span><span class="news-date">${fechaLarga(a.date)}</span></div>
+          <h3>${escaparHtml(a.title)}</h3>
+          <p>${escaparHtml(a.excerpt)}</p>
+          <span class="news-readmore">Leer análisis <svg class="ico"><use href="#i-flecha"/></svg></span>
+        </div>
+      </a>`
+    )
+    .join("\n");
+  return reemplazarBloque(html, "ultimos", tarjetas, "index.html");
+}
+
+/** <lastmod> de /analisis/ = fecha del artículo más reciente. */
+export function aplicarLastmodHub(xml, articulos) {
+  const ultima = porFecha(articulos)[0]?.updated ?? porFecha(articulos)[0]?.date;
+  const re = new RegExp(`(<loc>${DOMINIO}/analisis/</loc>\\s*<lastmod>)[^<]*(</lastmod>)`);
+  if (!ultima) return xml;
+  if (!re.test(xml)) throw new Error("no se encontró /analisis/ en sitemap.xml");
+  return xml.replace(re, `$1${ultima}$2`);
+}
+
+/** Archivos derivados del índice completo: [ruta, función que los regenera]. */
+export const LISTADOS = [
+  [RUTA_HUB, aplicarListadoHub],
+  [RUTA_PORTADA, aplicarUltimosPortada],
+  [RUTA_SITEMAP, aplicarLastmodHub],
+];
+
+export function actualizarListados(articulos) {
+  let cambios = 0;
+  for (const [ruta, aplicar] of LISTADOS) {
+    const antes = readFileSync(ruta, "utf8");
+    const despues = aplicar(antes, articulos);
+    if (antes !== despues) {
+      writeFileSync(ruta, despues);
+      console.log(`✓ Listado actualizado: ${path.relative(ROOT, ruta)}`);
+      cambios++;
+    }
+  }
+  return cambios;
 }
 
 function main() {
@@ -294,10 +524,12 @@ function main() {
     }
   }
 
+  if (!slugsPedidos.length) cambios += actualizarListados(articulos);
+
   console.log(
     cambios === 0
       ? "Bloques SEO ya al día en todos los artículos."
-      : `\nListo: ${cambios} artículo(s) actualizado(s).`
+      : `\nListo: ${cambios} archivo(s) actualizado(s).`
   );
 }
 
