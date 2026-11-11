@@ -13,7 +13,8 @@ analisis/             Blog "Análisis & Noticias" (artículos SEO)
   _plantilla.html     Plantilla de artículo (no borrar)
   index.html          Hub que lista todos los artículos (listado estático generado)
   README.md           Guía de publicación
-labs/                 Redirect noindex a /plataforma.html
+labs/                 Redirect noindex a /plataforma.html (respaldo; el 308 real está en vercel.json)
+vercel.json           Solo redirecciones: /labs y el dominio nexoemp-website.vercel.app → nexoemp.com
 404.html              Página de error propia (Vercel la sirve en cualquier 404)
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
@@ -79,8 +80,10 @@ sitemap) y no se pueden cerrar desde el repo.
 - **No subir documentos internos** al repo (contratos, notas de clientes,
   informes, PDFs de trabajo): es un sitio público y todo lo commiteado se
   sirve en producción. Ya ocurrió una vez y hubo que retirarlos.
-- Contenido en español (es-HN). Los artículos son informativos, nunca asesoría
-  para un caso particular (mantener el disclaimer de la plantilla).
+- Contenido en español (es-HN) y siempre de **usted**: ni tuteo ni voseo en
+  páginas, artículos ni en los campos de `articles.js`. Los artículos son
+  informativos, nunca asesoría para un caso particular (mantener el disclaimer
+  de la plantilla).
 - Commits descriptivos en español.
 - No editar a mano lo que generan los scripts sin actualizar la fuente
   (`articles.js` manda; el chequeo de CI hace cumplir la consistencia).

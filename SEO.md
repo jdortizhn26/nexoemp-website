@@ -33,7 +33,8 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 16 | Schema de negocio local | `ProfessionalService` en `index.html` (dirección, teléfono, horario, servicios) |
 | 17 | robots.txt | `robots.txt`, con permiso explícito a los rastreadores de IA |
 | 18 | URLs sin números ni conectores | los slugs se validan en `scripts/articulos.mjs` |
-| 19 | Desindexar lo que no debe rankear | `labs/index.html` es `noindex` y solo redirige a `/plataforma.html` |
+| 19 | Desindexar lo que no debe rankear | `/labs` redirige con 308 a `/plataforma.html` (`vercel.json`); `labs/index.html` queda de respaldo con `noindex` |
+| — | Un solo dominio | `vercel.json` redirige `nexoemp-website.vercel.app` a `nexoemp.com` |
 | 20 | llms.txt | `llms.txt` en la raíz: qué hace la firma, páginas y artículos, con nota de atribución |
 | 21 | CTA fijo en móvil | bloque `nexo:cta-movil` en artículos; barra propia en portada, plataforma y hub |
 | 22 | Botón para compartir | bloque `nexo:compartir` (WhatsApp, LinkedIn, Facebook, copiar enlace) |

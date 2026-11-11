@@ -207,9 +207,9 @@ window.NEXO_ARTICLES = [
     intent: "Entender qué figura jurídica conviene para un negocio en Honduras antes de formalizarlo.",
     excerpt: "Guía práctica para dueños de MIPYME en Honduras: diferencias entre comerciante individual y sociedad mercantil, riesgo patrimonial, impuestos y cuándo dar el salto.",
     tldr: [
-      "Como comerciante individual respondés por las deudas del negocio con todo tu patrimonio personal; en una sociedad, la responsabilidad se limita en principio al capital aportado.",
+      "Como comerciante individual responde por las deudas del negocio con todo su patrimonio personal; en una sociedad, la responsabilidad se limita en principio al capital aportado.",
       "La sociedad mercantil crea una persona jurídica nueva, con RTN y patrimonio propios, separada de sus socios.",
-      "La limitación de responsabilidad no es absoluta: las garantías personales, las deudas tributarias y el fraude pueden alcanzar tu patrimonio.",
+      "La limitación de responsabilidad no es absoluta: las garantías personales, las deudas tributarias y el fraude pueden alcanzar su patrimonio.",
       "El comerciante individual es más barato y simple para arrancar; la sociedad conviene cuando hay socios, activos que proteger o intención de crecer."
     ],
     faq: [
@@ -219,11 +219,11 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Una sociedad protege mi casa y mis bienes personales?",
-        a: "En principio sí: en una sociedad de responsabilidad limitada o anónima la responsabilidad de cada socio se limita a lo que aportó al capital. Pero no es un escudo absoluto: las garantías personales que firmés ante un banco, las deudas tributarias y ciertas conductas de fraude o mala fe pueden alcanzar tu patrimonio personal."
+        a: "En principio sí: en una sociedad de responsabilidad limitada o anónima la responsabilidad de cada socio se limita a lo que aportó al capital. Pero no es un escudo absoluto: las garantías personales que firme ante un banco, las deudas tributarias y ciertas conductas de fraude o mala fe pueden alcanzar su patrimonio personal."
       },
       {
         q: "¿Cuándo conviene pasar de comerciante individual a sociedad?",
-        a: "Cuando el negocio acumula activos o deudas que no querés arriesgar a título personal, cuando entran socios, cuando necesitás contratar con empresas o con el Estado que exigen persona jurídica, o cuando el volumen justifica la contabilidad formal y la planificación fiscal que permite una sociedad."
+        a: "Cuando el negocio acumula activos o deudas que no quiere arriesgar a título personal, cuando entran socios, cuando necesita contratar con empresas o con el Estado que exigen persona jurídica, o cuando el volumen justifica la contabilidad formal y la planificación fiscal que permite una sociedad."
       }
     ]
   },
@@ -236,7 +236,7 @@ window.NEXO_ARTICLES = [
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Saber qué debe pagar y registrar un empleador hondureño por cada trabajador contratado.",
-    excerpt: "IHSS, RAP, INFOP, retención del ISR y prestaciones básicas: una guía clara para que tu MIPYME contrate en regla y calcule el costo verdadero de cada empleado.",
+    excerpt: "IHSS, RAP, INFOP, retención del ISR y prestaciones básicas: una guía clara para que su MIPYME contrate en regla y calcule el costo verdadero de cada empleado.",
     tldr: [
       "Antes de pagar el primer salario, la empresa debe inscribirse como patrono ante IHSS, RAP e INFOP, y dar de alta a cada trabajador desde su día uno.",
       "El IHSS y el RAP son aportes compartidos entre patrono y empleado; el INFOP es exclusivamente patronal.",
@@ -295,18 +295,18 @@ window.NEXO_ARTICLES = [
   },
   {
     slug: "libros-contables-obligatorios-honduras",
-    title: "Libros contables obligatorios en Honduras: qué exige la ley y por qué te protegen",
+    title: "Libros contables obligatorios en Honduras: qué exige la ley y por qué lo protegen",
     metaTitle: "Libros contables obligatorios en Honduras: qué exige la ley",
     category: "Contable",
     date: "2026-06-23",
     author: "Dirección profesional",
     cluster: "contable",
     intent: "Saber qué libros y registros contables debe llevar una empresa hondureña y por qué.",
-    excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de tu empresa. Te explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño.",
+    excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de su empresa. Le explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño.",
     tldr: [
-      "En Honduras la obligación de llevar contabilidad nace de la condición de comerciante: si tenés empresa formal, llevar libros no es opcional.",
+      "En Honduras la obligación de llevar contabilidad nace de la condición de comerciante: si tiene empresa formal, llevar libros no es opcional.",
       "Los registros que típicamente se esperan son el Libro Diario, el Libro Mayor, el de Inventarios y Balances, los libros de actas y los registros fiscales del ISV.",
-      "Los libros son la voz de tu empresa ante el fisco, un banco o un juez: completos hablan a tu favor, incompletos se interpretan en tu contra.",
+      "Los libros son la voz de su empresa ante el fisco, un banco o un juez: completos hablan a su favor, incompletos se interpretan en su contra.",
       "Además de cumplir, una contabilidad bien llevada sustenta deducciones, habilita crédito bancario y demuestra el valor de la empresa."
     ],
     faq: [
@@ -326,14 +326,14 @@ window.NEXO_ARTICLES = [
   },
   {
     slug: "como-leer-estados-financieros",
-    title: "Cómo leer tus estados financieros: guía para dueños de negocio",
+    title: "Cómo leer sus estados financieros: guía para dueños de negocio",
     metaTitle: "Cómo leer estados financieros: balance, resultados y flujo",
     category: "Financiero",
     date: "2026-06-17",
     author: "Dirección profesional",
     cluster: "contable",
     intent: "Interpretar los reportes contables que recibe el dueño de un negocio, sin tecnicismos.",
-    excerpt: "Aprende a interpretar el balance general, el estado de resultados y el flujo de efectivo sin tecnicismos, y descubre qué mirar en cada uno para tomar mejores decisiones.",
+    excerpt: "Aprenda a interpretar el balance general, el estado de resultados y el flujo de efectivo sin tecnicismos, y descubra qué mirar en cada uno para tomar mejores decisiones.",
     tldr: [
       "El balance general es la foto del negocio en una fecha: activos, pasivos y patrimonio, siempre en equilibrio (Activos = Pasivos + Patrimonio).",
       "El estado de resultados cubre un período y responde si hubo utilidad: vender mucho no significa ganar mucho.",
@@ -351,7 +351,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Cómo sé si mi empresa tiene liquidez?",
-        a: "Compará los activos corrientes —efectivo, cuentas por cobrar, inventario— contra los pasivos de corto plazo. Si lo que podés convertir en efectivo pronto supera con holgura lo que tenés que pagar pronto, hay liquidez; si no, hay una señal de alerta."
+        a: "Compare los activos corrientes —efectivo, cuentas por cobrar, inventario— contra los pasivos de corto plazo. Si lo que puede convertir en efectivo pronto supera con holgura lo que tiene que pagar pronto, hay liquidez; si no, hay una señal de alerta."
       }
     ]
   },
@@ -397,10 +397,10 @@ window.NEXO_ARTICLES = [
     intent: "Conocer qué impuestos paga una empresa hondureña y con qué lógica se calcula cada uno.",
     excerpt: "El mapa básico de la carga tributaria de una empresa en Honduras: ISV, ISR, aportación solidaria, impuesto al activo neto, pagos a cuenta y retenciones — en lenguaje claro.",
     tldr: [
-      "El ISV es el impuesto al consumo (15% general y 18% para ciertos bienes): lo cobrás al cliente y lo administrás para el Estado, no es ingreso tuyo.",
+      "El ISV es el impuesto al consumo (15% general y 18% para ciertos bienes): lo cobra al cliente y lo administra para el Estado, no es ingreso suyo.",
       "El ISR grava la utilidad —25% sobre la renta neta gravable de las sociedades— más la aportación solidaria del 5% sobre el exceso que fija la ley.",
       "Los pagos a cuenta anticipan el ISR durante el año y el impuesto al activo neto (1%) funciona como piso acreditable.",
-      "Cuando tu empresa está obligada a retener y no lo hace, la responsabilidad recae sobre ella, no sobre el proveedor."
+      "Cuando su empresa está obligada a retener y no lo hace, la responsabilidad recae sobre ella, no sobre el proveedor."
     ],
     faq: [
       {
@@ -466,7 +466,7 @@ window.NEXO_ARTICLES = [
       "Una factura válida lleva datos y RTN del emisor, CAI vigente, rango y correlativo autorizados, fecha límite de emisión, datos del cliente cuando corresponde e ISV desglosado.",
       "El CAI y el rango no son adorno: son lo que hace que el documento exista para el SAR.",
       "Los errores más caros son el CAI vencido, emitir fuera de rango, repetir correlativos y no desglosar el ISV.",
-      "Una factura correcta protege dos veces: a vos frente al SAR y a tu cliente, que la necesita para deducir su gasto."
+      "Una factura correcta protege dos veces: a usted frente al SAR y a su cliente, que la necesita para deducir su gasto."
     ],
     faq: [
       {
@@ -516,8 +516,8 @@ window.NEXO_ARTICLES = [
   },
   {
     slug: "contador-externo-o-departamento-contable",
-    title: "¿Contador externo o departamento contable? Qué le conviene a tu empresa",
-    metaTitle: "Contador externo o interno: cuál conviene a tu empresa",
+    title: "¿Contador externo o departamento contable? Qué le conviene a su empresa",
+    metaTitle: "Contador externo o interno: cuál conviene a su empresa",
     category: "Contable",
     date: "2026-05-20",
     author: "Dirección profesional",
@@ -528,7 +528,7 @@ window.NEXO_ARTICLES = [
       "El contador externo conviene cuando el volumen no justifica un salario de tiempo completo y se quiere pagar por resultado, con respaldo de equipo.",
       "El departamento interno tiene sentido con alto volumen diario, necesidad de información en tiempo real y tamaño para absorber salarios y supervisión.",
       "El costo de lo interno no es solo el salario: son cargas laborales, prestaciones, espacio, software, supervisión y la dependencia de una sola persona.",
-      "La pregunta correcta no es «cuál», sino qué querés que haga la contabilidad; el modelo híbrido suele dar el mejor punto."
+      "La pregunta correcta no es «cuál», sino qué quiere que haga la contabilidad; el modelo híbrido suele dar el mejor punto."
     ],
     faq: [
       {

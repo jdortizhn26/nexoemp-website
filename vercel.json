@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/labs", "destination": "/plataforma.html", "permanent": true },
+    { "source": "/labs/", "destination": "/plataforma.html", "permanent": true },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "nexoemp-website.vercel.app" }],
+      "destination": "https://nexoemp.com/:path*",
+      "permanent": true
+    }
+  ]
+}

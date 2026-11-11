@@ -221,6 +221,8 @@ nav{
   font-size:13px;color:var(--smoke);
 }
 .article-byline strong{color:var(--white);font-weight:600;}
+.article-byline a{color:inherit;text-decoration:underline;text-underline-offset:3px;}
+.article-byline a:hover{color:var(--white);}
 
 .prose{max-width:760px;}
 .prose h2{
