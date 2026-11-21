@@ -43,6 +43,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Cuánto se paga de ISR en Honduras: tabla 2026 y cálculo",
     category: "Fiscal / SAR",
     date: "2026-11-10",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Saber cuánto impuesto sobre la renta paga una persona en Honduras y cómo se calcula.",
@@ -51,7 +52,7 @@ window.NEXO_ARTICLES = [
       "El ISR de las personas naturales es progresivo: hay un tramo exento y, sobre el excedente, tasas que suben por tramos (15 %, 20 % y 25 %).",
       "Nadie paga la tasa más alta sobre todo su ingreso: cada tasa se aplica solo a la porción que cae dentro de su tramo.",
       "Para 2026, según la tabla del SAR, la renta neta gravable anual está exenta hasta L 228,324.32, que equivale a un salario de hasta L 22,360.36 al mes.",
-      "Al asalariado el patrono le retiene el ISR cada mes; la declaración anual se presenta entre el 1 de enero y el 30 de abril del año siguiente (Arts. 27 y 28 de la Ley del ISR)."
+      "Al asalariado el patrono le retiene el ISR cada mes; la declaración anual se presenta entre el 1 de enero y el 30 de abril del año siguiente (Art. 28 de la Ley del ISR), salvo para el asalariado de una sola fuente a quien se le retuvo todo el impuesto y para quien no supera el monto exento."
     ],
     faq: [
       {
@@ -64,7 +65,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Un empleado asalariado tiene que presentar declaración de ISR?",
-        a: "La Ley del ISR (Arts. 27 y 28) fija la declaración anual entre el 1 de enero y el 30 de abril del año siguiente. Lo que el patrono retuvo durante el año se acredita contra el impuesto. Si además del salario tiene otros ingresos o más de un patrono, la retención suele quedar corta y la declaración es la que ajusta la diferencia; si su único ingreso es un salario, confirme su caso con su contador o con el SAR."
+        a: "No siempre. La Ley del ISR (Art. 28) fija la declaración anual entre el 1 de enero y el 30 de abril del año siguiente, o el siguiente día hábil, pero exceptúa al asalariado que tiene una sola fuente de ingresos y a quien el patrono le retuvo durante el año todo el impuesto, y también a la persona cuyos ingresos brutos no superan el monto exento de la escala. Si además del salario tiene otros ingresos o más de un patrono, la retención suele quedar corta y debe declarar para ajustar la diferencia. Lo retenido se acredita contra el impuesto del año."
       },
       {
         q: "¿El ISR de una empresa se calcula igual que el de una persona?",
@@ -78,6 +79,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Cómo calcular el sueldo neto en Honduras: IHSS, RAP e ISR",
     category: "Laboral",
     date: "2026-11-10",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Entender qué descuentos convierten el sueldo bruto pactado en el neto que recibe el trabajador.",
@@ -85,7 +87,7 @@ window.NEXO_ARTICLES = [
     tldr: [
       "Del sueldo bruto salen tres descuentos de ley al trabajador: su cuota del IHSS, su aporte al RAP y la retención del ISR.",
       "El IHSS y el RAP se calculan sobre bases con techo de cotización, así que un aumento de sueldo no siempre aumenta el descuento en la misma proporción.",
-      "La retención del ISR se calcula sobre el salario anual menos las deducciones de ley, la principal de L 40,000 al año sin comprobante (Art. 13 a de la Ley del ISR), y con la tabla vigente.",
+      "La retención del ISR se calcula sobre el salario anual menos las deducciones de ley, la principal de L 40,000 al año sin comprobante (L 80,000 para mayores de 65 años; Art. 13 a de la Ley del ISR), y con la tabla vigente.",
       "Aparte de lo que descuenta, el patrono paga su propia cuota patronal de IHSS y RAP y, cuando está obligado, el aporte al INFOP: ese es el costo real del puesto."
     ],
     faq: [
@@ -109,10 +111,11 @@ window.NEXO_ARTICLES = [
     metaTitle: "Décimo tercero y décimo cuarto en Honduras: cálculo y fechas",
     category: "Laboral",
     date: "2026-11-10",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Calcular correctamente el décimo tercer y el décimo cuarto mes de salario y saber cuándo corresponde pagarlos.",
-    excerpt: "Son dos pagos distintos, con fechas distintas, y ambos se prorratean cuando el trabajador no completó el año. La confusión entre ellos es una de las causas más frecuentes de reclamo.",
+    excerpt: "Son dos pagos distintos, con fechas distintas, y ambos se prorratean cuando el trabajador no completó el período que cubre cada uno. La confusión entre ellos es una de las causas más frecuentes de reclamo.",
     tldr: [
       "Son dos prestaciones separadas: el décimo tercer mes se paga a fin de año y el décimo cuarto a mitad de año.",
       "Cada uno equivale a un mes de salario cuando el trabajador completó el período correspondiente.",
@@ -171,6 +174,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Gastos deducibles del ISR en Honduras: requisitos y errores",
     category: "Fiscal / SAR",
     date: "2026-11-10",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Saber qué gastos reducen legalmente el impuesto de una empresa y qué requisitos debe cumplir cada comprobante.",
@@ -178,7 +182,7 @@ window.NEXO_ARTICLES = [
     tldr: [
       "Un gasto es deducible cuando cumple tres condiciones a la vez: es necesario para generar la renta, está documentado con un comprobante válido y está registrado en la contabilidad.",
       "El comprobante debe ser un documento fiscal autorizado, emitido a nombre y con el RTN de la empresa: la factura a nombre del socio no sirve.",
-      "Los gastos personales del dueño o de su familia no son deducibles aunque los pague la empresa (Art. 12, literal c, de la Ley del ISR).",
+      "Los gastos personales del dueño o de su familia no son deducibles aunque los pague la empresa: no son necesarios para generar la renta (Art. 11) y la ley excluye los gastos personales del contribuyente y su familia (Art. 12, literal c, de la Ley del ISR).",
       "Una multa difícilmente es un gasto necesario para generar la renta, y si la empresa debía retener y no retuvo, responde solidariamente por ese impuesto (Art. 51 de la Ley del ISR)."
     ],
     faq: [
@@ -202,15 +206,16 @@ window.NEXO_ARTICLES = [
     metaTitle: "Comerciante individual vs. sociedad en Honduras: cuál conviene",
     category: "Guía",
     date: "2026-07-01",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Entender qué figura jurídica conviene para un negocio en Honduras antes de formalizarlo.",
     excerpt: "Guía práctica para dueños de MIPYME en Honduras: diferencias entre comerciante individual y sociedad mercantil, riesgo patrimonial, impuestos y cuándo dar el salto.",
     tldr: [
-      "Como comerciante individual responde por las deudas del negocio con todo su patrimonio personal; en una sociedad, la responsabilidad se limita en principio al capital aportado.",
+      "Como comerciante individual responde por las deudas del negocio con todo su patrimonio personal; en una sociedad, la responsabilidad se limita en principio al capital que cada socio se comprometió a aportar.",
       "La sociedad mercantil crea una persona jurídica nueva, con RTN y patrimonio propios, separada de sus socios.",
       "La limitación de responsabilidad no es absoluta: las garantías personales, las deudas tributarias y el fraude pueden alcanzar su patrimonio.",
-      "El comerciante individual es más barato y simple para arrancar; la sociedad conviene cuando hay socios, activos que proteger o intención de crecer."
+      "El comerciante individual es más barato y simple para arrancar; la sociedad conviene cuando hay socios, activos que proteger o intención de crecer, y también puede ser una opción para quien emprende solo."
     ],
     faq: [
       {
@@ -219,7 +224,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Una sociedad protege mi casa y mis bienes personales?",
-        a: "En principio sí: en una sociedad de responsabilidad limitada o anónima la responsabilidad de cada socio se limita a lo que aportó al capital. Pero no es un escudo absoluto: las garantías personales que firme ante un banco, las deudas tributarias y ciertas conductas de fraude o mala fe pueden alcanzar su patrimonio personal."
+        a: "En principio sí: en una sociedad de responsabilidad limitada o anónima la responsabilidad de cada socio se limita al capital que se comprometió a aportar, incluida la parte que aún no haya pagado. Pero no es un escudo absoluto: las garantías personales que firme ante un banco, las deudas tributarias y ciertas conductas de fraude o mala fe pueden alcanzar su patrimonio personal."
       },
       {
         q: "¿Cuándo conviene pasar de comerciante individual a sociedad?",
@@ -233,12 +238,13 @@ window.NEXO_ARTICLES = [
     metaTitle: "Obligaciones laborales en Honduras: IHSS, RAP, INFOP e ISR",
     category: "Laboral",
     date: "2026-06-27",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "laboral",
     intent: "Saber qué debe pagar y registrar un empleador hondureño por cada trabajador contratado.",
     excerpt: "IHSS, RAP, INFOP, retención del ISR y prestaciones básicas: una guía clara para que su MIPYME contrate en regla y calcule el costo verdadero de cada empleado.",
     tldr: [
-      "Antes de pagar el primer salario, la empresa debe inscribirse como patrono ante IHSS, RAP e INFOP, y dar de alta a cada trabajador desde su día uno.",
+      "Antes de pagar el primer salario, la empresa debe inscribirse como patrono ante el IHSS y el RAP, y también ante el INFOP cuando alcance el número de trabajadores que exige la ley; además, debe dar de alta a cada trabajador desde su primer día.",
       "El IHSS y el RAP son aportes compartidos entre patrono y empleado; el INFOP es exclusivamente patronal.",
       "El empleador también retiene el ISR del trabajador cuando su salario anual supera el monto exento.",
       "El costo real de un puesto es el salario más las cuotas patronales y las prestaciones: presupuestar solo el sueldo es el error más caro."
@@ -246,11 +252,11 @@ window.NEXO_ARTICLES = [
     faq: [
       {
         q: "¿Ante qué instituciones debe inscribirse un empleador en Honduras?",
-        a: "Como mínimo ante el IHSS (seguridad social), el RAP (Régimen de Aportaciones Privadas) y el INFOP (formación profesional), además de cumplir con las obligaciones tributarias ante el SAR como agente de retención del ISR de sus trabajadores."
+        a: "Ante el IHSS (seguridad social) y el RAP (Régimen de Aportaciones Privadas) y, cuando la empresa alcance el número de trabajadores que exige la ley, ante el INFOP (formación profesional), además de cumplir con las obligaciones tributarias ante el SAR como agente de retención del ISR de sus trabajadores."
       },
       {
         q: "¿Cuánto cuesta realmente contratar a un empleado?",
-        a: "El costo va más allá del salario: incluye la cuota patronal del IHSS y del RAP, el aporte al INFOP y las prestaciones laborales que fija la ley. Por eso conviene calcular el costo total del puesto antes de ofrecer un sueldo, no después."
+        a: "El costo va más allá del salario: incluye la cuota patronal del IHSS y del RAP (con los aportes que corren solo por cuenta del patrono), el aporte al INFOP cuando corresponda y las prestaciones laborales que fija la ley. Por eso conviene calcular el costo total del puesto antes de ofrecer un sueldo, no después."
       },
       {
         q: "¿Qué pasa si registro tarde a un trabajador ante el IHSS?",
@@ -264,6 +270,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Multas del SAR en Honduras: las 4 más comunes y cómo evitarlas",
     category: "Fiscal / SAR",
     date: "2026-06-25",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Identificar por qué sanciona el SAR a una MIPYME y qué rutina previene cada multa.",
@@ -299,12 +306,13 @@ window.NEXO_ARTICLES = [
     metaTitle: "Libros contables obligatorios en Honduras: qué exige la ley",
     category: "Contable",
     date: "2026-06-23",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "contable",
     intent: "Saber qué libros y registros contables debe llevar una empresa hondureña y por qué.",
     excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de su empresa. Le explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño.",
     tldr: [
-      "En Honduras la obligación de llevar contabilidad nace de la condición de comerciante: si tiene empresa formal, llevar libros no es opcional.",
+      "En Honduras todo comerciante, persona natural o sociedad, debe llevar contabilidad (Decreto 189-2004 y Art. 64 del Código Tributario): si tiene empresa formal, llevar libros no es opcional.",
       "Los registros que típicamente se esperan son el Libro Diario, el Libro Mayor, el de Inventarios y Balances, los libros de actas y los registros fiscales del ISV.",
       "Los libros son la voz de su empresa ante el fisco, un banco o un juez: completos hablan a su favor, incompletos se interpretan en su contra.",
       "Además de cumplir, una contabilidad bien llevada sustenta deducciones, habilita crédito bancario y demuestra el valor de la empresa."
@@ -320,7 +328,11 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Cuánto tiempo debo conservar las facturas y comprobantes?",
-        a: "La normativa fija un plazo de conservación para la documentación de respaldo —facturas, comprobantes, contratos—. Como los requisitos varían según el tipo de empresa y su régimen, conviene confirmar el plazo vigente con su contador antes de descartar cualquier documento."
+        a: "El Código Tributario obliga a conservar los libros contables y la documentación de respaldo —facturas, comprobantes, contratos— durante cinco años si usted está inscrito en el RTN, y siete años en los demás casos, ordenados y a disposición del SAR. No descarte ningún documento antes de que venza ese plazo."
+      },
+      {
+        q: "¿Quién autoriza los libros contables en Honduras?",
+        a: "Los libros contables los autoriza la municipalidad del domicilio de la empresa. Si los registros contables y los libros de ventas y de compras se llevan por medio de computadora, además hay que solicitar ante el SAR la autorización para llevarlos en sistema computarizado. El contador lleva los libros y puede gestionar esos trámites, pero no los autoriza."
       }
     ]
   },
@@ -330,6 +342,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Cómo leer estados financieros: balance, resultados y flujo",
     category: "Financiero",
     date: "2026-06-17",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "contable",
     intent: "Interpretar los reportes contables que recibe el dueño de un negocio, sin tecnicismos.",
@@ -343,7 +356,7 @@ window.NEXO_ARTICLES = [
     faq: [
       {
         q: "¿Cuál es la diferencia entre el balance general y el estado de resultados?",
-        a: "El balance general es una fotografía en una fecha específica: qué posee, qué debe y cuánto vale realmente la empresa. El estado de resultados cubre un período (mes, trimestre, año) y muestra si en ese lapso el negocio dio utilidad o pérdida."
+        a: "El balance general es una fotografía en una fecha específica: qué posee, qué debe y cuál es su patrimonio en libros. El estado de resultados cubre un período (mes, trimestre, año) y muestra si en ese lapso el negocio dio utilidad o pérdida."
       },
       {
         q: "¿Por qué mi negocio vende bien pero no tengo efectivo?",
@@ -361,6 +374,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Factura electrónica en Honduras: cómo prepararse desde hoy",
     category: "Fiscal / SAR",
     date: "2026-06-13",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Anticipar el cambio hacia la facturación electrónica y saber qué ordenar desde ahora.",
@@ -374,7 +388,7 @@ window.NEXO_ARTICLES = [
     faq: [
       {
         q: "¿Ya es obligatoria la factura electrónica en Honduras?",
-        a: "El régimen de facturación lo administra el SAR y la dirección de mediano plazo apunta a esquemas electrónicos, pero eso no significa que la factura actual desaparezca mañana. Conviene verificar siempre el estado y las obligaciones vigentes directamente ante el SAR."
+        a: "Solo para los contribuyentes que el SAR notifique. El Reglamento del Régimen de Facturación (Acuerdo 481-2017) ya regula la emisión electrónica y prevé que su uso se vuelva obligatorio por etapas, según el calendario que emitan la Secretaría de Finanzas y el SAR. Quien no ha recibido esa notificación sigue facturando con las modalidades actuales con CAI. Verifique siempre ante el SAR si le ha notificado alguna obligación específica."
       },
       {
         q: "¿Qué gana una MIPYME al pasar a facturación electrónica?",
@@ -392,28 +406,29 @@ window.NEXO_ARTICLES = [
     metaTitle: "Impuestos de una empresa en Honduras: ISV, ISR y retenciones",
     category: "Fiscal / SAR",
     date: "2026-06-20",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Conocer qué impuestos paga una empresa hondureña y con qué lógica se calcula cada uno.",
     excerpt: "El mapa básico de la carga tributaria de una empresa en Honduras: ISV, ISR, aportación solidaria, impuesto al activo neto, pagos a cuenta y retenciones — en lenguaje claro.",
     tldr: [
-      "El ISV es el impuesto al consumo (15% general y 18% para ciertos bienes): lo cobra al cliente y lo administra para el Estado, no es ingreso suyo.",
-      "El ISR grava la utilidad —25% sobre la renta neta gravable de las sociedades— más la aportación solidaria del 5% sobre el exceso que fija la ley.",
-      "Los pagos a cuenta anticipan el ISR durante el año y el impuesto al activo neto (1%) funciona como piso acreditable.",
-      "Cuando su empresa está obligada a retener y no lo hace, la responsabilidad recae sobre ella, no sobre el proveedor."
+      "El ISV es el impuesto al consumo (15% general y 18% para bebidas alcohólicas, tabaco y boletos aéreos en clase ejecutiva o primera): lo cobra al cliente y lo administra para el Estado, no es ingreso suyo.",
+      "El ISR grava la utilidad —25% sobre la renta neta gravable de las sociedades— más la aportación solidaria del 5% sobre la renta neta gravable que exceda de L 1,000,000.",
+      "Los pagos a cuenta anticipan el ISR en tres cuotas durante el año, y el impuesto al activo neto (1% sobre el activo total neto que exceda de L 3,000,000) funciona como un piso contra el que se acredita el ISR.",
+      "Cuando su empresa está obligada a retener y no lo hace, responde solidariamente por ese impuesto; si retuvo y no enteró, la responsabilidad ante el SAR es solo suya."
     ],
     faq: [
       {
         q: "¿Cuánto es el ISV en Honduras?",
-        a: "La tasa general del Impuesto Sobre Ventas es del 15%, con una tasa mayor del 18% para ciertos bienes específicos. La empresa lo cobra al cliente en cada venta gravada y lo entera al SAR, restando el ISV pagado en sus compras como crédito fiscal."
+        a: "La tasa general del Impuesto Sobre Ventas es del 15%, con una tasa mayor del 18% para bebidas alcohólicas, cigarrillos y productos de tabaco, y boletos aéreos en clase ejecutiva o primera clase. La empresa lo cobra al cliente en cada venta gravada y lo entera al SAR, restando el ISV pagado en sus compras como crédito fiscal."
       },
       {
         q: "¿Cuál es la tasa del ISR para una sociedad?",
-        a: "Para las sociedades, la tasa es del 25% sobre la renta neta gravable, y adicionalmente aplica una aportación solidaria del 5% sobre el exceso de renta neta gravable por encima del umbral que fija la ley. La declaración es anual y se anticipa con pagos a cuenta."
+        a: "Para las sociedades, la tasa es del 25% sobre la renta neta gravable, y adicionalmente aplica una aportación solidaria del 5% sobre la renta neta gravable que exceda de L 1,000,000, que funciona como sobretasa del ISR. La declaración es anual y se anticipa con pagos a cuenta."
       },
       {
         q: "¿Qué son los pagos a cuenta?",
-        a: "Son anticipos periódicos del ISR que exige el SAR, calculados sobre el impuesto del año anterior. Se acreditan contra la declaración anual; ignorarlos genera recargos."
+        a: "Son anticipos del ISR que fija la ley: tres cuotas, cada una equivalente a la cuarta parte del impuesto del año anterior, que vencen el 30 de junio, el 30 de septiembre y el 31 de diciembre. Se acreditan contra la declaración anual, que se presenta a más tardar el 30 de abril del año siguiente; ignorarlos genera recargos."
       },
       {
         q: "¿Por qué dos empresas que facturan igual pagan impuestos distintos?",
@@ -427,6 +442,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "RTN en Honduras: qué es, para qué sirve y cómo obtenerlo",
     category: "Guía",
     date: "2026-06-10",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Obtener el Registro Tributario Nacional y entender qué obligaciones activa tenerlo.",
@@ -434,8 +450,8 @@ window.NEXO_ARTICLES = [
     tldr: [
       "El RTN es el número de identificación tributaria que asigna el SAR: la identidad fiscal con la que se declara, se paga y se factura.",
       "El RTN de una sociedad es propio y distinto al de sus socios; mezclarlos genera desorden fiscal y riesgo.",
-      "En una sociedad el RTN es un eslabón de la ruta de formalización: primero la inscripción mercantil, después el RTN, luego la autorización para facturar.",
-      "Tener RTN activa obligaciones: según el régimen hay que declarar aunque no haya movimiento."
+      "En una sociedad el RTN es un eslabón de la ruta de formalización: primero la inscripción en el Registro Público Mercantil, después la solicitud del RTN ante el SAR y luego la autorización para facturar.",
+      "Al iniciar operaciones con el RTN hay que presentar la declaración de inicio de actividades dentro de 40 días calendario y, según el régimen, declarar aunque no haya movimiento."
     ],
     faq: [
       {
@@ -444,11 +460,11 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Puedo usar mi RTN personal para facturar lo de mi empresa?",
-        a: "No conviene. Una sociedad mercantil obtiene un RTN propio, distinto al de sus socios, una vez inscrita en el Registro Mercantil. Facturar lo del negocio a título personal mezcla dos identidades fiscales separadas y genera desorden y riesgos."
+        a: "No conviene. Una sociedad mercantil tiene un RTN propio, distinto al de sus socios, que se solicita ante el SAR una vez inscrita en el Registro Público Mercantil. Facturar lo del negocio a título personal mezcla dos identidades fiscales separadas y genera desorden y riesgos."
       },
       {
         q: "¿Qué pasa si tengo RTN pero mi negocio no está operando?",
-        a: "Tener RTN activa obligaciones: según el régimen, hay que presentar declaraciones periódicas aunque no haya movimiento. Un RTN «olvidado» acumula omisiones y multas, así que conviene llevar el control de vencimientos desde que se obtiene."
+        a: "Las obligaciones nacen cuando empieza a operar: desde ahí debe presentar la declaración jurada de inicio de actividades dentro de los 40 días calendario y, según su régimen, declaraciones periódicas aunque no haya movimiento. Si dejó de operar, debe declarar el cese de actividades dentro de los 60 días calendario; mientras no lo haga, un RTN «olvidado» acumula omisiones y multas."
       }
     ]
   },
@@ -458,12 +474,13 @@ window.NEXO_ARTICLES = [
     metaTitle: "Factura legal en Honduras: requisitos del SAR y errores comunes",
     category: "Fiscal / SAR",
     date: "2026-06-02",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
     intent: "Verificar que las facturas del negocio cumplan los requisitos del SAR antes de emitirlas.",
     excerpt: "CAI, RTN, rango de numeración y fecha límite: los elementos que hacen válida una factura — y los errores que más rápido generan multas del SAR.",
     tldr: [
-      "Una factura válida lleva datos y RTN del emisor, CAI vigente, rango y correlativo autorizados, fecha límite de emisión, datos del cliente cuando corresponde e ISV desglosado.",
+      "Una factura válida lleva, entre otros requisitos, nombre, RTN y dirección del emisor, la palabra «Factura», CAI vigente, rango y correlativo de 16 dígitos autorizados, fecha límite de emisión y fecha de emisión, datos del cliente cuando corresponde e ISV separado por tasa.",
       "El CAI y el rango no son adorno: son lo que hace que el documento exista para el SAR.",
       "Los errores más caros son el CAI vencido, emitir fuera de rango, repetir correlativos y no desglosar el ISV.",
       "Una factura correcta protege dos veces: a usted frente al SAR y a su cliente, que la necesita para deducir su gasto."
@@ -471,7 +488,7 @@ window.NEXO_ARTICLES = [
     faq: [
       {
         q: "¿Qué datos debe llevar una factura en Honduras?",
-        a: "Nombre o razón social y RTN del emisor, el CAI vigente, el rango de numeración autorizado con su número correlativo, la fecha límite de emisión, los datos del cliente cuando corresponde y el detalle de bienes o servicios con el ISV desglosado."
+        a: "Entre otros requisitos, el nombre, RTN y dirección del emisor, la palabra «Factura», el CAI vigente, el rango autorizado y el número correlativo de 16 dígitos, la fecha límite de emisión, la fecha de emisión, los datos del cliente (nombre y RTN cuando necesita la factura para su crédito fiscal o su gasto) y el detalle de lo vendido con los valores exentos, exonerados y gravados y el ISV separados por tasa."
       },
       {
         q: "¿Un recibo o un ticket sirve como factura?",
@@ -489,24 +506,25 @@ window.NEXO_ARTICLES = [
     metaTitle: "Constituir una sociedad en Honduras: pasos y orden correcto",
     category: "Guía",
     date: "2026-05-28",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "formalizacion",
     intent: "Conocer el orden correcto de los trámites para constituir y formalizar una empresa en Honduras.",
     excerpt: "Del pacto social a la operación legal: el orden correcto de inscripciones ante el Instituto de la Propiedad, el SAR, IHSS, RAP, INFOP y la municipalidad — y los errores que más cuestan después.",
     tldr: [
-      "La escritura de constitución es el punto de partida, no la meta: la sociedad existe plenamente cuando se inscribe en el Registro Mercantil del Instituto de la Propiedad.",
-      "El orden importa: inscripción mercantil, RTN ante el SAR, autorización de facturación, inscripciones laborales y permiso de operación municipal.",
+      "El acto de constitución (por lo general, la escritura ante notario) es el punto de partida, no la meta: la sociedad opera con plena regularidad cuando se inscribe en el Registro Mercantil del Instituto de la Propiedad.",
+      "El orden importa: inscripción en el Registro Público Mercantil, solicitud del RTN ante el SAR, autorización de facturación, inscripciones laborales y permiso de operación municipal.",
       "Las decisiones del pacto social —tipo de sociedad, capital, facultades— son caras de cambiar después: conviene diseñarlas pensando en el crecimiento.",
       "Las obligaciones laborales corren desde la primera contratación, no cuando la empresa se acomode."
     ],
     faq: [
       {
         q: "¿Cuáles son los pasos para constituir una sociedad en Honduras?",
-        a: "En orden: escritura pública de constitución ante notario e inscripción en el Registro Mercantil del Instituto de la Propiedad; RTN ante el SAR; autorización de facturación; inscripciones laborales ante IHSS, RAP e INFOP cuando haya personal; y permiso de operación municipal."
+        a: "En orden: constitución de la sociedad (por lo general, escritura pública ante notario) e inscripción en el Registro Público Mercantil del Instituto de la Propiedad; solicitud del RTN ante el SAR; autorización de facturación; inscripciones laborales ante el IHSS y el RAP cuando haya personal, y ante el INFOP cuando corresponda por el número de trabajadores; y permiso de operación municipal."
       },
       {
         q: "¿Mi empresa ya existe cuando el abogado me entrega la escritura?",
-        a: "No del todo. La escritura define el tipo societario, el capital, los socios y la administración, pero hasta que la sociedad no está inscrita en el Registro Mercantil no tiene existencia legal plena frente a terceros."
+        a: "No del todo. La escritura define el tipo societario, el capital, los socios y la administración, pero mientras la sociedad no está inscrita en el Registro Mercantil opera de forma irregular, y quienes contratan en su nombre pueden responder personalmente frente a terceros. Por eso conviene inscribirla cuanto antes."
       },
       {
         q: "¿Qué pasa si me salto un paso de la formalización?",
@@ -520,6 +538,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "Contador externo o interno: cuál conviene a su empresa",
     category: "Contable",
     date: "2026-05-20",
+    updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "contable",
     intent: "Decidir entre tercerizar la contabilidad o montar un equipo contable interno.",
@@ -537,7 +556,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Es más barato tener un contador de planta?",
-        a: "No necesariamente. Al salario hay que sumarle cargas laborales (IHSS, RAP, INFOP), prestaciones, espacio, software, supervisión y el riesgo de depender de una sola persona que puede renunciar o enfermarse. Muchas veces el «empleado barato» resulta más caro que la firma."
+        a: "No necesariamente. Al salario hay que sumarle cargas laborales (IHSS, RAP y, según el tamaño de su planilla, INFOP), prestaciones, espacio, software, supervisión y el riesgo de depender de una sola persona que puede renunciar o enfermarse. Muchas veces el «empleado barato» resulta más caro que la firma."
       },
       {
         q: "¿En qué consiste el modelo híbrido?",
