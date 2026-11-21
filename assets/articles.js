@@ -32,9 +32,14 @@
      tldr       3–4 conclusiones en una frase cada una (key takeaways).
      faq        3+ preguntas frecuentes {q, a}; alimentan el bloque
                 visible y el schema FAQPage de la página.
-   Opcional:
+   Opcionales:
      updated    Fecha AAAA-MM-DD de la última revisión de fondo del
                 artículo; sale como dateModified en el schema.
+     relacionados
+                Lista de slugs que van primero en "Seguir leyendo",
+                antes de la regla automática por cluster. Sirve para
+                dar enlaces a artículos que la regla deja sin ninguno.
+                El chequeo de CI falla si un slug no existe.
    ════════════════════════════════════════════════════════════════ */
 window.NEXO_ARTICLES = [
   {
@@ -46,6 +51,11 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
+    relacionados: [
+      "impuestos-empresa-honduras-isv-isr-retenciones",
+      "gastos-deducibles-isr-honduras",
+      "cierre-fiscal-honduras-7-puntos-clave",
+    ],
     intent: "Saber cuánto impuesto sobre la renta paga una persona en Honduras y cómo se calcula.",
     excerpt: "El ISR de una persona natural no se paga sobre todo lo que gana: hay un tramo exento y una escala del 15 %, 20 % y 25 %. Le mostramos la tabla 2026 del SAR, dos ejemplos de cálculo y cuándo se declara.",
     tldr: [
@@ -177,6 +187,10 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
+    relacionados: [
+      "cierre-fiscal-honduras-7-puntos-clave",
+      "impuestos-empresa-honduras-isv-isr-retenciones",
+    ],
     intent: "Saber qué gastos reducen legalmente el impuesto de una empresa y qué requisitos debe cumplir cada comprobante.",
     excerpt: "No todo lo que la empresa paga reduce el impuesto. Un gasto es deducible cuando es necesario para generar la renta, está documentado y está registrado; si falla cualquiera de los tres, se cae.",
     tldr: [
@@ -273,6 +287,11 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
+    relacionados: [
+      "facturacion-conforme-sar-honduras",
+      "cierre-fiscal-honduras-7-puntos-clave",
+      "impuestos-empresa-honduras-isv-isr-retenciones",
+    ],
     intent: "Identificar por qué sanciona el SAR a una MIPYME y qué rutina previene cada multa.",
     excerpt: "Las sanciones del SAR rara vez llegan por sorpresa: casi siempre nacen de descuidos evitables. Le explicamos las cuatro más frecuentes y cómo blindar su negocio.",
     tldr: [
@@ -309,6 +328,9 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "contable",
+    relacionados: [
+      "cierre-fiscal-honduras-7-puntos-clave",
+    ],
     intent: "Saber qué libros y registros contables debe llevar una empresa hondureña y por qué.",
     excerpt: "Los libros y registros contables no son un trámite: son la memoria legal de su empresa. Le explicamos para qué sirven, qué pide la ley a grandes rasgos y cómo llevarlos bien blinda al dueño.",
     tldr: [
@@ -377,6 +399,9 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "fiscal",
+    relacionados: [
+      "facturacion-conforme-sar-honduras",
+    ],
     intent: "Anticipar el cambio hacia la facturación electrónica y saber qué ordenar desde ahora.",
     excerpt: "El régimen de facturación en Honduras avanza hacia lo electrónico. Le explicamos qué significa para su MIPYME y cómo ordenar su facturación desde hoy.",
     tldr: [
@@ -445,6 +470,9 @@ window.NEXO_ARTICLES = [
     updated: "2026-11-21",
     author: "Dirección profesional",
     cluster: "formalizacion",
+    relacionados: [
+      "facturacion-conforme-sar-honduras",
+    ],
     intent: "Obtener el Registro Tributario Nacional y entender qué obligaciones activa tenerlo.",
     excerpt: "El primer documento fiscal que necesita cualquier persona o empresa para operar formalmente en Honduras. Qué es, para qué sirve y cómo se obtiene.",
     tldr: [

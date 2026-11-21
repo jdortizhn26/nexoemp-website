@@ -1,5 +1,8 @@
 {
   "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/analisis/index.html", "destination": "/analisis/", "permanent": true },
+    { "source": "/contadores/index.html", "destination": "/contadores/", "permanent": true },
     { "source": "/labs", "destination": "/plataforma.html", "permanent": true },
     { "source": "/labs/", "destination": "/plataforma.html", "permanent": true },
     {
@@ -7,6 +10,16 @@
       "has": [{ "type": "host", "value": "nexoemp-website.vercel.app" }],
       "destination": "https://nexoemp.com/:path*",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+    },
+    {
+      "source": "/assets/og/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
     }
   ]
 }

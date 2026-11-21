@@ -12,7 +12,7 @@
      nexo:cta-inline    Llamado a la acción tras el primer párrafo
      nexo:cta-final     Llamado a la acción al terminar el artículo
      nexo:faq           Preguntas frecuentes visibles
-     nexo:relacionados  Interlinkeado por cluster temático
+     nexo:relacionados  Interlinkeado: "relacionados" y luego cluster temático
      nexo:compartir     Botones de compartir
      nexo:pie           Pie de página con enlaces + menú móvil
      nexo:cta-movil     Barra fija de contacto en móvil
@@ -22,6 +22,8 @@
 
      nexo:listado       Todas las tarjetas, en analisis/index.html
      nexo:ultimos       Las 3 más recientes, en index.html
+                        (las tarjetas usan la miniatura .webp de la portada;
+                        el .png queda para og:image)
 
    y la fecha <lastmod> de /analisis/ en sitemap.xml.
 
@@ -90,12 +92,17 @@ function limpiarBloques(html, ids = IDS) {
   return html.replace(/\n{3,}/g, "\n\n");
 }
 
-/** Los 3 artículos más afines: primero el mismo cluster, luego los más recientes. */
+/**
+ * Los 3 artículos más afines: primero los elegidos a mano en "relacionados",
+ * después el mismo cluster y luego el orden del índice.
+ */
 export function relacionados(art, articulos, cantidad = 3) {
-  const otros = articulos.filter((a) => a.slug !== art.slug);
+  const porSlug = new Map(articulos.map((a) => [a.slug, a]));
+  const elegidos = (art.relacionados ?? []).map((s) => porSlug.get(s)).filter(Boolean);
+  const otros = articulos.filter((a) => a.slug !== art.slug && !elegidos.includes(a));
   const mismoCluster = otros.filter((a) => a.cluster === art.cluster);
   const resto = otros.filter((a) => a.cluster !== art.cluster);
-  return [...mismoCluster, ...resto].slice(0, cantidad);
+  return [...elegidos, ...mismoCluster, ...resto].slice(0, cantidad);
 }
 
 function bloqueSchema(art) {
@@ -153,7 +160,7 @@ function bloqueNav() {
     "nav",
     `<nav>
   <div class="nav-inner">
-    <a href="../index.html" style="display:flex;align-items:center;" aria-label="Nexo Empresarial, inicio">
+    <a href="/" style="display:flex;align-items:center;" aria-label="Nexo Empresarial, inicio">
       <img src="../assets/logo.png" class="nav-logo" alt="Nexo Empresarial" width="256" height="256"/>
     </a>
     <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
@@ -164,12 +171,12 @@ function bloqueNav() {
       </span>
     </button>
     <div class="nav-links" id="nav-menu">
-      <a href="../index.html#servicios">Servicios</a>
+      <a href="/#servicios">Servicios</a>
       <a href="../plataforma.html">Plataforma</a>
       <a href="../precios.html">Precios</a>
       <a href="../invertir-en-honduras.html">Invertir en Honduras</a>
       <a href="./" style="color:var(--white);">Análisis</a>
-      <a href="../index.html#contacto" class="nav-cta">Contactar</a>
+      <a href="/#contacto" class="nav-cta">Contactar</a>
     </div>
   </div>
 </nav>`
@@ -216,7 +223,7 @@ function bloqueCtaFinal(art) {
       <p>Lo que acaba de leer es la regla general; su empresa tiene sus propios números. Cuéntenos su situación y le decimos qué le aplica. La primera sesión de diagnóstico no tiene costo.</p>
       <div class="cta-final-btns">
         <a href="https://wa.me/${WHATSAPP}?text=${texto}" target="_blank" rel="noopener" class="btn btn-wa">Hablar con nosotros por WhatsApp →</a>
-        <a href="../index.html#contacto" class="btn btn-ghost">Escribirnos por el formulario</a>
+        <a href="/#contacto" class="btn btn-ghost">Escribirnos por el formulario</a>
       </div>
     </div>`
   );
@@ -297,14 +304,14 @@ function bloquePie() {
     `<footer>
   <div class="container">
     <div class="foot-links">
-      <a href="../index.html">Inicio</a>
-      <a href="../index.html#servicios">Servicios</a>
+      <a href="/">Inicio</a>
+      <a href="/#servicios">Servicios</a>
       <a href="../contadores/">Contadores</a>
       <a href="../plataforma.html">Plataforma</a>
       <a href="../precios.html">Precios</a>
       <a href="../invertir-en-honduras.html">Invertir en Honduras</a>
       <a href="./">Análisis</a>
-      <a href="../index.html#contacto">Contacto</a>
+      <a href="/#contacto">Contacto</a>
     </div>
     <p>© 2026 <span class="brand">Nexo Empresarial</span> · San Pedro Sula, Honduras</p>
     <p>Legal · Fiscal · Contable · Financiera</p>
@@ -355,7 +362,7 @@ function bloqueCtaMovil(art) {
     "cta-movil",
     `<div class="cta-movil">
   <a href="https://wa.me/${WHATSAPP}?text=${texto}" target="_blank" rel="noopener" class="cta-movil-wa">WhatsApp</a>
-  <a href="../index.html#contacto" class="cta-movil-btn">Solicitar diagnóstico</a>
+  <a href="/#contacto" class="cta-movil-btn">Solicitar diagnóstico</a>
 </div>`
   );
 }
@@ -429,7 +436,7 @@ export function aplicarListadoHub(html, articulos) {
   const tarjetas = porFecha(articulos)
     .map(
       (a) => `      <a class="article-card" href="${a.slug}.html">
-        <img class="article-card-cover" src="../assets/og/${a.slug}.png" alt="${escaparHtml(a.title)}" width="1200" height="630" loading="lazy"/>
+        <img class="article-card-cover" src="../assets/og/${a.slug}.webp" alt="${escaparHtml(a.title)}" width="600" height="315" loading="lazy"/>
         <div class="article-card-inner">
           <div class="article-meta">
             <span class="article-cat">${escaparHtml(a.category)}</span>
@@ -451,7 +458,7 @@ export function aplicarUltimosPortada(html, articulos) {
     .slice(0, 3)
     .map(
       (a) => `      <a class="news-card" href="analisis/${a.slug}.html">
-        <img class="news-cover" src="assets/og/${a.slug}.png" alt="${escaparHtml(a.title)}" width="1200" height="630" loading="lazy"/>
+        <img class="news-cover" src="assets/og/${a.slug}.webp" alt="${escaparHtml(a.title)}" width="600" height="315" loading="lazy"/>
         <div class="news-body">
           <div class="news-meta"><span class="news-cat">${escaparHtml(a.category)}</span><span class="news-date">${fechaLarga(a.date)}</span></div>
           <h3>${escaparHtml(a.title)}</h3>

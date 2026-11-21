@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Nexo Empresarial — Legal, fiscal, contable y financiero en Honduras</title>
-<meta name="description" content="Firma integral en San Pedro Sula, Honduras: legal, fiscal, contable y financiero. Constituimos su empresa, llevamos su contabilidad y analizamos sus números."/>
+<title>Nexo Empresarial: firma legal, fiscal y contable en Honduras</title>
+<meta name="description" content="Firma legal, fiscal y contable en San Pedro Sula, Honduras. Constituimos su empresa, llevamos su contabilidad, atendemos el SAR y analizamos sus números."/>
 <meta name="keywords" content="constituir empresa Honduras, asesoría legal corporativa, asesoría fiscal SAR, contabilidad Honduras, análisis financiero, contrato de adhesión Aduanas, invertir en Honduras, San Pedro Sula, Nexo Labs"/>
 <meta name="author" content="Nexo Empresarial"/>
 <meta name="robots" content="index, follow"/>
@@ -12,8 +12,8 @@
 <!-- Open Graph / redes sociales (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Nexo Empresarial"/>
-<meta property="og:title" content="Nexo Empresarial — De la escritura al estado financiero"/>
-<meta property="og:description" content="Un equipo. Cuatro ramas. Todo lo que su empresa necesita: legal, fiscal, contable y financiera, en San Pedro Sula, Honduras."/>
+<meta property="og:title" content="Nexo Empresarial: firma legal, fiscal y contable en Honduras"/>
+<meta property="og:description" content="Firma legal, fiscal, contable y financiera en San Pedro Sula: el mismo equipo constituye su empresa, lleva su contabilidad y atiende sus impuestos."/>
 <meta property="og:image" content="https://nexoemp.com/assets/og/home.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -21,8 +21,8 @@
 <meta property="og:locale" content="es_HN"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Nexo Empresarial — De la escritura al estado financiero"/>
-<meta name="twitter:description" content="Legal, fiscal, contable y financiera: el mismo equipo en cada etapa de su empresa."/>
+<meta name="twitter:title" content="Nexo Empresarial: firma legal, fiscal y contable en Honduras"/>
+<meta name="twitter:description" content="Firma legal, fiscal, contable y financiera en San Pedro Sula: el mismo equipo constituye su empresa, lleva su contabilidad y atiende sus impuestos."/>
 <meta name="twitter:image" content="https://nexoemp.com/assets/og/home.png"/>
 <link rel="icon" type="image/png" href="assets/favicon.png"/>
 <script src="assets/analytics.js" defer></script>
@@ -630,7 +630,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "AccountingService", "LegalService"],
   "@id": "https://nexoemp.com/#empresa",
   "name": "Nexo Empresarial",
   "alternateName": "Nexo Empresarial Honduras",
@@ -650,6 +650,15 @@
     "addressRegion": "Cortés",
     "addressCountry": "HN"
   },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Colonia%20Los%20Laureles%2C%2022%20Calle%20B%2C%2012%20Avenida%2C%20Oficina%20No.%203%2C%20San%20Pedro%20Sula%2C%20Cort%C3%A9s%2C%20Honduras",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+504-3326-9814",
+    "email": "josue@nexoemp.com",
+    "areaServed": "HN",
+    "availableLanguage": "es"
+  },
   "areaServed": {
     "@type": "Country",
     "name": "Honduras"
@@ -667,12 +676,12 @@
     "Estados financieros", "Análisis financiero", "Sistemas a medida"
   ],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Servicios legales corporativos: sociedades, poderes, contratos y gestiones ante Registro Mercantil y Aduanas" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría fiscal y tributaria ante el SAR" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contabilidad, estados financieros y planilla" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Análisis financiero, proyecciones y flujo de caja" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Servicios legales corporativos: sociedades, poderes, contratos y gestiones ante Registro Mercantil y Aduanas", "url": "https://nexoemp.com/#rama-legal" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría fiscal y tributaria ante el SAR", "url": "https://nexoemp.com/#rama-fiscal" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contabilidad, estados financieros y planilla", "url": "https://nexoemp.com/contadores/" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Análisis financiero, proyecciones y flujo de caja", "url": "https://nexoemp.com/#rama-financiera" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Acompañamiento a inversionistas extranjeros para operar en Honduras", "url": "https://nexoemp.com/invertir-en-honduras.html" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas a medida (Nexo Labs)" } }
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas a medida (Nexo Labs)", "url": "https://nexoemp.com/plataforma.html" } }
   ]
 }
 </script>
@@ -762,9 +771,10 @@
 <main id="secciones">
 
 <!-- ══════════════ HERO ══════════════
-     El HTML servido es siempre la portada general (Honduras). Desde fuera del
-     país, el script de abajo cambia solo el contenido de #heroSwap por la
-     plantilla #hero-ext y sube la sección #invertir. -->
+     El HTML servido y lo que ve todo visitante al llegar es la portada general
+     (Honduras). Solo si el visitante elige «Va a llegar a Honduras» (o ya lo
+     eligió antes), el script de abajo cambia el contenido de #heroSwap por la
+     plantilla #hero-ext. El orden de las secciones no cambia nunca. -->
 <section class="hero" id="portada" data-region="hn">
   <div class="container hero-inner">
     <div class="region fade-up" role="group" aria-label="¿Dónde está su empresa?">
@@ -777,7 +787,7 @@
       <div class="hero-grid">
         <div>
           <div class="hero-eyebrow fade-up d1"><svg class="ico"><use href="#i-lugar"/></svg>Firma integral · San Pedro Sula, Honduras</div>
-          <h1 class="fade-up d1">De la escritura <span class="accent">al estado financiero.</span></h1>
+          <h1>De la escritura <span class="accent">al estado financiero.</span></h1>
           <p class="hero-sub fade-up d2">Constituimos, registramos, llevamos la contabilidad y analizamos los números de su empresa. Legal, fiscal, contable y financiero: el mismo equipo en cada etapa.</p>
           <div class="hero-cta fade-up d3">
             <a href="#contacto" class="btn btn-primary">Hablemos de su empresa <svg class="ico"><use href="#i-flecha"/></svg></a>
@@ -1044,7 +1054,7 @@
     <div class="news-grid" id="newsGrid">
 <!-- nexo:ultimos:inicio -->
       <a class="news-card" href="analisis/cuanto-se-paga-de-isr-en-honduras.html">
-        <img class="news-cover" src="assets/og/cuanto-se-paga-de-isr-en-honduras.png" alt="¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta" width="1200" height="630" loading="lazy"/>
+        <img class="news-cover" src="assets/og/cuanto-se-paga-de-isr-en-honduras.webp" alt="¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta" width="600" height="315" loading="lazy"/>
         <div class="news-body">
           <div class="news-meta"><span class="news-cat">Fiscal / SAR</span><span class="news-date">10 noviembre 2026</span></div>
           <h3>¿Cuánto se paga de ISR en Honduras? Así funciona el impuesto sobre la renta</h3>
@@ -1053,7 +1063,7 @@
         </div>
       </a>
       <a class="news-card" href="analisis/calcular-sueldo-neto-honduras.html">
-        <img class="news-cover" src="assets/og/calcular-sueldo-neto-honduras.png" alt="Del sueldo bruto al neto en Honduras: qué se descuenta y por qué" width="1200" height="630" loading="lazy"/>
+        <img class="news-cover" src="assets/og/calcular-sueldo-neto-honduras.webp" alt="Del sueldo bruto al neto en Honduras: qué se descuenta y por qué" width="600" height="315" loading="lazy"/>
         <div class="news-body">
           <div class="news-meta"><span class="news-cat">Laboral</span><span class="news-date">10 noviembre 2026</span></div>
           <h3>Del sueldo bruto al neto en Honduras: qué se descuenta y por qué</h3>
@@ -1062,7 +1072,7 @@
         </div>
       </a>
       <a class="news-card" href="analisis/decimo-tercero-y-decimo-cuarto-honduras.html">
-        <img class="news-cover" src="assets/og/decimo-tercero-y-decimo-cuarto-honduras.png" alt="Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan" width="1200" height="630" loading="lazy"/>
+        <img class="news-cover" src="assets/og/decimo-tercero-y-decimo-cuarto-honduras.webp" alt="Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan" width="600" height="315" loading="lazy"/>
         <div class="news-body">
           <div class="news-meta"><span class="news-cat">Laboral</span><span class="news-date">10 noviembre 2026</span></div>
           <h3>Décimo tercer y décimo cuarto mes en Honduras: cómo se calculan y cuándo se pagan</h3>
@@ -1198,7 +1208,7 @@
           <input type="hidden" name="_subject" value="Nueva solicitud de contacto · Nexo Empresarial"/>
           <input type="hidden" name="_template" value="table"/>
           <input type="hidden" name="_captcha" value="true"/>
-          <input type="hidden" name="_next" value="https://nexoemp.com/#contacto"/>
+          <input type="hidden" name="_next" value="https://nexoemp.com/gracias.html"/>
           <input type="text" name="_honey" style="display:none"/>
 
           <div class="form-row">
@@ -1309,8 +1319,9 @@
   })();
 
   /* ── Portada por región: Honduras (general) o extranjeros ──
-     Prioridad: ?pais= (solo pruebas) > elección guardada > detección por /api/pais.
-     Si nada responde, queda la portada general. */
+     Prioridad: ?pais= (solo pruebas) > elección guardada > portada general.
+     No se detecta el país: Google rastrea desde fuera de Honduras y debe ver
+     la misma portada que el visitante local. */
   (function(){
     const hero = document.getElementById('portada');
     const swap = document.getElementById('heroSwap');
@@ -1320,21 +1331,12 @@
     const general = swap.innerHTML;
     const extranjero = tpl.innerHTML;
     const botones = hero.querySelectorAll('button[data-region]');
-    const subir = ['invertir'].map(id=>document.getElementById(id)).filter(Boolean);
-    const marcas = subir.map(s=>{ const m = document.createComment(''); s.parentNode.insertBefore(m, s); return m; });
     let actual = 'hn';
 
     function marcar(r){ botones.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.region === r))); }
     function poner(r){
       swap.innerHTML = r === 'ext' ? extranjero : general;
       hero.dataset.region = r;
-      if (r === 'ext'){
-        let ancla = hero;
-        subir.forEach(s=>{ ancla.after(s); ancla = s; });
-      } else {
-        subir.forEach((s,i)=>marcas[i].after(s));
-      }
-      subir.forEach(s=>s.querySelectorAll('.revelar').forEach(e=>e.classList.add('visible')));
     }
     function aplicar(r, animar){
       if (r !== 'hn' && r !== 'ext') return;
@@ -1357,18 +1359,7 @@
     const prueba = new URLSearchParams(location.search).get('pais');
     if (prueba){ aplicar(porPais(prueba), true); return; }
     const guardada = leer();
-    if (guardada === 'hn' || guardada === 'ext'){ aplicar(guardada, false); return; }
-    if (!window.fetch) return;
-    const ctrl = window.AbortController ? new AbortController() : null;
-    const t = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 2500);
-    fetch('/api/pais', { cache:'no-store', signal: ctrl ? ctrl.signal : undefined })
-      .then(r => r.ok ? r.json() : null)
-      .then(function(d){
-        clearTimeout(t);
-        if (!d || !d.pais || leer()) return;
-        aplicar(porPais(d.pais), true);
-      })
-      .catch(function(){ clearTimeout(t); });
+    if (guardada === 'hn' || guardada === 'ext') aplicar(guardada, false);
   })();
 
   document.getElementById('contactForm').addEventListener('submit', function(e){
@@ -1398,6 +1389,7 @@
       const m = v('mensaje');
       if (m) msg += '\nMensaje:\n' + m;
       const url = 'https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(msg);
+      if (window.nexoEvento) window.nexoEvento('whatsapp_click', { bloque: 'formulario', enlace: 'https://wa.me/' + WA_NUMERO });
       window.open(url, '_blank', 'noopener');
     });
   })();
