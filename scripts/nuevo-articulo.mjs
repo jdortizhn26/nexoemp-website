@@ -8,7 +8,8 @@
      1. Genera analisis/<slug>.html desde analisis/_plantilla.html
         (título, categoría, fecha, resumen, canonical, Open Graph
         y Twitter Card ya rellenados, más los bloques SEO).
-     2. Genera la portada OG (assets/og/<slug>.png) llamando a
+     2. Genera la portada OG (assets/og/<slug>.png) y su miniatura
+        para las tarjetas (assets/og/<slug>.webp) llamando a
         scripts/generar_portadas.py.
      3. Agrega la URL del artículo a sitemap.xml.
      4. Actualiza el listado estático del hub y de la portada.
@@ -88,7 +89,12 @@ function generarPagina(art, articulos) {
 
 function generarPortada(art, forzar) {
   const destino = path.join(DIR_OG, `${art.slug}.png`);
-  if (existsSync(destino) && !forzar) return false;
+  if (existsSync(destino) && !forzar) {
+    if (existsSync(path.join(DIR_OG, `${art.slug}.webp`))) return false;
+    // PNG sin miniatura: solo falta la .webp de las tarjetas.
+    const res = spawnSync("python3", [RUTA_PORTADAS, "--miniaturas", art.slug], { stdio: "inherit" });
+    return res.status === 0;
+  }
 
   const res = spawnSync("python3", [RUTA_PORTADAS, art.slug, art.category, art.title], {
     stdio: "inherit",
@@ -129,7 +135,8 @@ function main() {
   const todos = cargarArticulos();
   let articulos = todos;
 
-  const errores = articulos.flatMap(validarArticulo);
+  const slugs = new Set(articulos.map((a) => a.slug));
+  const errores = articulos.flatMap((a) => validarArticulo(a, slugs));
   if (errores.length) {
     console.error("Errores en assets/articles.js:");
     for (const e of errores) console.error(`  ✗ ${e}`);

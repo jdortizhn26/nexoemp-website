@@ -21,7 +21,8 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 8 | CTA después del primer párrafo | bloque `nexo:cta-inline` (WhatsApp con el artículo precargado) |
 | — | CTA al terminar el artículo | bloque `nexo:cta-final` (WhatsApp y formulario), justo después del cuerpo |
 | 9 | Jerarquía H1 → H2 → H3 | cuerpo del artículo; la plantilla lo recuerda al redactar |
-| 10 | Interlinkeado y clusters | campo `cluster` → bloque "Seguir leyendo", enlaces estáticos |
+| 10 | Interlinkeado y clusters | campo `cluster` → bloque "Seguir leyendo", enlaces estáticos; el campo opcional `relacionados` va antes de la regla del cluster (CI valida los slugs) |
+| — | Enlaces dentro del texto hacia lo que se vende | 2 o 3 por artículo en los seis con más tráfico (obligaciones laborales, constituir sociedad, multas SAR, comerciante o sociedad, RTN, ISR), hacia `/contadores/`, `/plataforma.html`, `/precios.html` y las ramas o el contacto de la portada |
 | — | Listado de artículos sin JavaScript | tarjetas estáticas en `analisis/index.html` (`nexo:listado`) y en la portada (`nexo:ultimos`); CI falla si se desincronizan del índice |
 | — | Menú y pie iguales en todo el sitio | bloques `nexo:nav` y `nexo:pie` en los artículos, con menú móvil y enlace a `/contadores/` |
 | — | Página 404 propia | `404.html` en la raíz |
@@ -30,11 +31,17 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | 13 | Schema de FAQ | `FAQPage` generado del mismo campo `faq` (visible y schema nunca se desincronizan) |
 | 14 | Nombres de imagen descriptivos | portadas en `assets/og/<slug>.png` |
 | 15 | Alt text en imágenes | portadas y logo; el hub usa el título del artículo como alt |
-| 16 | Schema de negocio local | `ProfessionalService` en `index.html` (dirección, teléfono, horario, servicios) |
+| 16 | Schema de negocio local | `ProfessionalService` + `AccountingService` + `LegalService` en `index.html` (dirección, mapa, `contactPoint`, horario, servicios con `url`); mismo `@id` en `contadores/` |
+| — | Schema del software | `SoftwareApplication` con un solo `@id` (`/#nexo-contabilidad`) en `plataforma.html` y `precios.html`, con `offers.price` y `priceCurrency`. No tiene `aggregateRating`: no se inventan reseñas, así que Google no mostrará la ficha enriquecida hasta que existan reseñas reales |
 | 17 | robots.txt | `robots.txt`, con permiso explícito a los rastreadores de IA |
 | 18 | URLs sin números ni conectores | los slugs se validan en `scripts/articulos.mjs` |
 | 19 | Desindexar lo que no debe rankear | `/labs` redirige con 308 a `/plataforma.html` (`vercel.json`); `labs/index.html` queda de respaldo con `noindex` |
 | — | Un solo dominio | `vercel.json` redirige `nexoemp-website.vercel.app` a `nexoemp.com` |
+| — | Una sola URL de portada | todos los enlaces van a `/` o `/#ancla`; `vercel.json` redirige `/index.html` (y los `index.html` de `analisis/` y `contadores/`) con 308; CI falla si vuelve a aparecer un enlace a `index.html` |
+| — | Portada igual para todos | sin detección por país: Google y el visitante ven la versión Honduras; los botones «Ya opera en Honduras / Va a llegar a Honduras» cambian solo el encabezado y no reordenan secciones |
+| — | No publicar archivos internos | `.vercelignore` (guías `.md`, `scripts/`, `.github/`, plantilla, `articles.js`); CI falla si falta una entrada |
+| — | Medición de conversiones | `assets/analytics.js`: evento `whatsapp_click` (parámetros `pagina`, `bloque`, `enlace`) en todo enlace a `wa.me/<número>` y en el botón de WhatsApp del formulario; `form_submit` al cargar `gracias.html`, destino del formulario. Van a GA4 y a Vercel Analytics |
+| — | Caché y peso de imágenes | `vercel.json`: `/assets/` 1 hora y `/assets/og/` 1 día, con `must-revalidate` (los nombres no cambian entre versiones); las tarjetas usan miniaturas `.webp` de 600 px, el PNG queda para `og:image` |
 | 20 | llms.txt | `llms.txt` en la raíz: qué hace la firma, páginas y artículos, con nota de atribución |
 | 21 | CTA fijo en móvil | bloque `nexo:cta-movil` en artículos; barra propia en portada, plataforma y hub |
 | 22 | Botón para compartir | bloque `nexo:compartir` (WhatsApp, LinkedIn, Facebook, copiar enlace) |
@@ -61,6 +68,25 @@ en `assets/analytics.js`. Vercel Web Analytics también carga desde ese archivo.
 
 **26. Enviar el sitemap en Search Console.** Hecho (10 nov 2026): `https://nexoemp.com/sitemap.xml`, estado Correcto. Pasos:
 Search Console → Sitemaps → escribir `sitemap.xml` → Enviar.
+
+**27. Marcar las conversiones en GA4.** Pendiente, después de publicar.
+Los eventos `whatsapp_click` y `form_submit` aparecen en GA4 la primera vez
+que alguien los dispara (se ven en Informes → Tiempo real). Entonces:
+
+1. GA4 → Administrar → Visualización de datos → **Eventos clave** → Nuevo
+   evento clave → escribir `whatsapp_click` → Guardar. Repetir con
+   `form_submit`.
+2. Para ver de qué bloque y página llegó cada clic, en Administrar →
+   **Definiciones personalizadas** → Crear dimensión personalizada, alcance
+   Evento: `bloque` (parámetro `bloque`) y `pagina` (parámetro `pagina`).
+3. En Vercel → Analytics → Events aparecen los mismos eventos (Vercel solo
+   los guarda en planes que incluyen eventos personalizados).
+
+**28. Revisar la portada en Search Console.** Pendiente, después de publicar.
+Inspección de URL → `https://nexoemp.com/` → Probar URL publicada → Ver
+página probada → Captura: debe verse «De la escritura al estado financiero»
+(versión Honduras). Luego Solicitar indexación. Hacer lo mismo con
+`/plataforma.html` y `/precios.html`, que cambiaron de título.
 
 ## Cómo se mantiene
 

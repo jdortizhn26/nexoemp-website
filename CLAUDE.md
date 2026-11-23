@@ -14,12 +14,14 @@ analisis/             Blog "Análisis & Noticias" (artículos SEO)
   index.html          Hub que lista todos los artículos (listado estático generado)
   README.md           Guía de publicación
 labs/                 Redirect noindex a /plataforma.html (respaldo; el 308 real está en vercel.json)
-vercel.json           Solo redirecciones: /labs y el dominio nexoemp-website.vercel.app → nexoemp.com
+vercel.json           Redirecciones (/index.html → /, /labs, dominio vercel.app → nexoemp.com) y caché de /assets/
 404.html              Página de error propia (Vercel la sirve en cualquier 404)
+gracias.html          Destino del formulario de contacto (noindex); mide form_submit
+.vercelignore         Archivos internos que NO se publican (CI vigila la lista)
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos
-  analytics.js        Medición: Vercel Analytics + GA4 (un solo lugar)
-  og/                 Portadas 1200x630 (tarjetas + Open Graph)
+  analytics.js        Medición: Vercel Analytics + GA4 + eventos de conversión (un solo lugar)
+  og/                 Portadas 1200x630 en PNG (Open Graph) y miniaturas .webp (tarjetas)
   site.css            Estilos de las páginas de análisis
 scripts/
   articulos.mjs           Lectura y validación de articles.js (compartido)
@@ -79,7 +81,14 @@ sitemap) y no se pueden cerrar desde el repo.
 
 - **No subir documentos internos** al repo (contratos, notas de clientes,
   informes, PDFs de trabajo): es un sitio público y todo lo commiteado se
-  sirve en producción. Ya ocurrió una vez y hubo que retirarlos.
+  sirve en producción. Ya ocurrió una vez y hubo que retirarlos. Los archivos
+  de trabajo del propio sitio (guías `.md`, `scripts/`, plantilla) van en
+  `.vercelignore`; uno nuevo se agrega ahí.
+- Los enlaces a la portada van a `/` o `/#ancla`, nunca a `index.html`: la
+  portada tiene una sola URL (CI lo verifica).
+- La portada es la misma para todo visitante (versión Honduras): no detectar
+  el país ni reordenar secciones según quién visita, porque Google rastrea
+  desde fuera de Honduras.
 - Contenido en español (es-HN) y siempre de **usted**: ni tuteo ni voseo en
   páginas, artículos ni en los campos de `articles.js`. Los artículos son
   informativos, nunca asesoría para un caso particular (mantener el disclaimer

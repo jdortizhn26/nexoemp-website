@@ -1,0 +1,20 @@
+# Archivos del repo que NO se publican en nexoemp.com.
+# Todo lo que no esté aquí se sirve tal cual: al agregar un documento
+# interno o una herramienta al repo, sumarlo a esta lista.
+# scripts/verificar-articulos.mjs falla si falta alguna de estas entradas.
+
+# Documentación interna
+CLAUDE.md
+SEO.md
+README.md
+analisis/README.md
+
+# Herramientas y CI
+scripts/
+.github/
+.gitignore
+.vercelignore
+
+# Fuentes de lo que generan los scripts (ninguna página las carga)
+analisis/_plantilla.html
+assets/articles.js

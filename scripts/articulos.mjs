@@ -25,7 +25,12 @@ export function cargarArticulos() {
   return articulos;
 }
 
-export function validarArticulo(art) {
+/**
+ * Valida los campos de un artículo. Con `slugsConocidos` (Set con todos los
+ * slugs del índice) valida además que "relacionados" apunte a artículos que
+ * existen.
+ */
+export function validarArticulo(art, slugsConocidos) {
   const errores = [];
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(art.slug ?? "")) {
     errores.push(`slug inválido: "${art.slug}" (usar minúsculas, números y guiones)`);
@@ -52,6 +57,24 @@ export function validarArticulo(art) {
     for (const [i, par] of art.faq.entries()) {
       if (!par?.q?.trim() || !par?.a?.trim()) {
         errores.push(`faq[${i}] incompleta en "${art.slug}" (faltan "q" o "a")`);
+      }
+    }
+  }
+  if (art.relacionados !== undefined) {
+    if (!Array.isArray(art.relacionados) || art.relacionados.some((r) => typeof r !== "string")) {
+      errores.push(`"relacionados" debe ser una lista de slugs en "${art.slug}"`);
+    } else {
+      const vistos = new Set();
+      for (const r of art.relacionados) {
+        if (r === art.slug) errores.push(`"${art.slug}" se incluye a sí mismo en "relacionados"`);
+        if (vistos.has(r)) {
+          errores.push(`"relacionados" repite "${r}" en "${art.slug}"`);
+          continue;
+        }
+        vistos.add(r);
+        if (slugsConocidos && !slugsConocidos.has(r)) {
+          errores.push(`"relacionados" de "${art.slug}" apunta a un slug que no existe: "${r}"`);
+        }
       }
     }
   }

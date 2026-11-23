@@ -10,7 +10,8 @@
        (se ignoran index.html y _plantilla.html)
      · hay slugs duplicados o campos inválidos en el índice
      · una página publicada aún contiene placeholders [[...]]
-     · falta la portada assets/og/<slug>.png
+     · falta la portada assets/og/<slug>.png o su miniatura .webp
+     · "relacionados" apunta a un slug que no existe
      · falta la URL del artículo en sitemap.xml
      · los bloques SEO de una página no coinciden con lo que
        scripts/bloques-seo.mjs generaría hoy (TL;DR, FAQ, schema,
@@ -18,10 +19,17 @@
      · el listado estático del hub o de la portada, o la fecha de
        /analisis/ en el sitemap, no coinciden con el índice
 
+   Y en todas las páginas del sitio, si:
+
+     · un enlace apunta a index.html en vez de a / (la portada tiene
+       una sola URL; vercel.json redirige /index.html a /)
+     · un bloque JSON-LD no es JSON válido
+     · a .vercelignore le falta un archivo interno que no debe publicarse
+
    Se corre en CI (.github/workflows/ci.yml) y localmente:
      node scripts/verificar-articulos.mjs
    ════════════════════════════════════════════════════════════════ */
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import path from "node:path";
 import { ROOT, DOMINIO, cargarArticulos, validarArticulo } from "./articulos.mjs";
 import { aplicarBloques, LISTADOS } from "./bloques-seo.mjs";
@@ -42,8 +50,9 @@ try {
 }
 
 // 1. Campos válidos y slugs únicos.
+const slugsIndice = new Set(articulos.map((a) => a.slug));
 for (const art of articulos) {
-  for (const e of validarArticulo(art)) errores.push(e);
+  for (const e of validarArticulo(art, slugsIndice)) errores.push(e);
 }
 const vistos = new Set();
 for (const { slug } of articulos) {
@@ -65,6 +74,9 @@ for (const { slug, date } of articulos) {
   }
   if (!existsSync(path.join(DIR_OG, `${slug}.png`))) {
     errores.push(`falta la portada assets/og/${slug}.png (correr: node scripts/nuevo-articulo.mjs)`);
+  }
+  if (!existsSync(path.join(DIR_OG, `${slug}.webp`))) {
+    errores.push(`falta la miniatura assets/og/${slug}.webp (correr: node scripts/nuevo-articulo.mjs)`);
   }
   if (!sitemap.includes(`<loc>${DOMINIO}/analisis/${slug}.html</loc>`)) {
     errores.push(`falta ${slug}.html en sitemap.xml (correr: node scripts/nuevo-articulo.mjs)`);
@@ -154,6 +166,50 @@ for (const archivo of readdirSync(DIR_ANALISIS)) {
   const slug = archivo.replace(/\.html$/, "");
   if (!slugs.has(slug)) {
     errores.push(`analisis/${archivo} existe pero no está en assets/articles.js (huérfano)`);
+  }
+}
+
+// 4. Todo el sitio: enlaces a la portada, JSON-LD y archivos internos.
+function paginas(dir) {
+  const salida = [];
+  for (const nombre of readdirSync(dir)) {
+    if (nombre === ".git" || nombre === "node_modules") continue;
+    const ruta = path.join(dir, nombre);
+    if (statSync(ruta).isDirectory()) salida.push(...paginas(ruta));
+    else if (nombre.endsWith(".html")) salida.push(ruta);
+  }
+  return salida;
+}
+for (const ruta of [...paginas(ROOT), path.join(ROOT, "scripts", "bloques-seo.mjs")]) {
+  const nombre = path.relative(ROOT, ruta);
+  const contenido = readFileSync(ruta, "utf8");
+  const aIndex = contenido.match(/href="(?:\.\.\/)*index\.html[^"]*"/g);
+  if (aIndex) {
+    errores.push(`${nombre} enlaza a index.html (${aIndex[0]}): usar "/" o "/#ancla"`);
+  }
+  if (nombre.endsWith(".html")) {
+    const bloques = contenido.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g);
+    for (const [, json] of bloques) {
+      try {
+        JSON.parse(json);
+      } catch (e) {
+        errores.push(`${nombre} tiene un JSON-LD inválido: ${e.message}`);
+      }
+    }
+  }
+}
+
+const INTERNOS = [
+  "CLAUDE.md", "SEO.md", "README.md", "analisis/README.md", "scripts/", ".github/",
+  "analisis/_plantilla.html", "assets/articles.js",
+];
+const RUTA_IGNORE = path.join(ROOT, ".vercelignore");
+const ignorados = existsSync(RUTA_IGNORE)
+  ? new Set(readFileSync(RUTA_IGNORE, "utf8").split("\n").map((l) => l.trim()))
+  : new Set();
+for (const interno of INTERNOS) {
+  if (!ignorados.has(interno)) {
+    errores.push(`.vercelignore no excluye "${interno}": se publicaría en nexoemp.com`);
   }
 }
 

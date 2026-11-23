@@ -17,6 +17,7 @@ Agrega la entrada **al inicio** del arreglo en `../assets/articles.js`
   date: "2026-06-20",                // formato AAAA-MM-DD
   author: "Nexo Empresarial",
   cluster: "fiscal",                 // agrupa el interlinkeado
+  relacionados: ["otro-slug"],       // opcional: van primero en "Seguir leyendo"
   intent: "Qué pregunta del lector resuelve el artículo.",
   excerpt: "Resumen de 1–2 frases que se muestra en la tarjeta.",
   tldr: [
@@ -36,6 +37,11 @@ Agrega la entrada **al inicio** del arreglo en `../assets/articles.js`
 búsqueda: **deben ser distintos** (el chequeo falla si coinciden), porque son
 dos oportunidades de aparecer para búsquedas diferentes.
 
+`relacionados` es opcional. El bloque "Seguir leyendo" muestra tres artículos:
+primero los de esa lista y después, si faltan, los del mismo `cluster` en el
+orden del índice. Úselo cuando un artículo no recibe enlaces de ningún otro;
+el chequeo falla si un slug de la lista no existe.
+
 ```bash
 node scripts/nuevo-articulo.mjs
 ```
@@ -50,7 +56,9 @@ El script hace todo lo que antes era manual:
   relacionados, botones de compartir y barra fija de contacto en móvil), todos
   derivados de los campos de arriba;
 - genera la portada `assets/og/<slug>.png` con una ilustración temática
-  (requiere `python3` + Pillow: `pip install pillow`). El dibujo se elige por
+  (requiere `python3` + Pillow: `pip install pillow`) y su miniatura
+  `assets/og/<slug>.webp` de 600 px, que es la que usan las tarjetas del
+  listado (el PNG queda para Open Graph). El dibujo se elige por
   slug en `ICONO_POR_SLUG` de `scripts/generar_portadas.py` y, si el slug no
   está mapeado, por categoría — para darle un ícono propio a un artículo
   nuevo, agregalo a ese mapa antes de generar;
@@ -61,6 +69,10 @@ Solo queda **redactar el cuerpo**: abre el HTML generado y reemplaza lo que
 quedó entre `[[corchetes]]` dentro de `<div class="prose">`, usando
 `<h2>`, `<h3>`, `<p>`, `<ul><li>`, `<ol><li>`, `<blockquote>`,
 `<div class="callout">…</div>` y tablas envueltas en `<div class="tabla-scroll">`.
+Incluya dentro del texto dos o tres enlaces naturales hacia lo que se vende
+(`/contadores/`, `/plataforma.html`, `/precios.html`, `/#rama-legal`,
+`/#contacto`…), con anclas que describan el destino. Los enlaces a la portada
+van a `/` o `/#ancla`, nunca a `index.html` (el chequeo lo rechaza).
 No toques nada que esté entre marcadores `<!-- nexo:… -->`: eso se regenera.
 
 Por último, agregá el artículo a `../llms.txt` (el resumen del sitio para

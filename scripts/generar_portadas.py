@@ -5,9 +5,14 @@
 # ICONO_POR_SLUG y, si el slug no está mapeado, por categoría en
 # ICONO_POR_CATEGORIA (así los artículos nuevos salen ilustrados solos).
 #
+# Junto a cada PNG (que sigue siendo la imagen Open Graph) se guarda una
+# miniatura <slug>.webp de 600 px de ancho para las tarjetas del listado.
+#
 # Uso:
 #   python3 scripts/generar_portadas.py <slug> <categoría> <título>
-#       → genera solo assets/og/<slug>.png (así lo llama nuevo-articulo.mjs)
+#       → genera solo assets/og/<slug>.png y su .webp (así lo llama nuevo-articulo.mjs)
+#   python3 scripts/generar_portadas.py --miniaturas [<slug> ...]
+#       → solo crea las .webp a partir de los PNG que ya existen (todos, o esos slugs)
 #   python3 scripts/generar_portadas.py
 #       → regenera la lista histórica COVERS de abajo
 import os
@@ -412,6 +417,19 @@ def make_cover(path, category, title, slug=None):
 
     img.save(path, "PNG")
     print("→", path, f"({size}px, {len(lines)} líneas)")
+    guardar_miniatura(path)
+
+
+MINI_W = 600
+
+
+def guardar_miniatura(png):
+    """Miniatura WebP para las tarjetas; el PNG queda intacto para og:image."""
+    destino = png[:-4] + ".webp"
+    with Image.open(png) as img:
+        mini = img.convert("RGB").resize((MINI_W, round(img.height * MINI_W / img.width)), Image.LANCZOS)
+        mini.save(destino, "WEBP", quality=82, method=6)
+    print("→", destino)
 
 COVERS = [
     ("cierre-fiscal-honduras-7-puntos-clave.png", "Fiscal / SAR",
@@ -447,9 +465,13 @@ if __name__ == "__main__":
         # Modo de un solo artículo: <slug> <categoría> <título>
         slug, categoria, titulo = sys.argv[1], sys.argv[2], sys.argv[3]
         make_cover(os.path.join(OUT, f"{slug}.png"), categoria, titulo, slug=slug)
+    elif len(sys.argv) >= 2 and sys.argv[1] == "--miniaturas":
+        slugs = sys.argv[2:] or sorted(f[:-4] for f in os.listdir(OUT) if f.endswith(".png"))
+        for slug in slugs:
+            guardar_miniatura(os.path.join(OUT, f"{slug}.png"))
     elif len(sys.argv) == 1:
         for fn, cat, title in COVERS:
             make_cover(os.path.join(OUT, fn), cat, title, slug=fn[:-4])
     else:
-        print("Uso: generar_portadas.py [<slug> <categoría> <título>]", file=sys.stderr)
+        print("Uso: generar_portadas.py [<slug> <categoría> <título> | --miniaturas [<slug> ...]]", file=sys.stderr)
         sys.exit(2)
