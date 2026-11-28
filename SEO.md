@@ -73,7 +73,8 @@ Search Console → Sitemaps → escribir `sitemap.xml` → Enviar.
 celular: `whatsapp_click` llega desde los botones y desde el formulario.
 El formulario por correo **no estaba activado en FormSubmit** (mostraba
 «Check Your Email» y no reenviaba nada); se activó ese día desde el correo
-que FormSubmit manda a la dirección del `action`. Si algún día cambia esa
+que FormSubmit manda a la dirección del `action`, y el correo de prueba
+con los datos del formulario llegó. Si algún día cambia esa
 dirección, hay que volver a activarlo y probarlo de punta a punta.
 
 El evento de la página de gracias se llamaba `form_submit`, igual que el
