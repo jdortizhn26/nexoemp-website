@@ -16,7 +16,7 @@ analisis/             Blog "Análisis & Noticias" (artículos SEO)
 labs/                 Redirect noindex a /plataforma.html (respaldo; el 308 real está en vercel.json)
 vercel.json           Redirecciones (/index.html → /, /labs, dominio vercel.app → nexoemp.com) y caché de /assets/
 404.html              Página de error propia (Vercel la sirve en cualquier 404)
-gracias.html          Destino del formulario de contacto (noindex); mide form_submit
+gracias.html          Destino del formulario de contacto (noindex); mide contacto_enviado
 .vercelignore         Archivos internos que NO se publican (CI vigila la lista)
 assets/
   articles.js         FUENTE ÚNICA del índice de artículos

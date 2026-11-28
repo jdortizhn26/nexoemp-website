@@ -24,11 +24,15 @@
                       enlaces de compartir (wa.me/?text=) no cuentan.
                       Un bloque se puede nombrar a mano con el
                       atributo data-bloque en el enlace o en un padre.
-      form_submit     la página gracias.html, a la que FormSubmit
+      contacto_enviado
+                      la página gracias.html, a la que FormSubmit
                       devuelve al visitante tras enviar el formulario
                       (se marca con data-evento en su <html>).
       Para que cuenten como conversión hay que marcarlos como eventos
       clave en GA4 (ver SEO.md).
+      Un evento propio nunca lleva el nombre de uno automático de GA4
+      (form_submit, form_start, click, scroll, ...): la medición
+      mejorada lo dispara por su cuenta y la conversión se cuenta doble.
    ════════════════════════════════════════════════════════════════ */
 (function () {
   // Vercel Web Analytics (ruta propia del dominio, la sirve Vercel).
