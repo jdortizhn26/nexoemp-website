@@ -500,7 +500,7 @@ window.NEXO_ARTICLES = [
       },
       {
         q: "¿Otra persona puede sacar el RTN por mí?",
-        a: "Sí. Aunque es un trámite personal, puede hacerlo un tercero con una carta poder firmada por usted y autenticada por notario. Es la vía para quien no tiene tiempo o no puede presentarse en una oficina del SAR."
+        a: "Sí. Aunque es un trámite personal, puede hacerlo un tercero con una carta poder firmada por usted y autenticada por notario. Es la vía para quien no tiene tiempo o no puede presentarse en una oficina del SAR. Si está fuera de Honduras, puede otorgar el poder en su país y enviarlo apostillado."
       },
       {
         q: "¿Qué pasa si tengo RTN pero mi negocio no está operando?",
