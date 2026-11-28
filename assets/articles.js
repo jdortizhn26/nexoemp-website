@@ -467,7 +467,7 @@ window.NEXO_ARTICLES = [
     metaTitle: "RTN en Honduras: qué es, para qué sirve y cómo obtenerlo",
     category: "Guía",
     date: "2026-06-10",
-    updated: "2026-11-21",
+    updated: "2026-11-27",
     author: "Dirección profesional",
     cluster: "formalizacion",
     relacionados: [
@@ -489,6 +489,18 @@ window.NEXO_ARTICLES = [
       {
         q: "¿Puedo usar mi RTN personal para facturar lo de mi empresa?",
         a: "No conviene. Una sociedad mercantil tiene un RTN propio, distinto al de sus socios, que se solicita ante el SAR una vez inscrita en el Registro Público Mercantil. Facturar lo del negocio a título personal mezcla dos identidades fiscales separadas y genera desorden y riesgos."
+      },
+      {
+        q: "¿Mi RTN es el mismo número de mi identidad?",
+        a: "Casi. El RTN de una persona natural tiene 14 dígitos: los 13 de su tarjeta de identidad más uno que le asigna el SAR."
+      },
+      {
+        q: "¿Se puede sacar el RTN en línea?",
+        a: "A noviembre de 2026, la emisión en línea está suspendida temporalmente. Por internet solo se puede hacer la preinscripción; el trámite se completa en una oficina del SAR. La primera emisión no tiene costo."
+      },
+      {
+        q: "¿Otra persona puede sacar el RTN por mí?",
+        a: "Sí. Aunque es un trámite personal, puede hacerlo un tercero con una carta poder firmada por usted y autenticada por notario. Es la vía para quien no tiene tiempo o no puede presentarse en una oficina del SAR. Si está fuera de Honduras, puede otorgar el poder en su país y enviarlo apostillado."
       },
       {
         q: "¿Qué pasa si tengo RTN pero mi negocio no está operando?",
