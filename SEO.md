@@ -69,7 +69,7 @@ en `assets/analytics.js`. Vercel Web Analytics también carga desde ese archivo.
 **26. Enviar el sitemap en Search Console.** Hecho (10 nov 2026): `https://nexoemp.com/sitemap.xml`, estado Correcto. Pasos:
 Search Console → Sitemaps → escribir `sitemap.xml` → Enviar.
 
-**27. Marcar las conversiones en GA4.** Probado el 28 nov 2026 desde un
+**27. Marcar las conversiones en GA4.** Probado el 27 nov 2026 desde un
 celular: `whatsapp_click` llega desde los botones y desde el formulario.
 El formulario por correo **no estaba activado en FormSubmit** (mostraba
 «Check Your Email» y no reenviaba nada); se activó ese día desde el correo
@@ -92,11 +92,26 @@ Se renombró a `contacto_enviado`. Pasos en GA4:
 3. En Vercel → Analytics → Events aparecen los mismos eventos (Vercel solo
    los guarda en planes que incluyen eventos personalizados).
 
-**28. Revisar la portada en Search Console.** Pendiente, después de publicar.
-Inspección de URL → `https://nexoemp.com/` → Probar URL publicada → Ver
-página probada → Captura: debe verse «De la escritura al estado financiero»
-(versión Honduras). Luego Solicitar indexación. Hacer lo mismo con
-`/plataforma.html` y `/precios.html`, que cambiaron de título.
+**28. Revisar la indexación en Search Console.** Revisado el 27 nov 2026:
+
+- La portada está indexada y Google la rastreó el 26 nov, con el título
+  nuevo. No necesitaba solicitud.
+- `/plataforma.html` estaba «Descubierta: actualmente sin indexar» (Google
+  nunca la había leído). Se solicitó su indexación, igual que la de
+  `/precios.html`, `/analisis/` y seis artículos. La cuota es de unas 10
+  solicitudes por día; quedaron para el día siguiente
+  `como-leer-estados-financieros.html` y el resto de la lista «Descubierta».
+- Google tiene muchos artículos registrados con `www.` delante. Todo indica
+  que el sitio se servía con `www` hasta el 10 nov 2026, fecha en que se
+  modificaron los dominios en Vercel; desde entonces `www.nexoemp.com`
+  redirige a `nexoemp.com` (308). Por eso el informe de
+  Páginas cuenta direcciones con `www` como «Página con redirección» o como
+  indexadas, y las mismas sin `www` como «Descubierta». Google las consolida
+  solo al volver a rastrearlas; no hay que cambiar nada. Revisar a mediados
+  de diciembre que el informe de Rendimiento ya no muestre direcciones con
+  `www`.
+- «Página alternativa con etiqueta canónica adecuada» y «Página con
+  redirección» son esperables y no se corrigen.
 
 ## Cómo se mantiene
 
