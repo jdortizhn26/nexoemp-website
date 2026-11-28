@@ -40,7 +40,7 @@ listado se ve mal en un artículo, se corrige ahí y se corre
 | — | Una sola URL de portada | todos los enlaces van a `/` o `/#ancla`; `vercel.json` redirige `/index.html` (y los `index.html` de `analisis/` y `contadores/`) con 308; CI falla si vuelve a aparecer un enlace a `index.html` |
 | — | Portada igual para todos | sin detección por país: Google y el visitante ven la versión Honduras; los botones «Ya opera en Honduras / Va a llegar a Honduras» cambian solo el encabezado y no reordenan secciones |
 | — | No publicar archivos internos | `.vercelignore` (guías `.md`, `scripts/`, `.github/`, plantilla, `articles.js`); CI falla si falta una entrada |
-| — | Medición de conversiones | `assets/analytics.js`: evento `whatsapp_click` (parámetros `pagina`, `bloque`, `enlace`) en todo enlace a `wa.me/<número>` y en el botón de WhatsApp del formulario; `form_submit` al cargar `gracias.html`, destino del formulario. Van a GA4 y a Vercel Analytics |
+| — | Medición de conversiones | `assets/analytics.js`: evento `whatsapp_click` (parámetros `pagina`, `bloque`, `enlace`) en todo enlace a `wa.me/<número>` y en el botón de WhatsApp del formulario; `contacto_enviado` al cargar `gracias.html`, destino del formulario. Van a GA4 y a Vercel Analytics |
 | — | Caché y peso de imágenes | `vercel.json`: `/assets/` 1 hora y `/assets/og/` 1 día, con `must-revalidate` (los nombres no cambian entre versiones); las tarjetas usan miniaturas `.webp` de 600 px, el PNG queda para `og:image` |
 | 20 | llms.txt | `llms.txt` en la raíz: qué hace la firma, páginas y artículos, con nota de atribución |
 | 21 | CTA fijo en móvil | bloque `nexo:cta-movil` en artículos; barra propia en portada, plataforma y hub |
@@ -69,13 +69,22 @@ en `assets/analytics.js`. Vercel Web Analytics también carga desde ese archivo.
 **26. Enviar el sitemap en Search Console.** Hecho (10 nov 2026): `https://nexoemp.com/sitemap.xml`, estado Correcto. Pasos:
 Search Console → Sitemaps → escribir `sitemap.xml` → Enviar.
 
-**27. Marcar las conversiones en GA4.** Pendiente, después de publicar.
-Los eventos `whatsapp_click` y `form_submit` aparecen en GA4 la primera vez
-que alguien los dispara (se ven en Informes → Tiempo real). Entonces:
+**27. Marcar las conversiones en GA4.** Probado el 28 nov 2026 desde un
+celular: `whatsapp_click` llega desde los botones y desde el formulario.
+El formulario por correo **no estaba activado en FormSubmit** (mostraba
+«Check Your Email» y no reenviaba nada); se activó ese día desde el correo
+que FormSubmit manda a la dirección del `action`. Si algún día cambia esa
+dirección, hay que volver a activarlo y probarlo de punta a punta.
 
-1. GA4 → Administrar → Visualización de datos → **Eventos clave** → Nuevo
-   evento clave → escribir `whatsapp_click` → Guardar. Repetir con
-   `form_submit`.
+El evento de la página de gracias se llamaba `form_submit`, igual que el
+que GA4 dispara solo con la medición mejorada al enviar cualquier
+formulario: la prueba dio 3 `form_submit` para una sola visita a gracias.
+Se renombró a `contacto_enviado`. Pasos en GA4:
+
+1. Administrar → Visualización de datos → **Eventos clave** → Nuevo
+   evento clave → `whatsapp_click` → Guardar. Repetir con
+   `contacto_enviado`. **No** marcar `form_submit`: cuenta intentos,
+   incluidos los que no llegan.
 2. Para ver de qué bloque y página llegó cada clic, en Administrar →
    **Definiciones personalizadas** → Crear dimensión personalizada, alcance
    Evento: `bloque` (parámetro `bloque`) y `pagina` (parámetro `pagina`).
