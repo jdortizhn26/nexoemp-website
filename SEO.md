@@ -113,6 +113,24 @@ Se renombró a `contacto_enviado`. Pasos en GA4:
 - «Página alternativa con etiqueta canónica adecuada» y «Página con
   redirección» son esperables y no se corrigen.
 
+**29. Perfil de Empresa de Google.** Creado y verificado el 27 nov 2026
+(Google lo verificó al instante; la cuenta ya era dueña del dominio en
+Search Console). Categoría principal «Contador»; tipo «Tienda local» y
+«Empresa de servicios»; chat por WhatsApp con mensaje que identifica que el
+contacto viene de Google; logo cargado. Enlace del perfil:
+`https://share.google/UM6vuu5ngxWufE3ne` (va en `hasMap` y `sameAs` de la
+portada y en el botón de mapa de `/contadores/`).
+
+- La dirección va sin número de oficina: Google desarmaba «Oficina No. 3» y
+  mostraba una «3 Avenida NO» inexistente. El sitio sí lo conserva.
+- Pendiente a mano: fotos reales (fachada primero), categorías secundarias
+  («Contador público certificado», abogado, asesor fiscal), zonas de
+  servicio (las ciudades de `/contadores/`), servicios personalizados (RTN,
+  constitución, CAI, IHSS/RAP) y pedir reseñas a clientes reales.
+- Existe otra «Asociación Nexo Empresarial» (asociacionnexoempresarial.com)
+  y una inmobiliaria «Nexo Business» en San Pedro Sula: el nombre se escribe
+  siempre completo, «Nexo Empresarial».
+
 ## Cómo se mantiene
 
 - Publicar un artículo: `assets/articles.js` + `node scripts/nuevo-articulo.mjs`
